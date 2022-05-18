@@ -10,8 +10,13 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+
+/[Aa]ssets/Game/Art/*
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
+
+!/[Aa]ssets/Game/Art/leia-me.txt
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
