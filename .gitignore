@@ -13,6 +13,10 @@
 
 /[Aa]ssets/Game/Recursos/*
 
+/[Aa]ssets/Game/paolinhaaa/*
+
+/[Aa]ssets/Game/Sulivan/*
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
