@@ -12,10 +12,12 @@ namespace Character
         [SerializeField] private CharacterProperties characterProperties;
         [SerializeField] private float speedRotation;
         private PlayerInput playerInput;
+
         public PlayerInput PlayerInput { get => playerInput; set => playerInput = value; }
 
         private Rigidbody characterRigidbody;
         public Transform ballTransform;
+        public Quaternion startRotation;
         public Quaternion targetRotation(float x, float z)
         {       
             float angle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
@@ -30,7 +32,6 @@ namespace Character
             playerInput = GetComponent<PlayerInput>();
         }
 
-
         private void WalkBehaviour(float x, float z, float speed)
         {
             Vector3 xzDirection = Vector3.ClampMagnitude(new Vector3(x,0, z), 1);
@@ -44,14 +45,16 @@ namespace Character
         private void Rotate()
         {
             Debug.Log(playerInput.rawDirection);
-            if (playerInput.rawDirection != Vector3.zero)
+            if (playerInput.rawDirection.magnitude > 0.1f)
             {
                 transform.rotation = targetRotation(playerInput.direction.x, playerInput.direction.z);
             }
             else{
+
                 //TODO: ajustar
                 //Quaternion targetRotation = Quaternion.LookRotation(ballTransform.position - transform.position);
-                //Quaternion.Slerp(transform.rotation, targetRotation, speedRotation*Time.fixedDeltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, startRotation, speedRotation*Time.fixedDeltaTime);
+
             }
         }
 
