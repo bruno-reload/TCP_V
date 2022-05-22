@@ -34,8 +34,6 @@ namespace Character
         private void WalkBehaviour(Vector3 direction, float speed)
         {
             Vector3 xzDirectionClamp = Vector3.ClampMagnitude(direction, 1);
-            Debug.Log(xzDirectionClamp);
-
             characterRigidbody.velocity = new Vector3(xzDirectionClamp.x * speed, characterRigidbody.velocity.y, xzDirectionClamp.z * speed);
         }
 
@@ -82,73 +80,4 @@ namespace Character
 
     }
 }
-
-
-
-
-
-
-//[SerializeField] private CharacterProperties characterProperties;
-//[SerializeField] private Quaternion forwardRotation;
-
-//public CharacterProperties CharacterProperties { get => characterProperties; }
-
-//private Rigidbody characterRigidbody;
-//public Transform ballTransform;
-//public Quaternion targetRotation(float x, float z)
-//{
-//    float angle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
-//    Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.up);
-//    return Quaternion.Slerp(transform.rotation, targetAngle, characterProperties.RotationSpeed * Time.fixedDeltaTime);
-
-//}
-
-//private void Awake()
-//{
-//    characterRigidbody = GetComponent<Rigidbody>();
-//}
-
-//public void WalkBehaviour(Vector3 direction, float speed)
-//{
-//    Vector3 xzDirectionClamp = Vector3.ClampMagnitude(direction, 1);
-//    characterRigidbody.velocity = new Vector3(xzDirectionClamp.x * speed, characterRigidbody.velocity.y, xzDirectionClamp.z * speed);
-//}
-
-//private void JumpBehaviour(float impulse)
-//{
-//    characterRigidbody.AddForce(Vector3.up * impulse, ForceMode.Impulse);
-//}
-
-//public void Rotate(Vector3 direction)
-//{
-//    if (direction.magnitude > 0.1f)
-//    {
-//        transform.rotation = targetRotation(direction.x, direction.z);
-//    }
-//    else
-//    {
-//        transform.rotation = Quaternion.Slerp(transform.rotation, forwardRotation,
-//            characterProperties.RotationSpeed * Time.fixedDeltaTime);
-
-//    }
-//}
-
-//public void Moving(Vector3 direction)
-//{
-//    WalkBehaviour(direction, characterProperties.Speed);
-//    if (direction != Vector3.zero) Rotate(direction);
-//}
-
-
-//public void Jump()
-//{
-//    JumpBehaviour(characterProperties.JumpImpulse);
-//}
-
-////Movimento de mergulho
-//public void Dive()
-//{
-
-//}
-
 
