@@ -13,9 +13,14 @@
 
 /[Aa]ssets/Game/Recursos/*
 
-/[Aa]ssets/Game/paolinhaaa/*
+#pastas pessoas ignoradas pelo github e não sincronizadas pelo google drive
+#para criar uma pasta de testa adicione o caminho até sua pasta finalizando com /* pra ignorar todo o conteúdo
+#lembre se de colocar fora da pasta Recursos, e dentro da pasta Assets ou o unity não reconhecerá no projeto.
+#essa pasta será visivel somente a você
 
+/[Aa]ssets/Game/paolinhaaa/*
 /[Aa]ssets/Game/Sulivan/*
+/[Aa]ssets/Game/Bruno/*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

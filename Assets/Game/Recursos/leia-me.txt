@@ -33,5 +33,4 @@ Detro da pasta Character pode conter um aruivo de descrião:
 Character.txt
 	Numero de personagens diferente = 6
 	diferenças entre os personagens = cor da roupa
-
-	 
+Não se preocupe com arquivos de .meta, nessa estrutura pois representão apenas link de reconhecimento da unity
