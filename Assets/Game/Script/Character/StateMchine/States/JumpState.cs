@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Character.Control;
 using UnityEngine;
 
 namespace Character.StateMachine
@@ -7,26 +6,26 @@ namespace Character.StateMachine
     public class JumpState : State
     {
 
-        public override void EnterState(CharacterBehaviour behaviours)
+        public override void EnterState(CharacterControl controller)
         {
-            behaviours.Jump();
+            controller.Behaviour.Jumping();
         }
-        public override void ExitState(CharacterBehaviour behaviours)
+        public override void ExitState(CharacterControl controller)
         {
         }
-        public override void FixedUpdateState(CharacterBehaviour behaviours)
+        public override void FixedUpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
         {
-            behaviours.Moving();
+            controller.Behaviour.Moving();
         }
 
-        public override void OnCollisionEnterState(CharacterBehaviour behaviours, FiniteStateMachine stateMachine, Collision collision)
+        public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
         {
             if(collision.collider.CompareTag("Field")) {
                 stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
             }
         }
 
-        public override void UpdateState(CharacterBehaviour behaviours, FiniteStateMachine stateMachine)
+        public override void UpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
         {
         }
     }

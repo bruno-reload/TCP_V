@@ -1,71 +1,71 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Character.StateMachine;
-using Player;
+using Character.Control;
+using UnityEngine; 
+
 
 namespace Character
 {
 
     public class CharacterBehaviour : MonoBehaviour
     {
+
         [SerializeField] private CharacterProperties characterProperties;
-        [SerializeField] private float speedRotation;
-        private PlayerInput playerInput;
-
-        public PlayerInput PlayerInput { get => playerInput; set => playerInput = value; }
-
+        [SerializeField] private Quaternion forwardRotation;
+        private CharacterControl characterControl;
         private Rigidbody characterRigidbody;
         public Transform ballTransform;
-        public Quaternion startRotation;
-        public Quaternion targetRotation(float x, float z)
-        {       
+       
+        public CharacterProperties CharacterProperties { get => characterProperties; }
+        public CharacterControl CharacterController { get => characterControl; set => characterControl = value; }
+        public bool isMoving => characterControl.Control.direction() != Vector3.zero;
+        private Quaternion targetRotation(float x, float z)
+        {
             float angle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
             Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.up);
-            return Quaternion.Slerp(transform.rotation, targetAngle, speedRotation * Time.fixedDeltaTime);
+            return Quaternion.Slerp(transform.rotation, targetAngle, characterProperties.RotationSpeed * Time.fixedDeltaTime);
 
         }
 
         private void Awake()
         {
             characterRigidbody = GetComponent<Rigidbody>();
-            playerInput = GetComponent<PlayerInput>();
+            characterControl = GetComponent<CharacterControl>();
         }
 
-        private void WalkBehaviour(float x, float z, float speed)
+        private void WalkBehaviour(Vector3 direction, float speed)
         {
-            Vector3 xzDirection = Vector3.ClampMagnitude(new Vector3(x,0, z), 1);
-            characterRigidbody.velocity = new Vector3(xzDirection.x * speed, characterRigidbody.velocity.y, xzDirection.z * speed);
+            Vector3 xzDirectionClamp = Vector3.ClampMagnitude(direction, 1);
+            characterRigidbody.velocity = new Vector3(xzDirectionClamp.x * speed, characterRigidbody.velocity.y, xzDirectionClamp.z * speed);
         }
 
         private void JumpBehaviour(float impulse)
         {
             characterRigidbody.AddForce(Vector3.up * impulse, ForceMode.Impulse);
         }
+
         private void Rotate()
         {
-            Debug.Log(playerInput.rawDirection);
-            if (playerInput.rawDirection.magnitude > 0.1f)
+            if (characterControl.Control.direction().magnitude > 0.1f)
             {
-                transform.rotation = targetRotation(playerInput.direction.x, playerInput.direction.z);
+                transform.rotation = targetRotation(
+                    characterControl.Control.direction().x, characterControl.Control.direction().z);
             }
-            else{
-
-                //TODO: ajustar
-                //Quaternion targetRotation = Quaternion.LookRotation(ballTransform.position - transform.position);
-                transform.rotation = Quaternion.Slerp(transform.rotation, startRotation, speedRotation*Time.fixedDeltaTime);
+            else
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, forwardRotation,
+                    characterProperties.RotationSpeed * Time.fixedDeltaTime);
 
             }
         }
 
         public void Moving()
         {
-            WalkBehaviour(playerInput.xAxis, playerInput.yAxis, characterProperties.Speed);
-            if(playerInput.direction != Vector3.zero)
+            WalkBehaviour(characterControl.Control.direction(), characterProperties.Speed);
+            //if (characterControl.Control.direction() != Vector3.zero) 
                 Rotate();
         }
 
-        public void Jump()
+
+        public void Jumping()
         {
             JumpBehaviour(characterProperties.JumpImpulse);
         }
@@ -76,11 +76,8 @@ namespace Character
 
         }
 
-        //Ação de cabecear
-        public void Head()
-        {
 
-        }
+
     }
-
 }
+

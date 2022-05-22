@@ -7,13 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7360781083790721621, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b2c96fd7c327881459c79e3ad730f38d, type: 2}
+    - target: {fileID: 7360781084137705694, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Name
+      value: D_bico
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360781084137705697, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db043609ce60d704a84209081a3eb0aa, type: 2}
     - target: {fileID: 7360781084435881642, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5df23f76a2faacd4d8f1e87c18eed775, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ceb7e58014524f43b8147f48046137d, type: 2}
     - target: {fileID: 7360781085406952751, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_Name
-      value: Character Blue
+      value: Character Blue Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7360781085406952753, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_RootOrder

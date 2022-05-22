@@ -1,20 +1,19 @@
+using Character.Control;
 using UnityEngine;
-using UnityEngine.Events;
+
 
 namespace Character.StateMachine
 {
     public class FiniteStateMachine : MonoBehaviour
     {
-
         private State currentState;
-        private CharacterBehaviour characterController;
+        private CharacterControl characterController;
         private StateInstances stateInstances;
 
         public StateInstances StateInstances { get => stateInstances;}
-
         private void Awake()
         {
-            characterController = GetComponent<CharacterBehaviour>();
+            characterController = GetComponent<CharacterControl>();
             stateInstances = new StateInstances();
         }
         void Start()
@@ -30,7 +29,7 @@ namespace Character.StateMachine
 
         private void FixedUpdate()
         {
-            currentState.FixedUpdateState(characterController);
+            currentState.FixedUpdateState(characterController, this);
         }
 
         public virtual void TransitionToState(State state)
@@ -43,7 +42,7 @@ namespace Character.StateMachine
 
         private void OnCollisionEnter(Collision collision)
         {
-            currentState.OnCollisionEnterState(characterController, this, collision);
+            currentState.OnCollisionEnterState(characterController, collision, this);
         }
     }
 }

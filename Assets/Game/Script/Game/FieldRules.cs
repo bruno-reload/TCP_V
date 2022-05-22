@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player
+namespace Field
 {
-    public class PlayerController : MonoBehaviour
+    public class FieldRules : MonoBehaviour
     {
 
     }
-
 }
+
+
