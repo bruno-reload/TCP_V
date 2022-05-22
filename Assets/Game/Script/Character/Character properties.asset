@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb24d53121188b4eae4aa39ee26809f, type: 3}
   m_Name: Character properties
   m_EditorClassIdentifier: 
-  speed: 3.36
+  speed: 5
   jumpImpulse: 30
   headForce: 60
+  rotationSpeed: 10

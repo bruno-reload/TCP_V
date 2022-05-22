@@ -1,37 +1,39 @@
 
-using Player;
+using Character.Control;
 using UnityEngine;
 
 namespace Character.StateMachine
 {
     public class IdleState : State
     {
-        public override void EnterState(CharacterBehaviour behaviour)
+        public override void EnterState(CharacterControl controller )
         {
         }
 
-        public override void ExitState(CharacterBehaviour behaviour)
+        public override void ExitState(CharacterControl controller)
         {
         }
-        public override void UpdateState(CharacterBehaviour behaviour, FiniteStateMachine stateMachine)
-        {
-            if (behaviour.PlayerInput.direction != Vector3.zero)
+        public override void UpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
+        {            
+            //processando novos estados
+            if (controller.Behaviour.isMoving)
             {
-                stateMachine.TransitionToState( stateMachine.StateInstances.movingState);
+                stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
             }
-
-            if(behaviour.PlayerInput.jump)
+            if (controller.Control.jump())
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
             }
         }
 
-        public override void FixedUpdateState(CharacterBehaviour behaviour)
+        public override void FixedUpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
         {
-            behaviour.Moving();
+            controller.Behaviour.Moving();
+
+
         }
 
-        public override void OnCollisionEnterState(CharacterBehaviour behaviour, FiniteStateMachine stateMachine, Collision collision)
+        public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
         {
         }
 

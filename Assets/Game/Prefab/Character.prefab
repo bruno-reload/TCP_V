@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 7360781085406952755}
   - component: {fileID: 7360781085406952754}
   - component: {fileID: 7602300557539561546}
+  - component: {fileID: 406800953787600874}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -364,9 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterProperties: {fileID: 11400000, guid: 18455582464543a40aebaffde5889986, type: 2}
-  speedRotation: 10
+  forwardRotation: {x: 0, y: 0, z: 0, w: 0}
   ballTransform: {fileID: 0}
-  startRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &7602300557539561546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,3 +380,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: 0
+--- !u!114 &406800953787600874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360781085406952751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de7956f6edc602419d35743d7401264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
