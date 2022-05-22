@@ -68,8 +68,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5180955459118098317, guid: 5a5315737ddd10c44932af34c112ecbc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 5180955459118098317, guid: 5a5315737ddd10c44932af34c112ecbc, type: 3}
       propertyPath: m_Name
-      value: Cam_TeamBlue
+      value: Cam_TeamBlue Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5180955459118098314, guid: 5a5315737ddd10c44932af34c112ecbc, type: 3}
