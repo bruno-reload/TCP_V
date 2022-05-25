@@ -1,28 +1,50 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(MeshFilter)), RequireComponent(typeof(MeshRenderer)), RequireComponent(typeof(SphereCollider)), RequireComponent(typeof(Rigidbody))]
 public class BallControl : MonoBehaviour
 {
     private float size;
     private RaycastHit hit;
     public float speed = 10;
     private Vector3 startPos;
-    public Transform ForeCast;
+    [SerializeField] private GameObject ForeCast;
     private const float gravity = 9.81f;
+
+    private void Reset()
+    {
+        this.ForeCast = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        ForeCast.name = "ForeCast";
+
+        MeshRenderer mr = ForeCast.GetComponent<MeshRenderer>();
+        BoxCollider bc = ForeCast.AddComponent<BoxCollider>();
+
+        bc.isTrigger = true;
+        mr.enabled = false;
+
+        Debug.Log("ForeCast adicionado");
+
+    }
     void Start()
     {
         this.size = 2f;
         this.startPos = transform.position;
-        if (this.ForeCast.GetComponent<BoxCollider>() == null)
+        if (ForeCast == null)
         {
-            Debug.LogWarning("o game objeto ForeCast deve conter um BoxCollider");
+            Debug.LogError("o game objeto Forecast não existe, reset o componete BallControl.");
         }
         else
         {
-            if (this.ForeCast.GetComponent<BoxCollider>() != null)
+            if (this.ForeCast.GetComponent<BoxCollider>() == null)
             {
-                this.ForeCast.GetComponent<BoxCollider>().isTrigger = true;
-                this.ForeCast.GetComponent<MeshRenderer>().enabled = false;
+                Debug.LogWarning("o game objeto ForeCast deve conter um BoxCollider");
+            }
+            else
+            {
+                if (this.ForeCast.GetComponent<BoxCollider>() != null)
+                {
+                    this.ForeCast.GetComponent<BoxCollider>().isTrigger = true;
+                    this.ForeCast.GetComponent<MeshRenderer>().enabled = false;
+                }
             }
         }
     }
