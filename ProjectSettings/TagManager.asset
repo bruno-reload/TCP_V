@@ -8,6 +8,7 @@ TagManager:
   - Body
   - Field
   - Floor
+  - Ball
   layers:
   - Default
   - TransparentFX

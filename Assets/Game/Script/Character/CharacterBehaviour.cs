@@ -1,5 +1,5 @@
 using Character.Control;
-using UnityEngine; 
+using UnityEngine;
 
 
 namespace Character
@@ -13,7 +13,7 @@ namespace Character
         private CharacterControl characterControl;
         private Rigidbody characterRigidbody;
         public Transform ballTransform;
-       
+
         public CharacterProperties CharacterProperties { get => characterProperties; }
         public CharacterControl CharacterController { get => characterControl; set => characterControl = value; }
         public bool isMoving => characterControl.Control.direction() != Vector3.zero;
@@ -61,7 +61,7 @@ namespace Character
         {
             WalkBehaviour(characterControl.Control.direction(), characterProperties.Speed);
             //if (characterControl.Control.direction() != Vector3.zero) 
-                Rotate();
+            Rotate();
         }
 
 
