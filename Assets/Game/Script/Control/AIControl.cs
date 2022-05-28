@@ -8,32 +8,37 @@ namespace Character.Control
     {
         public override Vector3 direction()
         {
-            throw new System.NotImplementedException();
+            return Vector3.zero;
         }
 
         public override bool dive()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public override bool head()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public override bool jump()
         {
-            throw new System.NotImplementedException();
+            return false;
+        }
+
+        public override void playerSelect()
+        {
+            Debug.LogWarning("A ia trata de setar sempre o personagem pertencente a área de previsão da queda da bola");
         }
 
         protected override float xAxis()
         {
-            throw new System.NotImplementedException();
+            return 0f;
         }
 
         protected override float yAxis()
         {
-            throw new System.NotImplementedException();
+            return 0f;
         }
     }
 

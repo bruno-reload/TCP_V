@@ -7,8 +7,9 @@ namespace Character.Control
     {
         private PlayerInput playerInput;
         private Control control;
+        public MeshRenderer feedback;
         private CharacterBehaviour behaviour;
-        public Control Control { get => control; set => control = value; }
+        public Control Control { get => control;private set => control = value; }
         public CharacterBehaviour Behaviour { get => behaviour; set => behaviour = value; }
 
         private void Awake()
@@ -16,19 +17,10 @@ namespace Character.Control
             behaviour = GetComponent<CharacterBehaviour>();
 
         }
-        private void Start()
-        {
-            SetControl(GetComponent<PlayerInput>());
-
-        }
-        public void SetControl(Control control)
+         public void SetControl(Control control)
         {
             this.control = control;
         }
-
-
     }
-
-
 }
 

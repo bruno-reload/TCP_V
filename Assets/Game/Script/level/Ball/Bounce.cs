@@ -8,11 +8,8 @@ namespace Ball
     RequireComponent(typeof(Rigidbody))]
     public class Bounce : MonoBehaviour
     {
-        private float size;
-        private RaycastHit hit;
-        public float speed = 10;
-        private Vector3 startPos;
-        [SerializeField] private GameObject BallPositionPrediction;
+        public float speed = 13;
+        public GameObject BallPositionPrediction;
         public const float gravity = 9.81f;
 
         private void Reset()
@@ -20,17 +17,17 @@ namespace Ball
             gameObject.tag = "Ball";
 
             this.BallPositionPrediction = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            this.BallPositionPrediction.tag = "Prediction";
             this.BallPositionPrediction.name = "BallPositionPrediction";
             this.BallPositionPrediction.GetComponent<BoxCollider>().isTrigger = true;
             this.BallPositionPrediction.GetComponent<MeshRenderer>().enabled = false;
 
-            Debug.Log("ForecastPosition adicionado");
-
+            this.BallPositionPrediction.AddComponent<Rigidbody>();
+            this.BallPositionPrediction.GetComponent<Rigidbody>().useGravity = false;
+            this.BallPositionPrediction.GetComponent<Rigidbody>().isKinematic = true;
         }
         void Start()
         {
-            this.size = 2f;
-            this.startPos = transform.position;
             if (this.BallPositionPrediction == null)
             {
                 Debug.LogError("o game objeto Forecast não existe, reset o componete BallControl.");
@@ -38,6 +35,7 @@ namespace Ball
             else
             {
                 gameObject.AddComponent<Prediction>();
+                gameObject.GetComponent<Prediction>().SetPositionFeedback(BallPositionPrediction);
                 if (this.BallPositionPrediction.GetComponent<BoxCollider>() == null)
                 {
                     Debug.LogWarning("o game objeto ForeCast deve conter um BoxCollider");
@@ -52,30 +50,18 @@ namespace Ball
                 }
             }
         }
-        private void FixedUpdate()
-        {
-            RaycastHit hit;
-
-            Vector3 velocity = GetComponent<Rigidbody>().velocity;
-
-            if (Physics.Raycast(transform.position, velocity.normalized, out hit, size))
-            {
-                this.hit = hit;
-            }
-        }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Head"))
             {
-                Headed();
+                Headed(collision.contacts[0]);
                 GetComponent<Prediction>().Calculate();
             }
         }
-        private void Headed()
+        private void Headed(ContactPoint head)
         {
-            Transform neck = hit.collider.GetComponentInParent<Transform>();
-            GetComponent<Transform>().rotation = Quaternion.LookRotation(neck.up, -neck.right);
+            GetComponent<Transform>().rotation = Quaternion.LookRotation(head.normal, Vector3.up);
             GetComponent<Rigidbody>().velocity = transform.forward * speed;
         }
 
@@ -90,6 +76,8 @@ namespace Ball
     }
     public class Prediction : MonoBehaviour
     {
+        public GameObject feedback;
+
         private void Reset()
         {
             gameObject.AddComponent<Bounce>();
@@ -112,8 +100,20 @@ namespace Ball
             float y = 0;
             float z = transform.position.z + speedZ * t;
 
-
             GetComponent<Bounce>().SetForecast(new Vector3(x, y, z));
+        }
+
+        public void SetPositionFeedback(GameObject target)
+        {
+            this.feedback = GameObject.CreatePrimitive(PrimitiveType.Quad);
+            this.feedback.GetComponent<MeshCollider>().enabled = false;
+            this.feedback.transform.SetParent(target.transform);
+            this.feedback.name = "feedback";
+            this.feedback.transform.localScale = new Vector3(5.5f, 5.5f, 0);
+            this.feedback.transform.rotation = Quaternion.Euler(90, 0, 0);
+            this.feedback.transform.localPosition = new Vector3(0, 0.8f, 0);
+            Material mat = target.GetComponent<MeshRenderer>().material;
+            this.feedback.GetComponent<MeshRenderer>().material = mat;
         }
     }
 }

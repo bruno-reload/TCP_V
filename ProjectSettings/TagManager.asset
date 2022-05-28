@@ -9,6 +9,9 @@ TagManager:
   - Field
   - Floor
   - Ball
+  - Blue
+  - Red
+  - Prediction
   layers:
   - Default
   - TransparentFX

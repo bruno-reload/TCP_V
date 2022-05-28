@@ -11,8 +11,7 @@ namespace Character.Control
         public abstract bool jump();
         public abstract bool head();
         public abstract bool dive();
-
-
+        public abstract void playerSelect();
     }
 }
 
