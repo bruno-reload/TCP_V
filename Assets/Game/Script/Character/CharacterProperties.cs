@@ -11,11 +11,14 @@ namespace Character
         [SerializeField] private float jumpImpulse;
         [SerializeField] private float headForce;
         [SerializeField] private float rotationSpeed;
+        [SerializeField] private float diveImpoulse;
+        //TODO?: diveImpulse to diveUpImpulse and diveForwardImpulse
 
         public float Speed { get => speed; set => speed = value; }
         public float JumpImpulse { get => jumpImpulse; set => jumpImpulse = value; }
         public float HeadForce { get => headForce; set => headForce = value; }
         public float RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
+        public float DiveImpoulse { get => diveImpoulse; set => diveImpoulse = value; }
     }
 }
 

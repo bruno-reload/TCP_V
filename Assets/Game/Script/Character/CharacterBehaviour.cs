@@ -73,6 +73,8 @@ namespace Character
         //Movimento de mergulho
         public void Dive()
         {
+            Vector3 direction = (transform.forward + Vector3.up * ((characterProperties.DiveImpoulse/2)/ characterProperties.DiveImpoulse));
+            characterRigidbody.AddForce(direction * characterProperties.DiveImpoulse, ForceMode.Impulse);
 
         }
 

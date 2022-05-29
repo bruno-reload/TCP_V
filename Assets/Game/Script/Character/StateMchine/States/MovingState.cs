@@ -36,6 +36,10 @@ namespace Character.StateMachine
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
             }
+            if (controller.Control.dive())
+            {
+                stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
+            }
 
 
         }

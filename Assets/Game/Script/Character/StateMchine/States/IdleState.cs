@@ -24,6 +24,10 @@ namespace Character.StateMachine
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
             }
+            if (controller.Control.dive())
+            {
+                stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
+            }
         }
 
         public override void FixedUpdateState(CharacterControl controller, FiniteStateMachine stateMachine)

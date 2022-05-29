@@ -9,11 +9,13 @@ namespace Character.StateMachine
         public readonly IdleState idleState;
         public readonly MovingState movingState;
         public readonly JumpState jumpState;
+        public readonly DiveState diveState;
         public StateInstances()
         {
             idleState = new IdleState();
             movingState = new MovingState();
             jumpState = new JumpState();
+            diveState = new DiveState();
         }
 
 
