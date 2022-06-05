@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Timer
+namespace Game
 {
     public class Timer : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace Timer
         [SerializeField] private float deltaTime = 1;
         public Action timeOver;
         public Action timeInitalize;
-        public Action/*<float>*/ timerChange;
+        public Action timerChange;
         private float currentTime;
 
         public float timeReleased => (maxTimeInSeconds - currentTime);
@@ -29,21 +29,28 @@ namespace Timer
         private void OnDisable()
         {
             timeInitalize -= OnTimeInitialize;
-            StopTime();
         }
-        public void StartTime()
+
+        public void RestartTime()
         {
+            ResetTime();
             timeInitalize?.Invoke();
         }
-        public void StopTime()
+
+        public void PlayTime()
         {
-            StopCoroutine(TimerCountdown());
-            ResetTime();
+            Debug.Log("Play");
+            StartCoroutine(TimerCountdown());
+        }
+
+        public void PauseTime()
+        {
+            Debug.Log("Pause");
+            StopAllCoroutines();
         }
 
         private void OnTimeInitialize()
         {
-            currentTime = maxTimeInSeconds; 
             StartCoroutine(TimerCountdown());
         }
 

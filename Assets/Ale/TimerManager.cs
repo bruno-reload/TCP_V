@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Timer
+namespace Game
 {
     public class TimerManager : Timer
     {
@@ -15,9 +15,7 @@ namespace Timer
         private void Start()
         {
             timerChange += UpdateTimerText;
-            StartTime();
-            //text_timer.SetText(StringTimeFormated());
-
+            text_timer.SetText(StringTimeFormated());
         }
 
         private void OnDestroy()
@@ -28,7 +26,6 @@ namespace Timer
 
         private void UpdateTimerText(/*float time*/)
         {
-            Debug.Log(StringTimeFormated());
             text_timer.SetText(StringTimeFormated());
 
         }
