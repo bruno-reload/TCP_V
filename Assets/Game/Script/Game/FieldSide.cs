@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Team;
 using UnityEngine;
 
@@ -12,7 +10,7 @@ namespace Field
     {
         [SerializeField] private TEAM team;
         private Collider floorSideCollider;
-        public event Action ballDropsOnTeamSide;
+        public event Action ballDropsOnOtherTeamSide;
         public Collider FloorSideCollider { get => floorSideCollider; }
         public TEAM Team { get => team;}
 
@@ -25,7 +23,7 @@ namespace Field
         {
             if(collision.collider.CompareTag("Ball"))
             {
-                ballDropsOnTeamSide?.Invoke();
+                ballDropsOnOtherTeamSide?.Invoke();
             }
         }
 

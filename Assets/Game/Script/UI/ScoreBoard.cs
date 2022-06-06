@@ -3,14 +3,14 @@ using Team;
 using TMPro;
 using UnityEngine;
 
-namespace GameLogic
+namespace Game
 {
     public class ScoreBoard : MonoBehaviour
     {
         [SerializeField] private TEAM team;
+        [SerializeField] private Score teamScore;
         private TMP_Text text_TeamScore;
         private FieldSide fieldSide;
-        private TeamScore teamScore;
 
         public FieldSide SearchFieldToScore(TEAM team)
         {
@@ -29,26 +29,32 @@ namespace GameLogic
         {
             text_TeamScore = GetComponentInChildren<TMP_Text>();
             fieldSide = SearchFieldToScore(team);
-            teamScore = new TeamScore(team);
         }
 
         private void OnEnable()
         {
-            fieldSide.ballDropsOnTeamSide += Score;
+            teamScore.updateTeamScore += ShowScoreText;
+            fieldSide.ballDropsOnOtherTeamSide += Score;
 
         }
 
         private void OnDisable()
         {
-            fieldSide.ballDropsOnTeamSide -= Score;
+            teamScore.updateTeamScore -= ShowScoreText;
+            fieldSide.ballDropsOnOtherTeamSide -= Score;
         }
 
         private void Score()
         {
+            Debug.Log("Ponto2");
+
             teamScore.IncreaseScore();
-            text_TeamScore.SetText(teamScore.Score.ToString());
         }
 
+        private void ShowScoreText(int score)
+        {
+            text_TeamScore.SetText(score.ToString());
+        }
 
     }
 }
