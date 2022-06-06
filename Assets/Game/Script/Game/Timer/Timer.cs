@@ -18,7 +18,7 @@ namespace Game
 
         public bool IsTimeOver => (CurrentTime > 0.00f) ? false : true;
 
-        public void ResetTime() => currentTime = maxTimeInSeconds;
+
 
         private void OnEnable()
         {
@@ -31,29 +31,27 @@ namespace Game
             timeInitalize -= OnTimeInitialize;
         }
 
-        public void RestartTime()
-        {
-            ResetTime();
-            timeInitalize?.Invoke();
-        }
-
         public void PlayTime()
         {
-            Debug.Log("Play");
             StartCoroutine(TimerCountdown());
         }
 
         public void PauseTime()
         {
-            Debug.Log("Pause");
             StopAllCoroutines();
+        }
+
+        public void ResetTime()
+        {
+            currentTime = maxTimeInSeconds;
+            timerChange?.Invoke();
+
         }
 
         private void OnTimeInitialize()
         {
             StartCoroutine(TimerCountdown());
         }
-
 
         private IEnumerator TimerCountdown()
         {

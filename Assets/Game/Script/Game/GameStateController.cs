@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game
 {
-    public class GameController : MonoBehaviour
+    public class GameStateController : MonoBehaviour
     {
         [SerializeField] private StateHandler[] stateHandlers;
         [SerializeField] private StateHandler currentState;
