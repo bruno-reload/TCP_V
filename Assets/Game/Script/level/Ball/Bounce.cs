@@ -8,7 +8,7 @@ namespace Ball
     RequireComponent(typeof(Rigidbody))]
     public class Bounce : MonoBehaviour
     {
-        public float speed = 13;
+        public float force = 13;
         public GameObject BallPositionPrediction;
         public const float gravity = 9.81f;
 
@@ -62,7 +62,7 @@ namespace Ball
         private void Headed(ContactPoint head)
         {
             GetComponent<Transform>().rotation = Quaternion.LookRotation(head.normal, Vector3.up);
-            GetComponent<Rigidbody>().velocity = transform.forward * speed;
+            GetComponent<Rigidbody>().velocity = transform.forward * force;
         }
 
         public void SetForecast(Vector3 value)

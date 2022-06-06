@@ -7,6 +7,7 @@ namespace Character.StateMachine
     {
         public override void EnterState(CharacterControl controller)
         {
+            controller.Behaviour.Dive();
         }
 
         public override void ExitState(CharacterControl controller)

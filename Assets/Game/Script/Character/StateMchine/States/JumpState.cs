@@ -20,8 +20,10 @@ namespace Character.StateMachine
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
         {
-            if(collision.collider.CompareTag("Field")) {
+            if (collision.collider.CompareTag("Field"))
+            {
                 stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+                controller.gameObject.GetComponentInChildren<Animator>().SetBool("onFloor", true);
             }
         }
 

@@ -1,4 +1,5 @@
 using Character.Control;
+using System;
 using UnityEngine;
 
 
@@ -43,6 +44,11 @@ namespace Character.StateMachine
         private void OnCollisionEnter(Collision collision)
         {
             currentState.OnCollisionEnterState(characterController, collision, this);
+        }
+
+        internal void TransitionToState(object diveState)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -16,9 +16,6 @@ namespace Character.StateMachine
         public override void FixedUpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
         {
             controller.Behaviour.Moving();
-
-
-
         }
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
@@ -36,8 +33,6 @@ namespace Character.StateMachine
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
             }
-
-
         }
 
     }

@@ -75,7 +75,9 @@ namespace Character
         {
 
         }
-
+        public void Idle() { 
+            
+        }
 
 
     }

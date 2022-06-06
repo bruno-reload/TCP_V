@@ -9,7 +9,7 @@ public class PriorityControl : MonoBehaviour
     void Start()
     {
         Debug.Log("nessa linha eu diminuo a escala do tempo pra poder testar");
-        Time.timeScale = 0.5f;
+        //Time.timeScale = 0.5f;
     }
     private void OnTriggerEnter(Collider other)
     {
