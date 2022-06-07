@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Character.StateMachine
 {
-    public class FiniteStateMachine : MonoBehaviour
+    public class PlayerStateMachine : MonoBehaviour
     {
         private State currentState;
         private CharacterControl characterController;

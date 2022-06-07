@@ -13,7 +13,7 @@ namespace Character.StateMachine
         {
         }
 
-        public override void FixedUpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
+        public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
             controller.Behaviour.Moving();
 
@@ -21,11 +21,11 @@ namespace Character.StateMachine
 
         }
 
-        public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
+        public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
         }
 
-        public override void UpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
+        public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
             //processando novos estados
             if (controller.Control.jump())
