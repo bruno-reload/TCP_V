@@ -1,8 +1,8 @@
+using head;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum HEAD_ROTATION { action, Idle };
 public class Head : MonoBehaviour
 {
     public HEAD_ROTATION headRotation = HEAD_ROTATION.Idle;

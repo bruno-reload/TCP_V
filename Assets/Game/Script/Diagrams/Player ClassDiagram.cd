@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Character.StateMachine.PlayerStateMachine" Collapsed="true">
-    <Position X="5" Y="1" Width="1.5" />
+    <Position X="4.5" Y="1" Width="2" />
     <TypeIdentifier>
       <HashCode>AAQAAAAEAiAAAAAAIAAAAAAAAAAAAAAIAAAAAAIAQEA=</HashCode>
       <FileName>Assets\Game\Script\Character\StateMchine\PlayerStateMachine.cs</FileName>
@@ -14,7 +14,7 @@
   <Class Name="Character.CharacterBehaviour" Collapsed="true">
     <Position X="6.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgQEAAAAAAAAQAAAAAAAAAAAEAQBAAAEAgABAAEAIEE=</HashCode>
+      <HashCode>AgQEAAAAAAAAQIAAAAAAAAAAUAQBAAAEAgABAAEAJEE=</HashCode>
       <FileName>Assets\Game\Script\Character\CharacterBehaviour.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -112,7 +112,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Character.Control.AIControl" Collapsed="true">
-    <Position X="8.5" Y="3.5" Width="1.5" />
+    <Position X="8.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQACAIAAgAAAIQAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Assets\Game\Script\Control\AIControl.cs</FileName>
@@ -120,24 +120,16 @@
   </Class>
   <Class Name="Character.Control.CharacterControl" Collapsed="true">
     <Position X="8.25" Y="1" Width="1.5" />
-    <AssociationLine Name="control" Type="Character.Control.Control" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="9" Y="1.691" />
-        <Point X="9" Y="1.989" />
-        <Point X="9.938" Y="1.989" />
-        <Point X="9.938" Y="2.5" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="behaviour" Type="Character.CharacterBehaviour" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="behaviour" Type="Character.CharacterBehaviour" ManuallyRouted="true">
       <Path>
         <Point X="8.562" Y="1.691" />
-        <Point X="8.562" Y="1.954" />
-        <Point X="7.5" Y="1.954" />
+        <Point X="8.562" Y="1.949" />
+        <Point X="7.5" Y="1.949" />
         <Point X="7.5" Y="2.5" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAQAEAAEABAIAAAAAQAAAAAAAAAAABAAAAAAAAEA=</HashCode>
+      <HashCode>AAAAAQAEAAEABAAAAAAAQAAAAAAAAAAABQAAAAQAAEA=</HashCode>
       <FileName>Assets\Game\Script\Control\CharacterControl.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -153,33 +145,19 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Character.Control.PlayerInput" Collapsed="true">
-    <Position X="10" Y="3.5" Width="1.5" />
+    <Position X="10.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQACAIAAgAAAIQAAAAAAAAAAAAAAAAABAAAQAAAAAEA=</HashCode>
       <FileName>Assets\Game\Script\Control\PlayerInput.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="Game.GameStateController">
-    <Position X="1.75" Y="11" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAQAAAAAACAAAAAAIAAAAAAAAAAAAAAACACAAAAAQAA=</HashCode>
-      <FileName>Assets\Game\Script\Game\GameStateController.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="PriorityControl" Collapsed="true">
-    <Position X="12" Y="1" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Game\Script\level\Area\PriorityControl.cs</FileName>
-    </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="recipient" />
+      <Field Name="player" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Team.TeamSelection" Collapsed="true">
-    <Position X="12" Y="2.5" Width="1.5" />
+    <Position X="12.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAACAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQgAAAAACAAABIAAIAAAAAAAAARAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Game\Script\level\team\TeamSelection.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -190,11 +168,48 @@
     <Position X="6.75" Y="4.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
+  <Class Name="head.HeaderControl" Collapsed="true">
+    <Position X="14.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAQAACAABAAAAAEACAAACIABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Character\HeaderControl.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="header" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CharacterAnimation" Collapsed="true">
+    <Position X="12" Y="1" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgAIAABAAIAAAIgAAAAAAAAAAAAQAAgAAQAAAAEAIEA=</HashCode>
+      <FileName>Assets\CharacterAnimation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="team" />
+    </ShowAsAssociation>
+  </Class>
   <Enum Name="Team.TEAM" Collapsed="true">
-    <Position X="12" Y="3.5" Width="1.5" />
+    <Position X="12.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Game\Script\level\team\TeamSelection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="head.HEAD_ROTATION" Collapsed="true">
+    <Position X="14.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Character\HeaderControl.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Character.Control.Players">
+    <Position X="10.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Game\Script\Control\PlayerInput.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
