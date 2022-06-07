@@ -8,10 +8,13 @@ namespace Character.StateMachine
     {
         public override void EnterState(CharacterControl controller )
         {
+            controller.Animator.Floor(true);
+            controller.Animator.Idle();
         }
 
         public override void ExitState(CharacterControl controller)
         {
+            controller.Animator.Floor(false);
         }
         public override void UpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
         {            
@@ -24,20 +27,22 @@ namespace Character.StateMachine
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
             }
+            if (controller.Control.dive())
+            {
+                stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
+            }
+            Debug.Log("idle");
+            controller.Animator.Idle();
         }
 
         public override void FixedUpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
         {
             controller.Behaviour.Moving();
-
-
         }
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
         {
         }
-
-
     }
 }
 

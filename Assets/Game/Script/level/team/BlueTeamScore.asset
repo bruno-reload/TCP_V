@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beb24d53121188b4eae4aa39ee26809f, type: 3}
-  m_Name: Character properties
+  m_Script: {fileID: 11500000, guid: 5177296ec4933084186ad6d8badd0b97, type: 3}
+  m_Name: BlueTeamScore
   m_EditorClassIdentifier: 
-  speed: 7
-  jumpImpulse: 30
-  headForce: 60
-  rotationSpeed: 10
-  diveImpoulse: 30

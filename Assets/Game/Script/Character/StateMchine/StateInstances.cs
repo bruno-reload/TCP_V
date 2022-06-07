@@ -17,8 +17,6 @@ namespace Character.StateMachine
             jumpState = new JumpState();
             diveState = new DiveState();
         }
-
-
     }
 }
 

@@ -40,15 +40,9 @@ namespace Character.StateMachine
             currentState.EnterState(characterController);
 
         }
-
         private void OnCollisionEnter(Collision collision)
         {
             currentState.OnCollisionEnterState(characterController, collision, this);
-        }
-
-        internal void TransitionToState(object diveState)
-        {
-            throw new NotImplementedException();
         }
     }
 }

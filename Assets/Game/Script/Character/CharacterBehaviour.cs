@@ -1,4 +1,5 @@
 using Character.Control;
+using System;
 using UnityEngine;
 
 
@@ -22,7 +23,6 @@ namespace Character
             float angle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
             Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.up);
             return Quaternion.Slerp(transform.rotation, targetAngle, characterProperties.RotationSpeed * Time.fixedDeltaTime);
-
         }
 
         private void Awake()
@@ -64,7 +64,6 @@ namespace Character
             Rotate();
         }
 
-
         public void Jumping()
         {
             JumpBehaviour(characterProperties.JumpImpulse);
@@ -73,13 +72,9 @@ namespace Character
         //Movimento de mergulho
         public void Dive()
         {
-
+            Vector3 direction = (transform.forward + Vector3.up * ((characterProperties.DiveImpoulse/2)/ characterProperties.DiveImpoulse));
+            characterRigidbody.AddForce(direction * characterProperties.DiveImpoulse, ForceMode.Impulse);
         }
-        public void Idle() { 
-            
-        }
-
-
     }
 }
 

@@ -9,12 +9,14 @@ namespace Team
     public class TeamSelection : MonoBehaviour
     {
         public TEAM team = TEAM.Red;
+        public MeshRenderer feedback;
         public bool Captain;
+        private Vector3 startPosition;
 
         private void Start()
         {
             gameObject.tag = team.ToString();
-            GetComponent<CharacterControl>().feedback.enabled = Captain;
+            feedback.enabled = Captain;
             if (Captain)
             {
                 GetComponent<CharacterControl>().SetControl(GetComponent<PlayerInput>());
@@ -23,6 +25,7 @@ namespace Team
             {
                 GetComponent<CharacterControl>().SetControl(GetComponent<AIControl>());
             }
+            startPosition = feedback.gameObject.transform.position;
         }
 
         internal void Swap()
@@ -32,10 +35,24 @@ namespace Team
             foreach (GameObject go in team)
             {
                 go.GetComponent<CharacterControl>().SetControl(GetComponent<AIControl>());
-                go.GetComponent<CharacterControl>().feedback.enabled = false;
+                feedback.enabled = false;
             }
             GetComponent<CharacterControl>().SetControl(GetComponent<PlayerInput>());
-            GetComponent<CharacterControl>().feedback.enabled = true;
+            feedback.enabled = true;
+        }
+        private void Update()
+        {
+            feedback.gameObject.transform.position = new Vector3(transform.position.x, startPosition.y, transform.position.z);
+        }
+        public float Convert()
+        {
+            switch (team) {
+                case TEAM.Red:
+                    return -1f; ;
+                case TEAM.Blue:
+                    return 1f;
+            }
+            return 0;
         }
     }
 }

@@ -9,6 +9,8 @@ namespace Character.StateMachine
         public override void EnterState(CharacterControl controller)
         {
             controller.Behaviour.Jumping();
+            controller.Animator.Floor(false);
+            controller.Animator.Jumping();
         }
         public override void ExitState(CharacterControl controller)
         {
@@ -20,15 +22,18 @@ namespace Character.StateMachine
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
         {
-            if (collision.collider.CompareTag("Field"))
+            if (collision.collider.CompareTag("Field") && controller.gameObject.GetComponent<Rigidbody>().velocity.y < 0)
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
-                controller.gameObject.GetComponentInChildren<Animator>().SetBool("onFloor", true);
+                ////if (collision.gameObject.CompareTag("Field"))
             }
         }
 
         public override void UpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
         {
+            Debug.Log("jumping");
+            controller.Animator.Floor(false);
+            controller.Animator.Jumping();
         }
     }
 
