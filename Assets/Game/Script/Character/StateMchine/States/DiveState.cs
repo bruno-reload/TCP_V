@@ -18,11 +18,11 @@ namespace Character.StateMachine
             controller.Animator.Idle();
         }
 
-        public override void FixedUpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
+        public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
         }
 
-        public override void OnCollisionEnterState(CharacterControl controller, Collision collision, FiniteStateMachine stateMachine)
+        public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
             if (collision.collider.CompareTag("Field"))
             {
@@ -31,7 +31,7 @@ namespace Character.StateMachine
             }
         }
 
-        public override void UpdateState(CharacterControl controller, FiniteStateMachine stateMachine)
+        public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
             Debug.Log("dive");
             // controller.Animator.Floor(false);
