@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game
@@ -10,6 +11,19 @@ namespace Game
         private void Start()
         {
             Restart();
+        }
+        public GameState nextGameState
+        {
+            get
+            {
+                int currentIndex = Array.IndexOf(stateHandlers, currentState);
+                if (currentIndex < stateHandlers.Length - 1)
+                {
+                    return stateHandlers[currentIndex + 1].State;
+                }
+                return stateHandlers[0].State;
+
+            }
         }
         public void TransitionToState(GameState state)
         {
@@ -37,7 +51,10 @@ namespace Game
             TransitionToState(GameState.STARTUP);
         }
 
-
+        public void nextStep()
+        {
+            TransitionToState(nextGameState);
+        }
         #region para fins de desenvolvimento
         private void Update()
         {
