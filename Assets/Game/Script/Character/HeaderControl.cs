@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace head
 {
+    public enum HEAD_ROTATION { action, Idle };
     public class HeaderControl : MonoBehaviour
     {
         public HEAD_ROTATION header = HEAD_ROTATION.Idle;
