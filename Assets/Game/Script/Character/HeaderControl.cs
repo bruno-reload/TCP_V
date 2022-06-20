@@ -65,7 +65,7 @@ namespace head
         {
             if (dive)
             {
-                this.transform.localRotation = Quaternion.Euler(-80, 0, 0);
+                this.transform.localRotation = Quaternion.Euler(-10, 0, 0);
                 this.forehead.transform.localRotation = Quaternion.Euler(30, 0, 0);
             }
             else
@@ -78,8 +78,8 @@ namespace head
         {
             if (dive)
             {
-                this.transform.localRotation = Quaternion.Euler(-80, 0, 0);
-                this.forehead.transform.localRotation = Quaternion.Euler(60, 0, 0);
+                this.transform.localRotation = Quaternion.Euler(20, 0, 0);
+                this.forehead.transform.localRotation = Quaternion.Euler(40, 0, 0);
             }
             else
             {

@@ -11,7 +11,7 @@ namespace Character.StateMachine
         private CharacterControl characterController;
         private StateInstances stateInstances;
 
-        public StateInstances StateInstances { get => stateInstances;}
+        public StateInstances StateInstances { get => stateInstances; }
         private void Awake()
         {
             characterController = GetComponent<CharacterControl>();

@@ -6,33 +6,39 @@ namespace Character.StateMachine
 {
     public class IdleState : State
     {
-        public override void EnterState(CharacterControl controller )
+        public override void EnterState(CharacterControl controller)
         {
-            controller.Animator.Floor(true);
             controller.Animator.Idle();
+            controller.Particle.Idle();
         }
 
         public override void ExitState(CharacterControl controller)
         {
-            controller.Animator.Floor(false);
         }
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
-        {            
-            //processando novos estados
-            if (controller.Behaviour.isMoving)
+        {
+            Debug.Log("idle");
+            if (controller.Control.head())
+            {
+                controller.HeadControl.Head();
+                controller.Animator.Head();
+            }
+            if (controller.Animator.Floor && controller.Animator.EndDive())
+            {
+                if (controller.Control.jump())
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
+                }
+                if (controller.Control.dive())
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
+                }
+            }
+            if (controller.Behaviour.isMoving && controller.Animator.EndDive())
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
             }
-            if (controller.Control.jump())
-            {
-                stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
-            }
-            if (controller.Control.dive())
-            {
-                stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
-            }
-            Debug.Log("idle");
-            controller.Animator.Idle();
+
         }
 
         public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)

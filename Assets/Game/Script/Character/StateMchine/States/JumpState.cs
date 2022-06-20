@@ -9,11 +9,12 @@ namespace Character.StateMachine
         public override void EnterState(CharacterControl controller)
         {
             controller.Behaviour.Jumping();
-            controller.Animator.Floor(false);
             controller.Animator.Jumping();
+            controller.Particle.Jumping();
         }
         public override void ExitState(CharacterControl controller)
         {
+            controller.Particle.Fall();
         }
         public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
@@ -22,18 +23,22 @@ namespace Character.StateMachine
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
-            if (collision.collider.CompareTag("Field") && controller.gameObject.GetComponent<Rigidbody>().velocity.y < 0)
-            {
-                stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
-                ////if (collision.gameObject.CompareTag("Field"))
-            }
         }
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
-            Debug.Log("jumping");
-            controller.Animator.Floor(false);
+
+            Debug.Log("jump");
             controller.Animator.Jumping();
+            if (controller.Control.head())
+            {
+                controller.HeadControl.Head();
+                controller.Animator.Head();
+            }
+            if (controller.Animator.Floor && controller.gameObject.GetComponent<Rigidbody>().velocity.y < 0)
+            {
+                stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+            }
         }
     }
 

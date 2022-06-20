@@ -7,13 +7,13 @@ namespace Character.StateMachine
     {
         public override void EnterState(CharacterControl controller)
         {
-            controller.Animator.Floor(true);
+            controller.Behaviour.Moving();
             controller.Animator.Move();
+            controller.Particle.Move();
         }
 
         public override void ExitState(CharacterControl controller)
         {
-            controller.Animator.Floor(false);
         }
 
         public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
@@ -23,26 +23,33 @@ namespace Character.StateMachine
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
-            
+
         }
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
-            //processando novos estados 
-            if (controller.Control.jump())
+            Debug.Log("move " + controller.Animator.EndDive());
+            if (controller.Control.head())
             {
-                stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
+                controller.HeadControl.Head();
+                controller.Animator.Head();
             }
-            if (!controller.Behaviour.isMoving)
+            if (controller.Animator.Floor && controller.Animator.EndDive())
+            {
+                if ( controller.Control.jump())
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
+                }
+                if (controller.Control.dive())
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
+                }
+            }
+            if (!controller.Behaviour.isMoving && controller.Animator.EndDive())
             {
                 stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
             }
-            if (controller.Control.dive())
-            {
-                stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
-            }
-            controller.Animator.Move();
-            Debug.Log("move");
+
         }
 
     }
