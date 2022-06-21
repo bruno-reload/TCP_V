@@ -12,7 +12,6 @@ public class DetectHead : MonoBehaviour
         if (collision.gameObject.CompareTag("Ball"))
         {
             detect = true;
-            Debug.Log("entrou");
         }
     }
 }

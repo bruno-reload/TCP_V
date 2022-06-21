@@ -145,6 +145,7 @@ MonoBehaviour:
   blueMiddleCharacter: {fileID: 0}
   yOffset: 10
   headsCount: 0
+  turnHandler: {fileID: 0}
 --- !u!1 &3543120220137281545
 GameObject:
   m_ObjectHideFlags: 0

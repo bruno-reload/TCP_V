@@ -28,7 +28,6 @@ namespace Character.StateMachine
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
-            Debug.Log("move " + controller.Animator.EndDive());
             if (controller.Control.head())
             {
                 controller.HeadControl.Head();
