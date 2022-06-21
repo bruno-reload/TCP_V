@@ -1,5 +1,4 @@
 using Ball;
-using Field;
 using System;
 using System.Collections;
 using Team;
@@ -15,7 +14,6 @@ namespace CoreLoop
         public event Action<TEAM> turnOver;
         public event Action ballStopped;
         [SerializeField] private BallController ballController;
-        [SerializeField] private FieldRangeDetection fieldRangeDectection;
         [SerializeField] private float minBallSpeedLimit;
 
         public TEAM TeamTurn => teamTurn;
