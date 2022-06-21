@@ -1,11 +1,9 @@
 using Character.Control;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 namespace Team
 {
-    public enum TEAM { Red, Blue };
+    [Serializable] public enum TEAM { Red, Blue };
     public class TeamSelection : MonoBehaviour
     {
         public TEAM team = TEAM.Red;

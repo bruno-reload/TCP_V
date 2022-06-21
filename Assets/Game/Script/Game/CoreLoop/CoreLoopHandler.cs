@@ -1,13 +1,14 @@
+using Game;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Game
+namespace CoreLoop
 {
     public enum CoreLoopState
     {
-        saque,
-        desenrolar,
-        ponto
+        SERVE,
+        ROLLING_BALL,
+        SCORING
     }
 
     public class CoreLoopHandler : ViewHandler
