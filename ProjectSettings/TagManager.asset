@@ -12,6 +12,7 @@ TagManager:
   - Blue
   - Red
   - Prediction
+  - FieldRange
   layers:
   - Default
   - TransparentFX

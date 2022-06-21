@@ -16,7 +16,13 @@ public class GameplayRules : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);
+            ResetGame();
         }
+    }
+
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }
