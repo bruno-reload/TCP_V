@@ -66,7 +66,7 @@ namespace Game
 
         }
 
-        public string StringTimeFormated()
+        public string TimeClockFormated()
         {
             if (currentTime < 0) currentTime = 0;
 
@@ -76,6 +76,7 @@ namespace Game
             return string.Format("{0:00}:{1:00}", minutes, seconds);
         }
 
+        
 
     }
 }
