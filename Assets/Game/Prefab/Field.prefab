@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 0.328125, y: 0.47619048, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &541448158
 MeshFilter:
@@ -141,7 +141,7 @@ Transform:
   m_LocalScale: {x: 0.3125, y: 0.47619048, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &1221182082
 MeshFilter:
@@ -250,7 +250,7 @@ Transform:
   m_LocalScale: {x: 0.328125, y: 0.47619048, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &1274772520
 MeshFilter:
@@ -359,7 +359,7 @@ Transform:
   m_LocalScale: {x: 0.328125, y: 0.47619048, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &1328182240
 MeshFilter:
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 1566846826}
   - component: {fileID: 1566846825}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,7 +564,7 @@ Transform:
   m_LocalScale: {x: 0.328125, y: 0.47619048, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &1707639698
 MeshFilter:
@@ -673,7 +673,7 @@ Transform:
   m_LocalScale: {x: 0.328125, y: 0.47619048, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &1733466305
 MeshFilter:
@@ -761,9 +761,8 @@ GameObject:
   - component: {fileID: 2165799055845224652}
   - component: {fileID: 2165799055845224655}
   - component: {fileID: 2165799055845224654}
-  - component: {fileID: 5357092012924439843}
   - component: {fileID: 8648961662969481322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Field
   m_TagString: Field
   m_Icon: {fileID: 0}
@@ -784,6 +783,7 @@ Transform:
   - {fileID: 1566846824}
   - {fileID: 8973484433653497264}
   - {fileID: 8304084889794164345}
+  - {fileID: 7876197912392309770}
   - {fileID: 541448159}
   - {fileID: 1328182241}
   - {fileID: 1707639699}
@@ -842,20 +842,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5357092012924439843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2165799055845224656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4afeac0137a5d704293cb93618c3508d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamBlueCollider: {fileID: 7558482391474205393}
-  teamRedCollider: {fileID: 7558482391474205393}
 --- !u!65 &8648961662969481322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -879,7 +865,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8973484433653497264}
   - component: {fileID: 7558482391474205393}
-  - component: {fileID: 5146008076865074960}
   m_Layer: 7
   m_Name: TeamRed_Side
   m_TagString: Untagged
@@ -914,21 +899,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0.25}
---- !u!114 &5146008076865074960
+--- !u!1 &5939226615597533266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7876197912392309770}
+  - component: {fileID: 5509241498423111216}
+  - component: {fileID: 6845351622336150090}
+  m_Layer: 0
+  m_Name: FieldRangeDetection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7876197912392309770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5939226615597533266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2165799055845224652}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5509241498423111216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5939226615597533266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2397761, y: 20.487022, z: 1}
+  m_Center: {x: 0, y: 9.743511, z: 0}
+--- !u!114 &6845351622336150090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3123325208603138061}
+  m_GameObject: {fileID: 5939226615597533266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11217bb13d5ca094089f292304d5d0cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e6644f7c23854428d7b08a5f874abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &9019705229706692726
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +966,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8304084889794164345}
   - component: {fileID: 5052035899550759535}
-  - component: {fileID: 4712092402648323918}
   m_Layer: 0
   m_Name: TeamBlue_Side
   m_TagString: Untagged
@@ -974,18 +1000,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: -0.25}
---- !u!114 &4712092402648323918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9019705229706692726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11217bb13d5ca094089f292304d5d0cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamLayer:
-    serializedVersion: 2
-    m_Bits: 64
