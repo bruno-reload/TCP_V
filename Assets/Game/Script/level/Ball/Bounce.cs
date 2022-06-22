@@ -20,6 +20,7 @@ namespace Ball
             this.BallPositionPrediction.tag = "Prediction";
             this.BallPositionPrediction.name = "BallPositionPrediction";
             this.BallPositionPrediction.GetComponent<BoxCollider>().isTrigger = true;
+            this.BallPositionPrediction.GetComponent<BoxCollider>().size = new Vector3(1, 2, 1);
             this.BallPositionPrediction.GetComponent<MeshRenderer>().enabled = false;
 
             this.BallPositionPrediction.AddComponent<Rigidbody>();
