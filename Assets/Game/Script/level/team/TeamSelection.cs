@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 namespace Team
 {
-    [Serializable] public enum TEAM { Red, Blue };
+    [Serializable] public enum TEAM { Red, Blue, NONE };
     public class TeamSelection : MonoBehaviour
     {
         public TEAM team = TEAM.Red;
