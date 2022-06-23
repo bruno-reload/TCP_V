@@ -12,11 +12,12 @@ TagManager:
   - Blue
   - Red
   - Prediction
+  - FieldRange
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Field
   - Water
   - UI
   - TeamBlue

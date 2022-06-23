@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game
+namespace CoreLoop
 {
     public class CoreLoopController : MonoBehaviour
     {
@@ -46,7 +46,7 @@ namespace Game
             {
                 handler.Hide();
             }
-            TransitionToState(CoreLoopState.saque);
+            TransitionToState(CoreLoopState.SERVE);
 
         }
 
@@ -58,9 +58,9 @@ namespace Game
         #region para fins de desenvolvimento
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F5)) TransitionToState(CoreLoopState.saque);
-            if (Input.GetKeyDown(KeyCode.F6)) TransitionToState(CoreLoopState.desenrolar);
-            if (Input.GetKeyDown(KeyCode.F7)) TransitionToState(CoreLoopState.ponto);
+            if (Input.GetKeyDown(KeyCode.F5)) TransitionToState(CoreLoopState.SERVE);
+            if (Input.GetKeyDown(KeyCode.F6)) TransitionToState(CoreLoopState.ROLLING_BALL);
+            if (Input.GetKeyDown(KeyCode.F7)) TransitionToState(CoreLoopState.SCORING);
             if (Input.GetKeyDown(KeyCode.N)) TransitionToState(nextCoreLoopState);
         }
         #endregion

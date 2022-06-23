@@ -13,7 +13,7 @@ namespace Game
         private void Start()
         {
             timerChange += UpdateTimerText;
-            text_timer.SetText(StringTimeFormated());
+            text_timer.SetText(TimeClockFormated());
         }
 
         private void OnDestroy()
@@ -24,7 +24,7 @@ namespace Game
 
         private void UpdateTimerText(/*float time*/)
         {
-            text_timer.SetText(StringTimeFormated());
+            text_timer.SetText(TimeClockFormated());
 
         }
 
