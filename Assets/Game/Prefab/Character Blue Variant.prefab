@@ -49,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727031810218349626, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: Captain
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6914397912364774550, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_LocalRotation.w
