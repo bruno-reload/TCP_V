@@ -12,10 +12,12 @@ namespace Character.StateMachine
             controller.Animator.Dive();
             controller.Particle.Move();
             controller.HeadControl.HeadIdleInDive();
+            controller.SoundControl.Dive();
         }
 
         public override void ExitState(CharacterControl controller)
         {
+            controller.SoundControl.Fall();
         }
 
         public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
@@ -26,13 +28,17 @@ namespace Character.StateMachine
         {
         }
 
+        public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
+        {
+        }
+
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
-            Debug.Log("dive " + controller.Animator.EndDive());
             if (controller.Control.head())
             {
                 controller.HeadControl.HeadInDive();
                 controller.Animator.Head();
+                controller.SoundControl.Head();
             }
             if (controller.Animator.EndDive())
             {

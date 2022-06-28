@@ -51,13 +51,21 @@ PrefabInstance:
       propertyPath: Captain
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6721943668063434280, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Pitch
+      value: -0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721943668063434280, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: MinDistance
+      value: 17.609678
+      objectReference: {fileID: 0}
     - target: {fileID: 6914397912364774550, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.976296
+      value: 0.97629607
       objectReference: {fileID: 0}
     - target: {fileID: 6914397912364774550, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21643949
+      value: -0.2164395
       objectReference: {fileID: 0}
     - target: {fileID: 6914397912364774550, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_LocalRotation.y
@@ -89,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7360781085406952751, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7360781085406952753, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_RootOrder

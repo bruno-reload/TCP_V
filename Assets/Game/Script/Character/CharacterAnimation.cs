@@ -21,7 +21,7 @@ public class CharacterAnimation : MonoBehaviour
         this.anim = GetComponentInChildren<Animator>();
         this.rigidbody = GetComponent<Rigidbody>();
         this.team = GetComponent<TeamSelection>();
-        this.anim.Play("Idle");
+        this.anim.Play("idle");
     }
 
     public void Jumping()

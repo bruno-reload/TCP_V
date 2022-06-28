@@ -44,6 +44,10 @@ namespace Character.StateMachine
         {
             currentState.OnCollisionEnterState(characterController, collision, this);
         }
+        private void OnCollisionStay(Collision collision)
+        {
+            currentState.OnCollisionStayState(characterController, collision, this);
+        }
     }
 }
 

@@ -21,12 +21,14 @@ namespace Character.StateMachine
             {
                 controller.HeadControl.Head();
                 controller.Animator.Head();
+                controller.SoundControl.Head();
             }
             if (controller.Animator.Floor && controller.Animator.EndDive())
             {
                 if (controller.Control.jump())
                 {
                     stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
+                    controller.SoundControl.Jump();
                 }
                 if (controller.Control.dive())
                 {
@@ -35,6 +37,7 @@ namespace Character.StateMachine
             }
             if (controller.Behaviour.isMoving && controller.Animator.EndDive())
             {
+                controller.SoundControl.Stop();
                 stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
             }
 
@@ -46,6 +49,10 @@ namespace Character.StateMachine
         }
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
+        {
+        }
+
+        public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
         }
     }
