@@ -25,7 +25,7 @@ public class CharacterSoundControl : MonoBehaviour
     }
     public void Run(Collision collision)
     {
-        if (footSource.canPlay && collision.gameObject.CompareTag("Field"))
+        if (footSource.canPlay && collision.gameObject.CompareTag("FieldRange"))
         {
             footSource.PlayRandomClip(SOUND_KEY.foot, 0);
             footSource.audioSource.loop = true;

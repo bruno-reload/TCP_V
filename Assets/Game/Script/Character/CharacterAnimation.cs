@@ -73,14 +73,14 @@ public class CharacterAnimation : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Field") && !this.anim.GetBool("onFloor"))
+        if (collision.gameObject.CompareTag("FieldRange") && !this.anim.GetBool("onFloor"))
         {
             this.anim.SetBool("onFloor", true);
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Field") && this.anim.GetBool("onFloor"))
+        if (collision.gameObject.CompareTag("FieldRange") && this.anim.GetBool("onFloor"))
         {
 
             this.anim.SetBool("onFloor", false);
