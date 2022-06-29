@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Ball
 {
-
     [RequireComponent(typeof(SphereCollider)),
     RequireComponent(typeof(Rigidbody))]
     public class Bounce : MonoBehaviour
