@@ -29,6 +29,10 @@ namespace Character.StateMachine
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
             controller.Particle.Move();
+            if (collision.gameObject.CompareTag("Ball"))
+            {
+                controller.SoundControl.Blow(SOUND_KEY.body);
+            }
         }
 
         public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)

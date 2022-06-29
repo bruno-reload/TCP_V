@@ -382,10 +382,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8787031109392024466, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -6539216579722691406, guid: 18d3e7271326f3f40980ebae39ff3bb8, type: 2}
     m_RemovedComponents:
     - {fileID: 343492530774619774, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
     - {fileID: 4132893656925582589, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
@@ -729,6 +725,10 @@ PrefabInstance:
       propertyPath: recipient
       value: 
       objectReference: {fileID: 2097571693}
+    - target: {fileID: 1628301737, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
+      propertyPath: m_TagString
+      value: grass
+      objectReference: {fileID: 0}
     - target: {fileID: 1707639695, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
       propertyPath: recipient
       value: 
@@ -784,6 +784,10 @@ PrefabInstance:
     - target: {fileID: 2165799055845224656, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
       propertyPath: m_Name
       value: Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165799055845224656, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5332497130249575796, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
       propertyPath: m_IsActive
@@ -974,7 +978,7 @@ MonoBehaviour:
     banks:
     - name: blow
       clips:
-      - {fileID: 8300000, guid: 0196a2e0f65e7d94bad59d27f838902d, type: 3}
+      - {fileID: 8300000, guid: ee6a3046d6465944fbf05486c9849fa5, type: 3}
   - key: 04000000
     banks:
     - name: land
@@ -982,7 +986,7 @@ MonoBehaviour:
       - {fileID: 8300000, guid: eb15dd6fe41ec7d41bc73f2743090709, type: 3}
     - name: grass
       clips:
-      - {fileID: 8300000, guid: eb15dd6fe41ec7d41bc73f2743090709, type: 3}
+      - {fileID: 8300000, guid: fa3ded8fc6d85ee46aba81a75c0b88e5, type: 3}
   playing: 0
   canPlay: 0
 --- !u!82 &667666972

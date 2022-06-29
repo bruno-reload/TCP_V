@@ -8,8 +8,7 @@ using UnityEngine;
 public class CharacterSoundControl : MonoBehaviour
 {
     public RandomAudioPlay footSource;
-    public RandomAudioPlay headSource;
-    public RandomAudioPlay bodySource;
+    public RandomAudioPlay indigenousSource;
     public RandomAudioPlay ballSource;
 
     private bool currentState;
@@ -41,12 +40,20 @@ public class CharacterSoundControl : MonoBehaviour
 
     public void Head()
     {
-        headSource.PlayRandomClip(SOUND_KEY.head, 0);
+        indigenousSource.PlayRandomClip(SOUND_KEY.head, 0);
     }
 
-    public void Blow()
+    public void Blow(SOUND_KEY status)
     {
-        bodySource.PlayRandomClip(SOUND_KEY.body, 0);
+        switch (status)
+        {
+            case SOUND_KEY.head:
+                indigenousSource.PlayRandomClip(SOUND_KEY.head, 1);
+                break;
+            case SOUND_KEY.body:
+                indigenousSource.PlayRandomClip(SOUND_KEY.body, 0);
+                break;
+        }
     }
     public void Trot()
     {
@@ -61,14 +68,14 @@ public class CharacterSoundControl : MonoBehaviour
     }
     public void Dive()
     {
-        bodySource.PlayRandomClip(SOUND_KEY.body, 1);
+        indigenousSource.PlayRandomClip(SOUND_KEY.body, 1);
     }
     private void Update()
     {
         if (detectHead.Detect)
         {
             detectHead.Detect = false;
-            Blow();
+            Blow(SOUND_KEY.head);
         }
         if (characterAnimation.Floor != currentState && !neck.dive)
         {

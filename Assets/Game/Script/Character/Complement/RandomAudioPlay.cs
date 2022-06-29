@@ -7,8 +7,7 @@ public enum SOUND_KEY {
     foot, 
     head,  
     body,
-    Land, 
-    Grass,
+    floor,
 }
 [RequireComponent(typeof(AudioSource))]
 public class RandomAudioPlay : MonoBehaviour

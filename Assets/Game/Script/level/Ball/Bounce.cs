@@ -49,6 +49,7 @@ namespace Ball
                     }
                 }
             }
+            gameObject.AddComponent<SoundControl>();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -114,6 +115,30 @@ namespace Ball
             this.feedback.transform.localPosition = new Vector3(0, 0.8f, 0);
             Material mat = target.GetComponent<MeshRenderer>().material;
             this.feedback.GetComponent<MeshRenderer>().material = mat;
+        }
+    }
+    public class SoundControl : MonoBehaviour
+    {
+        private RandomAudioPlay randomAudioPlay;
+
+        private void Awake()
+        {
+            randomAudioPlay = GetComponent<RandomAudioPlay>();
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Head"))
+            {
+                randomAudioPlay.PlayRandomClip(SOUND_KEY.body, 0);
+            }
+            if (collision.gameObject.CompareTag("FieldRange"))
+            {
+                randomAudioPlay.PlayRandomClip(SOUND_KEY.floor, 0);
+            }
+            if (collision.gameObject.CompareTag("grass"))
+            {
+                randomAudioPlay.PlayRandomClip(SOUND_KEY.floor, 1);
+            }
         }
     }
 }
