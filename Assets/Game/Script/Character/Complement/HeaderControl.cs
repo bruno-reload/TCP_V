@@ -17,10 +17,8 @@ namespace head
             this.dive = false;
 
             this.transform.localRotation = Quaternion.Euler(transform.right * -25);
-            this.forehead.transform.rotation = Quaternion.Euler(transform.right * 45);
-        }
-        private void OnValidate()
-        {
+            this.forehead.transform.rotation = Quaternion.Euler(transform.right * 45); 
+       
             if (this.forehead.GetComponent<Rigidbody>())
             {
                 this.forehead.GetComponent<Rigidbody>().isKinematic = true;
@@ -33,6 +31,7 @@ namespace head
             this.forehead.transform.SetParent(gameObject.transform);
             this.forehead.transform.localPosition = new Vector3(0, .7f, 1);
             this.forehead.transform.localScale = new Vector3(.2f, 1f, .2f);
+
         }
         private void Reset()
         {

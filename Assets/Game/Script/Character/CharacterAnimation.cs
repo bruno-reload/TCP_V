@@ -21,7 +21,7 @@ public class CharacterAnimation : MonoBehaviour
         this.anim = GetComponentInChildren<Animator>();
         this.rigidbody = GetComponent<Rigidbody>();
         this.team = GetComponent<TeamSelection>();
-        this.anim.Play("Idle");
+        this.anim.Play("idle");
     }
 
     public void Jumping()
@@ -73,14 +73,14 @@ public class CharacterAnimation : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Field") && !this.anim.GetBool("onFloor"))
+        if (collision.gameObject.CompareTag("FieldRange") && !this.anim.GetBool("onFloor"))
         {
             this.anim.SetBool("onFloor", true);
         }
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Field") && this.anim.GetBool("onFloor"))
+        if (collision.gameObject.CompareTag("FieldRange") && this.anim.GetBool("onFloor"))
         {
 
             this.anim.SetBool("onFloor", false);

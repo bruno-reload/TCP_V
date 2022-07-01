@@ -23,17 +23,24 @@ namespace Character.StateMachine
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
+            if (collision.gameObject.CompareTag("Ball"))
+            {
+                controller.SoundControl.Blow(SOUND_KEY.body);
+            }
+        }
+
+        public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
+        {
         }
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
-
-            Debug.Log("jump");
             controller.Animator.Jumping();
             if (controller.Control.head())
             {
                 controller.HeadControl.Head();
                 controller.Animator.Head();
+                controller.SoundControl.Head();
             }
             if (controller.Animator.Floor && controller.gameObject.GetComponent<Rigidbody>().velocity.y < 0)
             {

@@ -17,7 +17,7 @@ namespace Game
 
         }
 
-        public void AddCharacterPosition()
+        public void configCharacterForGameplay()
         {
             foreach(PriorityControl priorityControl in priorityControls)
             {

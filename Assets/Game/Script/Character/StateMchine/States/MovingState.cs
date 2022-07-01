@@ -14,16 +14,30 @@ namespace Character.StateMachine
 
         public override void ExitState(CharacterControl controller)
         {
+            controller.SoundControl.Stop();
         }
-
         public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
+            if (!controller.Animator.Floor)
+            {
+                controller.SoundControl.Stop();
+                controller.Particle.Idle();
+            }
             controller.Behaviour.Moving();
         }
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
+            controller.Particle.Move();
+            if (collision.gameObject.CompareTag("Ball"))
+            {
+                controller.SoundControl.Blow(SOUND_KEY.body);
+            }
+        }
 
+        public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
+        {
+            controller.SoundControl.Run(collision);
         }
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
@@ -32,10 +46,11 @@ namespace Character.StateMachine
             {
                 controller.HeadControl.Head();
                 controller.Animator.Head();
+                controller.SoundControl.Head();
             }
             if (controller.Animator.Floor && controller.Animator.EndDive())
             {
-                if ( controller.Control.jump())
+                if (controller.Control.jump())
                 {
                     stateMachine.TransitionToState(stateMachine.StateInstances.jumpState);
                 }
