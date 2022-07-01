@@ -2,6 +2,7 @@ using head;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Team;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterAnimation))]
@@ -21,6 +22,7 @@ public class CharacterSoundControl : MonoBehaviour
         characterAnimation = GetComponent<CharacterAnimation>();
         currentState = characterAnimation.Floor;
         neck = GetComponentInChildren<HeaderControl>();
+        detectHead = GetComponentInChildren<DetectHead>();
     }
     public void Run(Collision collision)
     {

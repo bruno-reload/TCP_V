@@ -40,7 +40,6 @@ public class CharacterParticle : MonoBehaviour
     public void Head()
     {
         head.Play();
-        dh.Detect = false;
     }
     public void Idle()
     {
