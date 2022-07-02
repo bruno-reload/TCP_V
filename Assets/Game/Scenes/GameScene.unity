@@ -3233,6 +3233,8 @@ MonoBehaviour:
       endTime: 0.5
       startPosition: 1211.218
       endPosition: 736.1
+  - stateTag: 2
+    value: []
   targets:
   - key: 0
     valeu: {fileID: 1428337115}

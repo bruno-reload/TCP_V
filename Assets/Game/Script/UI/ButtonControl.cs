@@ -56,7 +56,6 @@ public class ButtonControl : MonoBehaviour
                 uIManager.SwitchBackground(TRANSITION.credits, false);
                 break;
             case TRANSITION.menu:
-                uIManager.SwitchBackground(TRANSITION.menu, false);
                 break;
             case TRANSITION.endGame:
                 uIManager.SwitchBackground(TRANSITION.endGame, false);
@@ -64,12 +63,12 @@ public class ButtonControl : MonoBehaviour
         }
         if (last.Count > 0)
         {
-            last.Pop();
+            startGame.MakeTransiction(last.Pop());
         }
     }
     public void InGame()
     {
-        startGame.MakeTransiction(TRANSITION.inGame);
+        uIManager.SwitchBackground(TRANSITION.banner, false);
         Last = TRANSITION.inGame;
     }
     public void Pause()

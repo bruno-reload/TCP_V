@@ -28,12 +28,12 @@ namespace GameUI
                 value += elements[i].value.Length;
             }
             this.pair = new STATUS[value];
-
+            int k = 0;
             for (int i = 0; i < elements.Count; i++)
             {
                 dict[elements[i].stateTag] = elements[i].value;
-                for (int j = 0; j < elements[i].value.Length; j++)
-                    pair[i + j] = elements[i].value[j].initialPositionOnScreen;
+                for (int j = 0; j < elements[i].value.Length; j++, k++)
+                    pair[k] = elements[i].value[j].initialPositionOnScreen;
             }
 
             foreach (Couple item in targets)
@@ -50,53 +50,51 @@ namespace GameUI
             #region trash
             //############essa parte ficou feia de mais#############
             int index = 0;
+            int k = 0;
             foreach (Element e in elements)
             {
                 if (e.stateTag == stateTag)
                 {
                     break;
                 }
+                k += dict[elements[index].stateTag].Length;
                 index++;
             }
             //#######################################################
             #endregion
+
             foreach (var e in dict[elements[index].stateTag])
             {
-                //Debug.Log(e.target + " " + pair[index]);
                 switch (e.axle)
                 {
                     case AXLE.horizontal:
-                        switch (pair[index])
+                        switch (pair[k])
                         {
                             case STATUS.enter:
                                 e.target.LeanMoveLocalX(e.startPosition, e.EndTime).setEase(e.type);
-                                Debug.Log(e.target + " " + pair[index]);
-                                pair[index] = STATUS.exit;
+                                pair[k] = STATUS.exit;
                                 break;
                             case STATUS.exit:
                                 e.target.LeanMoveLocalX(e.endPosition, e.StartTime).setEase(e.type);
-                                Debug.Log(e.target + " " + pair[index]);
-                                pair[index] = STATUS.enter;
+                                pair[k] = STATUS.enter;
                                 break;
                         }
                         break;
                     case AXLE.vertical:
-                        switch (pair[index])
+                        switch (pair[k])
                         {
                             case STATUS.enter:
                                 e.target.LeanMoveLocalY(e.startPosition, e.EndTime).setEase(e.type);
-                                Debug.Log(e.target + " " + pair[index]);
-                                pair[index] = STATUS.exit;
+                                pair[k] = STATUS.exit;
                                 break;
                             case STATUS.exit:
                                 e.target.LeanMoveLocalY(e.endPosition, e.StartTime).setEase(e.type);
-                                Debug.Log(e.target + " " + pair[index]);
-                                pair[index] = STATUS.enter;
+                                pair[k] = STATUS.enter;
                                 break;
                         }
                         break;
                 }
-                index++;
+                k++;
             }
         }
         public void SwitchBackground(TRANSITION item, bool value = true)

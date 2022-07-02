@@ -49,16 +49,7 @@ public class StartGame : MonoBehaviour
                 elements.Add(1);
                 break;
             case TRANSITION.inGame:
-                switch (buttonControl.Last)
-                {
-                    case TRANSITION.menu:
-                        elements.Add(2);
-                        elements.Add(3);
-                        break;
-                    case TRANSITION.configure:
-                        elements.Add(4);
-                        break;
-                }
+                elements.Add(3);
                 break;
             case TRANSITION.configure:
                 switch (buttonControl.Last)
@@ -70,25 +61,12 @@ public class StartGame : MonoBehaviour
                 elements.Add(4);
                 break;
             case TRANSITION.credits:
-                switch (buttonControl.Last)
-                {
-                    case TRANSITION.menu:
-                        elements.Add(1);
-                        break;
-                }
                 elements.Add(2);
                 break;
         }
         foreach (int i in elements)
         {
             UIManager.Change(UIManager.elements[i].stateTag);
-            foreach (var e in UIManager.elements[i].value)
-            {
-                if (time < e.EndTime)
-                {
-                    time = e.EndTime;
-                }
-            }
         }
     }
 }
