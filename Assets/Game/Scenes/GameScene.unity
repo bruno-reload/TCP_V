@@ -1989,7 +1989,7 @@ RectTransform:
   - {fileID: 1363530588}
   - {fileID: 1282249004}
   m_Father: {fileID: 2089392258}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2052,7 +2052,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2089392258}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2622,6 +2622,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1549412142}
         m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1549412142}
+        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
         m_MethodName: InGame
         m_Mode: 1
         m_Arguments:
@@ -3163,7 +3175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elements:
-  - stateTag: 0
+  - screen: 0
     value:
     - target: {fileID: 270385526}
       initialPositionOnScreen: 1
@@ -3173,6 +3185,8 @@ MonoBehaviour:
       endTime: 0.8
       startPosition: 1390
       endPosition: 576.84
+      starDelay: 0
+      endDelay: 0
     - target: {fileID: 1202688011}
       initialPositionOnScreen: 1
       type: 1
@@ -3181,7 +3195,9 @@ MonoBehaviour:
       endTime: 0.8
       startPosition: 712
       endPosition: 0
-  - stateTag: 1
+      starDelay: 0
+      endDelay: 0
+  - screen: 1
     value:
     - target: {fileID: 1186694997}
       initialPositionOnScreen: 1
@@ -3191,6 +3207,8 @@ MonoBehaviour:
       endTime: 0.8
       startPosition: 1652
       endPosition: 0
+      starDelay: 0
+      endDelay: 0
     - target: {fileID: 1155041729}
       initialPositionOnScreen: 1
       type: 1
@@ -3199,7 +3217,9 @@ MonoBehaviour:
       endTime: 0.8
       startPosition: 679.9131
       endPosition: 0
-  - stateTag: 5
+      starDelay: 0
+      endDelay: 0
+  - screen: 5
     value:
     - target: {fileID: 1104485497}
       initialPositionOnScreen: 1
@@ -3209,6 +3229,8 @@ MonoBehaviour:
       endTime: 0.5
       startPosition: -1235.7
       endPosition: 52
+      starDelay: 0
+      endDelay: 0
     - target: {fileID: 779717210}
       initialPositionOnScreen: 1
       type: 1
@@ -3217,6 +3239,8 @@ MonoBehaviour:
       endTime: 0.5
       startPosition: 1293.4
       endPosition: 462.5
+      starDelay: 0
+      endDelay: 0
     - target: {fileID: 199288034}
       initialPositionOnScreen: 1
       type: 1
@@ -3225,6 +3249,8 @@ MonoBehaviour:
       endTime: 0.5
       startPosition: -1004.1
       endPosition: 0
+      starDelay: 0
+      endDelay: 0
     - target: {fileID: 1604580545}
       initialPositionOnScreen: 1
       type: 1
@@ -3233,13 +3259,17 @@ MonoBehaviour:
       endTime: 0.5
       startPosition: 1211.218
       endPosition: 736.1
-  - stateTag: 2
+      starDelay: 0
+      endDelay: 0
+  - screen: 1
     value: []
   targets:
   - key: 0
     valeu: {fileID: 1428337115}
   - key: 5
     valeu: {fileID: 1012267046}
+  - key: 1
+    valeu: {fileID: 2117681574}
 --- !u!114 &1549412142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4290,6 +4320,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2117681575}
   - {fileID: 1186694998}
   - {fileID: 1155041730}
   m_Father: {fileID: 1549412140}
@@ -4655,6 +4686,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099428154}
+  m_CullTransparentMesh: 1
+--- !u!1 &2117681574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2117681575}
+  - component: {fileID: 2117681577}
+  - component: {fileID: 2117681576}
+  m_Layer: 5
+  m_Name: background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2117681575
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117681574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2089392258}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 15.020004, y: -0.01146698}
+  m_SizeDelta: {x: 1849.763, y: 979.98}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2117681576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117681574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6542554df356e0d4693e9eb50c39440f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2117681577
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117681574}
   m_CullTransparentMesh: 1
 --- !u!1001 &1783860130043391808
 PrefabInstance:

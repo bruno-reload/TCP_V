@@ -12,11 +12,11 @@ namespace GameUI
     {
         public List<Element> elements;
         public Couple[] targets;
-        private Dictionary<TRANSITION, GameObject> dic = new Dictionary<TRANSITION, GameObject>();
-        private Dictionary<TRANSITION, MovimentUi[]> dict = new Dictionary<TRANSITION, MovimentUi[]>();
+        private Dictionary<SCREEN, GameObject> dic = new Dictionary<SCREEN, GameObject>();
+        private Dictionary<SCREEN, MovimentUi[]> dict = new Dictionary<SCREEN, MovimentUi[]>();
         private STATUS[] pair;
 
-        public MovimentUi[] GetTimeByName(TRANSITION value)
+        public MovimentUi[] GetTimeByName(SCREEN value)
         {
             return this.dict[value];
         }
@@ -31,7 +31,7 @@ namespace GameUI
             int k = 0;
             for (int i = 0; i < elements.Count; i++)
             {
-                dict[elements[i].stateTag] = elements[i].value;
+                dict[elements[i].screen] = elements[i].value;
                 for (int j = 0; j < elements[i].value.Length; j++, k++)
                     pair[k] = elements[i].value[j].initialPositionOnScreen;
             }
@@ -45,7 +45,7 @@ namespace GameUI
         {
 
         }
-        public void Change(TRANSITION stateTag)
+        public void Change(SCREEN stateTag)
         {
             #region trash
             //############essa parte ficou feia de mais#############
@@ -53,17 +53,17 @@ namespace GameUI
             int k = 0;
             foreach (Element e in elements)
             {
-                if (e.stateTag == stateTag)
+                if (e.screen == stateTag)
                 {
                     break;
                 }
-                k += dict[elements[index].stateTag].Length;
+                k += dict[elements[index].screen].Length;
                 index++;
             }
             //#######################################################
             #endregion
 
-            foreach (var e in dict[elements[index].stateTag])
+            foreach (var e in dict[elements[index].screen])
             {
                 switch (e.axle)
                 {
@@ -97,9 +97,10 @@ namespace GameUI
                 k++;
             }
         }
-        public void SwitchBackground(TRANSITION item, bool value = true)
+        public void SwitchBackground(SCREEN item, bool value = true)
         {
-            dic[item].SetActive(value);
+            if (dic.ContainsKey(item))
+                dic[item].SetActive(value);
         }
     }
 
@@ -109,7 +110,7 @@ namespace GameUI
     [System.Serializable]
     public struct Element
     {
-        public TRANSITION stateTag;
+        public SCREEN screen;
         public MovimentUi[] value;
     }
     [System.Serializable]
@@ -118,11 +119,13 @@ namespace GameUI
         public GameObject target;
         public STATUS initialPositionOnScreen;
         public LeanTweenType type;
-        public AXLE axle;
+        [SerializeField]public AXLE axle;
         [SerializeField] private float startTime;
         [SerializeField] private float endTime;
         public float startPosition;
         public float endPosition;
+        public float starDelay;
+        public float endDelay;
 
         public float StartTime { get => this.startTime; set => this.startTime = value; }
         public float EndTime { get => this.endTime; set => this.endTime = value; }
@@ -137,7 +140,7 @@ namespace GameUI
     [System.Serializable]
     public struct Couple
     {
-        public TRANSITION key;
+        public SCREEN key;
         public GameObject valeu;
     }
 }

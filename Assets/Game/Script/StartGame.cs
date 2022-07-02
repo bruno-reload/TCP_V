@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
-    public enum TRANSITION { banner, menu, inGame, endGame, resume, credits, configure }
-    private static TRANSITION currentUIState = TRANSITION.banner;
+    public enum SCREEN { banner, menu, inGame, endGame, resume, credits, configure }
+    private static SCREEN currentUIState = SCREEN.banner;
     public UIManager UIManager;
     private ButtonControl buttonControl;
     private float time = 0;
-    public static TRANSITION UIState { get => currentUIState; set => currentUIState = value; }
+    public static SCREEN UIState { get => currentUIState; set => currentUIState = value; }
     public float BiggerTime { get => this.time; set => this.time = value; }
 
     #region onlyOne
     private void Start()
     {
         buttonControl = UIManager.gameObject.GetComponent<ButtonControl>();
-        buttonControl.Last = TRANSITION.banner;
+        buttonControl.Last = SCREEN.banner;
         UIManager.SwitchBackground(buttonControl.Last);
         Invoke("StartAnimarion", 2);
     }
     public void StartAnimarion()
     {
-        MakeTransiction(TRANSITION.banner);
+        MakeTransiction(SCREEN.banner);
         Invoke("EndAnimaition", 2);
     }
     public void EndAnimaition()
     {
-        MakeTransiction(TRANSITION.banner);
+        MakeTransiction(SCREEN.banner);
         Invoke("Continue", 2);
     }
     public void Continue()
@@ -36,37 +36,52 @@ public class StartGame : MonoBehaviour
     }
     #endregion
 
-    public void MakeTransiction(TRANSITION item)
+    public void MakeTransiction(SCREEN item)
     {
         List<int> elements = new List<int>();
         this.time = 0;
         switch (item)
         {
-            case TRANSITION.banner:
+            case SCREEN.banner:
                 elements.Add(0);
                 break;
-            case TRANSITION.menu:
+            case SCREEN.menu:
                 elements.Add(1);
                 break;
-            case TRANSITION.inGame:
+            case SCREEN.inGame:
                 elements.Add(3);
                 break;
-            case TRANSITION.configure:
+            case SCREEN.configure:
                 switch (buttonControl.Last)
                 {
-                    case TRANSITION.menu:
+                    case SCREEN.menu:
                         elements.Add(1);
                         break;
                 }
                 elements.Add(4);
                 break;
-            case TRANSITION.credits:
+            case SCREEN.credits:
+                elements.Add(1);
                 elements.Add(2);
                 break;
         }
         foreach (int i in elements)
         {
-            UIManager.Change(UIManager.elements[i].stateTag);
+            UIManager.Change(UIManager.elements[i].screen);
+            //foreach (var e in UIManager.elements[i].value)
+            //{
+            //    if (time < e.EndTime && e.initialPositionOnScreen == STATUS.exit)
+            //    {
+            //        time = e.EndTime;
+            //    }
+            //    if (time < e.StartTime && e.initialPositionOnScreen == STATUS.enter)
+            //    {
+            //        time = e.StartTime;
+            //    }
+            //}
         }
+    }
+    public void Delay()
+    {
     }
 }
