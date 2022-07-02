@@ -16,18 +16,18 @@ public class StartGame : MonoBehaviour
     private void Start()
     {
         buttonControl = UIManager.gameObject.GetComponent<ButtonControl>();
-
-        UIManager.SwitchBackground(TRANSITION.banner);
+        buttonControl.Last = TRANSITION.banner;
+        UIManager.SwitchBackground(buttonControl.Last);
         Invoke("StartAnimarion", 2);
     }
     public void StartAnimarion()
     {
-        buttonControl.Banner(true);
+        MakeTransiction(TRANSITION.banner);
         Invoke("EndAnimaition", 2);
     }
     public void EndAnimaition()
     {
-        buttonControl.Resume();
+        MakeTransiction(TRANSITION.banner);
         Invoke("Continue", 2);
     }
     public void Continue()
@@ -44,11 +44,9 @@ public class StartGame : MonoBehaviour
         {
             case TRANSITION.banner:
                 elements.Add(0);
-                elements.Add(1);
                 break;
             case TRANSITION.menu:
-                elements.Add(2);
-                elements.Add(3);
+                elements.Add(1);
                 break;
             case TRANSITION.inGame:
                 switch (buttonControl.Last)
@@ -66,8 +64,7 @@ public class StartGame : MonoBehaviour
                 switch (buttonControl.Last)
                 {
                     case TRANSITION.menu:
-                        elements.Add(2);
-                        elements.Add(3);
+                        elements.Add(1);
                         break;
                 }
                 elements.Add(4);
@@ -76,22 +73,21 @@ public class StartGame : MonoBehaviour
                 switch (buttonControl.Last)
                 {
                     case TRANSITION.menu:
-                        elements.Add(2);
-                        elements.Add(3);
-                        elements.Add(8);
+                        elements.Add(1);
                         break;
                 }
-                elements.Add(5);
-                elements.Add(6);
-                elements.Add(7);
+                elements.Add(2);
                 break;
         }
         foreach (int i in elements)
         {
-            UIManager.Change(UIManager.elements[i].name);
-            if (time < UIManager.elements[i].value.EndTime)
+            UIManager.Change(UIManager.elements[i].stateTag);
+            foreach (var e in UIManager.elements[i].value)
             {
-                time = UIManager.elements[i].value.EndTime;
+                if (time < e.EndTime)
+                {
+                    time = e.EndTime;
+                }
             }
         }
     }

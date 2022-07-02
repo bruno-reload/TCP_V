@@ -9,34 +9,44 @@ public class ButtonControl : MonoBehaviour
     public StartGame startGame;
     private UIManager uIManager;
     private Stack<TRANSITION> last;
-    public TRANSITION Last { get => this.last.Peek(); private set { } }
+    public TRANSITION Last
+    {
+        get
+        {
+            return this.last.Peek();
+        }
+        set
+        {
+            this.last.Push(value);
+        }
+    }
     private void Awake()
     {
+        this.last = new Stack<TRANSITION>();
         uIManager = GetComponent<UIManager>();
-        last = new Stack<TRANSITION>();
     }
     public void menu()
     {
         startGame.MakeTransiction(TRANSITION.menu);
-        last.Push(TRANSITION.menu);
+        Last = TRANSITION.menu;
     }
     public void Credts()
     {
         startGame.MakeTransiction(TRANSITION.credits);
         uIManager.SwitchBackground(TRANSITION.credits);
-        last.Push(TRANSITION.credits);
+        Last = TRANSITION.credits;
     }
     public void Configure()
     {
         startGame.MakeTransiction(TRANSITION.configure);
         //uIManager.SwitchBackground(TRANSITION.configure);
-        last.Push(TRANSITION.configure);
+        Last = TRANSITION.configure;
     }
     public void Banner(bool value = true)
     {
         startGame.MakeTransiction(TRANSITION.banner);
         uIManager.SwitchBackground(TRANSITION.banner, value);
-        last.Push(TRANSITION.banner);
+        Last = TRANSITION.banner;
     }
     public void Resume()
     {
@@ -53,12 +63,14 @@ public class ButtonControl : MonoBehaviour
                 break;
         }
         if (last.Count > 0)
-            startGame.MakeTransiction(last.Pop());
+        {
+            last.Pop();
+        }
     }
     public void InGame()
     {
         startGame.MakeTransiction(TRANSITION.inGame);
-        last.Push(TRANSITION.inGame);
+        Last = TRANSITION.inGame;
     }
     public void Pause()
     {

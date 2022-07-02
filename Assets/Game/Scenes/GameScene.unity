@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 199288037}
   - component: {fileID: 199288036}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: textCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1004,42 +1004,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
---- !u!1 &344028052
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 344028053}
-  m_Layer: 5
-  m_Name: ButtonCredits
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &344028053
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344028052}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1604580546}
-  m_Father: {fileID: 820893160}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1211.218, y: -394.29}
-  m_SizeDelta: {x: 502.436, y: 187.6052}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425285256 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2939593084051080521, guid: 5dda6a9bd28a73445889c9d36b65b4b3, type: 3}
@@ -1740,7 +1704,7 @@ RectTransform:
   - {fileID: 1104485498}
   - {fileID: 779717211}
   - {fileID: 199288035}
-  - {fileID: 344028053}
+  - {fileID: 1604580546}
   m_Father: {fileID: 1549412140}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3199,89 +3163,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elements:
-  - name: indigenousBanner
+  - stateTag: 0
     value:
-      target: {fileID: 270385526}
+    - target: {fileID: 270385526}
       initialPositionOnScreen: 1
       type: 1
       axle: 1
       startTime: 0.2
-      endTime: 1
+      endTime: 0.8
       startPosition: 1390
-      endPosition: 577
-  - name: tittleBanner
-    value:
-      target: {fileID: 1202688011}
+      endPosition: 576.84
+    - target: {fileID: 1202688011}
       initialPositionOnScreen: 1
       type: 1
       axle: 0
       startTime: 0.2
-      endTime: 1
+      endTime: 0.8
       startPosition: 712
-      endPosition: 200
-  - name: buttonMenu
+      endPosition: 0
+  - stateTag: 1
     value:
-      target: {fileID: 1155041729}
-      initialPositionOnScreen: 1
-      type: 1
-      axle: 0
-      startTime: 0.5
-      endTime: 0.2
-      startPosition: 770
-      endPosition: -80
-  - name: indigemouMenu
-    value:
-      target: {fileID: 1186694997}
-      initialPositionOnScreen: 1
-      type: 1
-      axle: 1
-      startTime: 0.5
-      endTime: 1
-      startPosition: 1591
-      endPosition: -5.9128
-  - name: configure
-    value:
-      target: {fileID: 1229947964}
-      initialPositionOnScreen: 1
-      type: 1
-      axle: 0
-      startTime: 0
-      endTime: 0
-      startPosition: 712
-      endPosition: 200
-  - name: credits
-    value:
-      target: {fileID: 344028052}
+    - target: {fileID: 1186694997}
       initialPositionOnScreen: 1
       type: 1
       axle: 1
       startTime: 0.2
-      endTime: 0.2
-      startPosition: 1211.218
-      endPosition: 708.78
-  - name: indigenousCredits
-    value:
-      target: {fileID: 779717210}
+      endTime: 0.8
+      startPosition: 1652
+      endPosition: 0
+    - target: {fileID: 1155041729}
       initialPositionOnScreen: 1
       type: 1
-      axle: 1
-      startTime: 0.5
-      endTime: 0.5
-      startPosition: 1293.4
-      endPosition: 311
-  - name: ballCredits
+      axle: 0
+      startTime: 0.2
+      endTime: 0.8
+      startPosition: 679.9131
+      endPosition: 0
+  - stateTag: 5
     value:
-      target: {fileID: 1104485497}
+    - target: {fileID: 1104485497}
       initialPositionOnScreen: 1
       type: 1
       axle: 1
       startTime: 0.5
       endTime: 0.5
       startPosition: -1235.7
-      endPosition: -11.546
-  - name: listName
-    value:
-      target: {fileID: 199288034}
+      endPosition: 52
+    - target: {fileID: 779717210}
+      initialPositionOnScreen: 1
+      type: 1
+      axle: 1
+      startTime: 0.5
+      endTime: 0.5
+      startPosition: 1293.4
+      endPosition: 462.5
+    - target: {fileID: 199288034}
       initialPositionOnScreen: 1
       type: 1
       axle: 0
@@ -3289,6 +3225,14 @@ MonoBehaviour:
       endTime: 0.5
       startPosition: -1004.1
       endPosition: 0
+    - target: {fileID: 1604580545}
+      initialPositionOnScreen: 1
+      type: 1
+      axle: 1
+      startTime: 0.5
+      endTime: 0.5
+      startPosition: 1211.218
+      endPosition: 736.1
   targets:
   - key: 0
     valeu: {fileID: 1428337115}
@@ -3336,7 +3280,7 @@ GameObject:
   - component: {fileID: 1604580548}
   - component: {fileID: 1604580547}
   m_Layer: 5
-  m_Name: return
+  m_Name: returnCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3349,17 +3293,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604580545}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1612699232}
-  m_Father: {fileID: 344028053}
-  m_RootOrder: 0
+  m_Father: {fileID: 820893160}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1211.218, y: -394.29}
   m_SizeDelta: {x: 386.3217, y: 133.8418}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604580547

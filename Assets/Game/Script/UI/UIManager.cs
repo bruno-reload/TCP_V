@@ -13,26 +13,29 @@ namespace GameUI
         public List<Element> elements;
         public Couple[] targets;
         private Dictionary<TRANSITION, GameObject> dic = new Dictionary<TRANSITION, GameObject>();
-        private Dictionary<string, MovimentUi> dict = new Dictionary<string, MovimentUi>();
-        private Pair[] pair;
-        private float time;
-        private float result;
-        private bool finish;
+        private Dictionary<TRANSITION, MovimentUi[]> dict = new Dictionary<TRANSITION, MovimentUi[]>();
+        private STATUS[] pair;
 
-        public MovimentUi GetTimeByName(string name)
+        public MovimentUi[] GetTimeByName(TRANSITION value)
         {
-            return this.dict[name];
+            return this.dict[value];
         }
         private void Awake()
         {
-            this.pair = new Pair[elements.Count];
+            var value = 0;
             for (int i = 0; i < elements.Count; i++)
             {
-                dict[elements[i].name] = elements[i].value;
-                pair[i] = new Pair();
-                pair[i].name = elements[i].name;
-                pair[i].positionOnScreen = dict[elements[i].name].initialPositionOnScreen;
+                value += elements[i].value.Length;
             }
+            this.pair = new STATUS[value];
+
+            for (int i = 0; i < elements.Count; i++)
+            {
+                dict[elements[i].stateTag] = elements[i].value;
+                for (int j = 0; j < elements[i].value.Length; j++)
+                    pair[i + j] = elements[i].value[j].initialPositionOnScreen;
+            }
+
             foreach (Couple item in targets)
             {
                 dic[item.key] = item.valeu;
@@ -42,19 +45,14 @@ namespace GameUI
         {
 
         }
-        public void Change(string key = "defaul")
+        public void Change(TRANSITION stateTag)
         {
             #region trash
-            if (key.Equals("default"))
-            {
-                return;
-            }
-            this.finish = false;
             //############essa parte ficou feia de mais#############
             int index = 0;
-            foreach (Pair p in pair)
+            foreach (Element e in elements)
             {
-                if (p.name.Equals(key))
+                if (e.stateTag == stateTag)
                 {
                     break;
                 }
@@ -62,60 +60,43 @@ namespace GameUI
             }
             //#######################################################
             #endregion
-            switch (dict[key].axle)
+            foreach (var e in dict[elements[index].stateTag])
             {
-                case AXLE.horizontal:
-                    switch (pair[index].positionOnScreen)
-                    {
-                        case STATUS.enter:
-                            dict[key].target.LeanMoveLocalX(dict[key].startPosition, dict[key].EndTime).setEase(dict[key].type);
-                            pair[index].positionOnScreen = STATUS.exit;
-                            break;
-                        case STATUS.exit:
-                            dict[key].target.LeanMoveLocalX(dict[key].endPosition, dict[key].StartTime).setEase(dict[key].type);
-                            pair[index].positionOnScreen = STATUS.enter;
-                            break;
-                    }
-                    break;
-                case AXLE.vertical:
-                    switch (pair[index].positionOnScreen)
-                    {
-                        case STATUS.enter:
-                            dict[key].target.LeanMoveLocalY(dict[key].startPosition, dict[key].EndTime).setEase(dict[key].type);
-                            pair[index].positionOnScreen = STATUS.exit;
-                            break;
-                        case STATUS.exit:
-                            dict[key].target.LeanMoveLocalY(dict[key].endPosition, dict[key].StartTime).setEase(dict[key].type);
-                            pair[index].positionOnScreen = STATUS.enter;
-                            break;
-                    }
-                    break;
-            }
-        }
-        public bool CountTime(string name, RANGE value)
-        {
-            switch (value)
-            {
-                case RANGE.start:
-                    if (GetTimeByName(name).StartTime > this.time)
-                        this.result = GetTimeByName(name).StartTime;
-                    break;
-                case RANGE.end:
-                    if (GetTimeByName(name).EndTime > this.time)
-                        this.result = GetTimeByName(name).EndTime;
-                    break;
-            }
-            return this.finish;
-        }
-        private void Update()
-        {
-            if (this.result < 0)
-            {
-                this.finish = true;
-            }
-            else
-            {
-                this.result -= Time.deltaTime;
+                //Debug.Log(e.target + " " + pair[index]);
+                switch (e.axle)
+                {
+                    case AXLE.horizontal:
+                        switch (pair[index])
+                        {
+                            case STATUS.enter:
+                                e.target.LeanMoveLocalX(e.startPosition, e.EndTime).setEase(e.type);
+                                Debug.Log(e.target + " " + pair[index]);
+                                pair[index] = STATUS.exit;
+                                break;
+                            case STATUS.exit:
+                                e.target.LeanMoveLocalX(e.endPosition, e.StartTime).setEase(e.type);
+                                Debug.Log(e.target + " " + pair[index]);
+                                pair[index] = STATUS.enter;
+                                break;
+                        }
+                        break;
+                    case AXLE.vertical:
+                        switch (pair[index])
+                        {
+                            case STATUS.enter:
+                                e.target.LeanMoveLocalY(e.startPosition, e.EndTime).setEase(e.type);
+                                Debug.Log(e.target + " " + pair[index]);
+                                pair[index] = STATUS.exit;
+                                break;
+                            case STATUS.exit:
+                                e.target.LeanMoveLocalY(e.endPosition, e.StartTime).setEase(e.type);
+                                Debug.Log(e.target + " " + pair[index]);
+                                pair[index] = STATUS.enter;
+                                break;
+                        }
+                        break;
+                }
+                index++;
             }
         }
         public void SwitchBackground(TRANSITION item, bool value = true)
@@ -130,9 +111,8 @@ namespace GameUI
     [System.Serializable]
     public struct Element
     {
-        public string name;
         public TRANSITION stateTag;
-        public MovimentUi value;
+        public MovimentUi[] value;
     }
     [System.Serializable]
     public struct MovimentUi
@@ -149,12 +129,6 @@ namespace GameUI
         public float StartTime { get => this.startTime; set => this.startTime = value; }
         public float EndTime { get => this.endTime; set => this.endTime = value; }
         public float[] Time { get => new float[2] { this.startTime, this.endTime }; set { } }
-    }
-    [System.Serializable]
-    public struct Pair
-    {
-        public string name;
-        public STATUS positionOnScreen;
     }
     public struct IdValue
     {
