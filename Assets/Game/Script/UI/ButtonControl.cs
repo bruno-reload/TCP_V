@@ -1,77 +1,40 @@
-﻿using GameUI;
-using System;
-using System.Collections.Generic;
+﻿using Game;
 using UnityEngine;
-using static StartGame;
 
 public class ButtonControl : MonoBehaviour
 {
-    public StartGame startGame;
-    private UIManager uIManager;
-    private Stack<SCREEN> last;
-    public SCREEN Last
-    {
-        get
-        {
-            return this.last.Peek();
-        }
-        set
-        {
-            this.last.Push(value);
-        }
-    }
-    private void Awake()
-    {
-        this.last = new Stack<SCREEN>();
-        uIManager = GetComponent<UIManager>();
-    }
     public void menu()
     {
-        startGame.MakeTransiction(SCREEN.menu);
-        Last = SCREEN.menu;
+        StartGame.MakeTransiction(SCREEN.menu);
     }
     public void Credts()
     {
-        startGame.MakeTransiction(SCREEN.credits);
-        Last = SCREEN.credits;
+        StartGame.MakeTransiction(SCREEN.credits);
     }
     public void Configure()
     {
-        startGame.MakeTransiction(SCREEN.configure);
-        Last = SCREEN.configure;
-    }
-    public void Banner()
-    {
-        startGame.MakeTransiction(SCREEN.banner);
-        Last = SCREEN.banner;
-    }
-    public void InGame()
-    {
-        startGame.MakeTransiction(SCREEN.inGame);
-        Last = SCREEN.inGame;
-    }
-    public void Resume()
-    {
-        if (last.Count > 0)
-        {
-            uIManager.SwitchBackground(last.Peek(), false);
-            startGame.MakeTransiction(last.Pop());
-            uIManager.SwitchBackground(last.Peek());
-        }
+        StartGame.MakeTransiction(SCREEN.configure);
     }
     public void Pause()
     {
+        StartGame.MakeTransiction(SCREEN.pause);
     }
-
-    void Update()
+    public void Banner()
     {
-        if (startGame.BiggerTime > 0)
+        StartGame.MakeTransiction(SCREEN.banner);
+    }
+    public void InGame()
+    {
+        StartGame.MakeTransiction(SCREEN.inGame);
+    }
+    public void Resume()
+    {
+        if (StartGame.LastState.Count > 0)
         {
-            startGame.BiggerTime -= Time.deltaTime;
-            if (startGame.BiggerTime < 0)
-            {
-                uIManager.SwitchBackground(last.Peek());
-            }
+            SCREEN current = StartGame.LastState.Pop();
+            SCREEN next = StartGame.LastState.Peek();
+            StartGame.LastState.Push(current);
+            StartGame.MakeTransiction(next); 
         }
     }
 }
