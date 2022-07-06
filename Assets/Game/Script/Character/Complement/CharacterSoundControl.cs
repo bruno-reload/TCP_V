@@ -52,9 +52,9 @@ public class CharacterSoundControl : MonoBehaviour
             case SOUND_KEY.head:
                 indigenousSource.PlayRandomClip(SOUND_KEY.head, 1);
                 break;
-            case SOUND_KEY.body:
-                indigenousSource.PlayRandomClip(SOUND_KEY.body, 0);
-                break;
+            //case SOUND_KEY.body:
+            //    indigenousSource.PlayRandomClip(SOUND_KEY.body, 0);
+            //    break;
         }
     }
     public void Trot()
@@ -70,7 +70,7 @@ public class CharacterSoundControl : MonoBehaviour
     }
     public void Dive()
     {
-        indigenousSource.PlayRandomClip(SOUND_KEY.body, 1);
+        //indigenousSource.PlayRandomClip(SOUND_KEY.body, 1);
     }
     private void Update()
     {

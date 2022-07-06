@@ -127,10 +127,10 @@ namespace Ball
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Head"))
-            {
-                randomAudioPlay.PlayRandomClip(SOUND_KEY.body, 0);
-            }
+            //if (collision.gameObject.CompareTag("Head"))
+            //{
+            //    randomAudioPlay.PlayRandomClip(SOUND_KEY.body, 0);
+            //}
             if (collision.gameObject.CompareTag("FieldRange"))
             {
                 randomAudioPlay.PlayRandomClip(SOUND_KEY.floor, 0);

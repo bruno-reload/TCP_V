@@ -6,7 +6,7 @@ public enum SOUND_KEY {
     mute,  
     foot, 
     head,  
-    body,
+    //body,
     floor,
 }
 [RequireComponent(typeof(AudioSource))]

@@ -54,9 +54,9 @@ namespace Character.StateMachine
 
         public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
-            if (collision.gameObject.CompareTag("Ball")) {
-                controller.SoundControl.Blow(SOUND_KEY.body);
-            }
+            //if (collision.gameObject.CompareTag("Ball")) {
+            //    controller.SoundControl.Blow(SOUND_KEY.body);
+            //}
         }
     }
 }
