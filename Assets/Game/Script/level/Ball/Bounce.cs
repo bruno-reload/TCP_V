@@ -59,6 +59,11 @@ namespace Ball
                 Headed(collision.contacts[0]);
                 GetComponent<Prediction>().Calculate();
             }
+            if (collision.gameObject.CompareTag("FieldRange"))
+            {
+                Debug.Log(GetComponent<SphereCollider>().material);
+                GetComponent<Prediction>().Calculate();
+            }
         }
         private void Headed(ContactPoint head)
         {

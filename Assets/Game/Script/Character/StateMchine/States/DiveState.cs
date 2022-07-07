@@ -44,8 +44,9 @@ namespace Character.StateMachine
                 controller.Animator.Head();
                 controller.SoundControl.Head();
             }
-            if (controller.Animator.IsDive())
+            if (!controller.Animator.IsDive())
             {
+                controller.SoundControl.Stop();
                 stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
             }
         }
