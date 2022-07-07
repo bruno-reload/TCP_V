@@ -42,13 +42,14 @@ namespace Character.StateMachine
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
+            controller.Animator.Move();
             if (controller.Control.head())
             {
                 controller.HeadControl.Head();
                 controller.Animator.Head();
                 controller.SoundControl.Head();
             }
-            if (controller.Animator.Floor && controller.Animator.EndDive())
+            if (controller.Animator.Floor && !controller.Animator.IsDive())
             {
                 if (controller.Control.jump())
                 {
@@ -58,14 +59,11 @@ namespace Character.StateMachine
                 {
                     stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
                 }
+                if (!controller.Behaviour.isMoving)
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+                }
             }
-            if (!controller.Behaviour.isMoving && controller.Animator.EndDive())
-            {
-                stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
-            }
-
         }
-
     }
-
 }

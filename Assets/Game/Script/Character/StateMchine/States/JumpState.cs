@@ -8,9 +8,10 @@ namespace Character.StateMachine
 
         public override void EnterState(CharacterControl controller)
         {
-            controller.Behaviour.Jumping();
             controller.Animator.Jumping();
+            controller.Behaviour.Jumping();
             controller.Particle.Jumping();
+            controller.SoundControl.Jump();
         }
         public override void ExitState(CharacterControl controller)
         {
@@ -42,11 +43,21 @@ namespace Character.StateMachine
                 controller.Animator.Head();
                 controller.SoundControl.Head();
             }
-            if (controller.Animator.Floor && controller.gameObject.GetComponent<Rigidbody>().velocity.y < 0)
+            if (controller.Animator.Floor)
             {
-                stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+                if (controller.Control.dive())
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.diveState);
+                }
+                if (controller.Behaviour.isMoving)
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
+                }
+                else
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+                }
             }
         }
     }
-
 }

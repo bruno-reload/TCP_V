@@ -10,11 +10,12 @@ public class CharacterAnimation : MonoBehaviour
 {
     private new Rigidbody rigidbody;
     private TeamSelection team;
-    private float speedZ;
+    private Vector3 speed;
     private Animator anim;
+    public bool dive = false;
     public bool Floor { get => this.anim.GetBool("onFloor"); private set { } }
 
-    public float SpeedZ { get { return this.speedZ; } private set { } }
+    public float SpeedZ { get { return this.speed.z; } private set { } }
 
     private void Awake()
     {
@@ -22,56 +23,55 @@ public class CharacterAnimation : MonoBehaviour
         this.rigidbody = GetComponent<Rigidbody>();
         this.team = GetComponent<TeamSelection>();
         this.anim.Play("idle");
+        //Debug.LogWarning("esse debug marca onde eu dexei a escala do tempo em .2");
+        //Time.timeScale = .2f;
     }
 
     public void Jumping()
     {
-        this.anim.SetFloat("vertical", this.speedZ);
-        this.anim.SetBool("dive", false);
+        this.anim.SetBool("move", false);
     }
 
     public void Dive()
     {
-        this.anim.SetBool("dive", true);
+        this.anim.SetTrigger("dive");
+        this.dive = true;
     }
-    public bool EndDive()
+    public bool IsDive()
     {
-        if (this.anim.GetCurrentAnimatorStateInfo(2).IsName("dive") && this.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
-        {
-            this.anim.SetBool("dive", false);
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("dive") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+            this.dive = false;
         }
-        return !this.anim.GetBool("dive");
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("dive")) {
+            this.dive = false;
+        }
+        return this.dive;
     }
     public void Head()
     {
-        this.anim.SetTrigger("head");
+        if (this.dive)
+            this.anim.SetTrigger("headDive");
+        else
+            this.anim.SetTrigger("head");
     }
 
     public void Idle()
     {
-        this.anim.SetFloat("vertical", 0.00f);
-        this.anim.SetFloat("horizontalX", 0.00f);
-        this.anim.SetFloat("horizontalZ", 0.00f);
-        this.anim.SetBool("dive", false);
+        this.anim.SetBool("move", false);
     }
 
     public void Move()
     {
-        this.anim.SetFloat("horizontalZ", this.speedZ * this.team.Convert());
-        this.anim.SetBool("dive", false);
+        this.anim.SetBool("move", true);
     }
 
-    internal void Victory()
-    {
-        Debug.Log("victory");
-        Debug.LogWarning("implementar uma animação de vitória");
-    }
     private void Update()
     {
-        this.speedZ = float.Parse(this.rigidbody.velocity.normalized.z.ToString("0.00"));
+        this.speed.y = float.Parse(this.rigidbody.velocity.normalized.y.ToString("0.00"));
+        this.anim.SetFloat("vertical", this.speed.y);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("FieldRange") && !this.anim.GetBool("onFloor"))
         {

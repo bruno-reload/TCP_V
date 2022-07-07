@@ -15,6 +15,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4016cd70485ae09408441996b1dc973f, type: 2}
+    - target: {fileID: 818004349723547424, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Height
+      value: 5.444552
+      objectReference: {fileID: 0}
+    - target: {fileID: 818004349723547424, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Radius
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 818004349723547424, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Center.y
+      value: 1.722276
+      objectReference: {fileID: 0}
+    - target: {fileID: 818004349723547424, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Center.z
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
     - target: {fileID: 1504312108398845073, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -33,11 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5244257570837461501, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_TranslationOffset.y
-      value: 0
+      value: 0.040102005
       objectReference: {fileID: 0}
     - target: {fileID: 5244257570837461501, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_TranslationOffset.z
-      value: 0
+      value: 0.054242365
       objectReference: {fileID: 0}
     - target: {fileID: 6914397912364774550, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_LocalRotation.w

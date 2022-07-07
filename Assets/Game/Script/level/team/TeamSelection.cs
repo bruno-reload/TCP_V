@@ -46,7 +46,7 @@ namespace Team
         {
             switch (team) {
                 case TEAM.Red:
-                    return -1f; ;
+                    return -1f; 
                 case TEAM.Blue:
                     return 1f;
             }
