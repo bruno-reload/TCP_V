@@ -4129,7 +4129,7 @@ MonoBehaviour:
         startPosition: 1211.218
         endPosition: 677
         startDelay: 1
-        endDelay: 0
+        endDelay: 0.5
   nextState:
   - key: 1
     value: {fileID: 2089392258}

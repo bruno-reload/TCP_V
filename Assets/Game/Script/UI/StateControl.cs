@@ -26,6 +26,7 @@ namespace FSMUI
             get
             {
                 timeOfFirtBurn = 0;
+                float aux = 0;
                 foreach (var e in screens.animables)
                 {
                     if (timeOfFirtBurn < e.UIData.endTime)
@@ -35,11 +36,12 @@ namespace FSMUI
                 }
                 foreach (var e in screens.animables)
                 {
-                    if (timeOfFirtBurn < e.UIData.endDelay)
+                    if (aux < e.UIData.endDelay)
                     {
-                        timeOfFirtBurn += e.UIData.endDelay;
+                        aux = e.UIData.endDelay;
                     }
                 }
+                this.timeOfFirtBurn += aux;
                 return this.timeOfFirtBurn;
             }
             private set
