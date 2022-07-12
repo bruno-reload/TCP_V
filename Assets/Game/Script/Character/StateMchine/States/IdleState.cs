@@ -10,7 +10,6 @@ namespace Character.StateMachine
         {
             controller.Animator.Idle();
             controller.Particle.Idle();
-            controller.Behaviour.Idle();
         }
 
         public override void ExitState(CharacterControl controller)
@@ -41,8 +40,6 @@ namespace Character.StateMachine
                     stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
                 }
             }
-            controller.Behaviour.Idle();
-
         }
 
         public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)

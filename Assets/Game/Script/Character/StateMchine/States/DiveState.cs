@@ -44,10 +44,16 @@ namespace Character.StateMachine
                 controller.Animator.Head();
                 controller.SoundControl.Head();
             }
-            if (!controller.Animator.IsDive())
+            if (controller.Animator.Floor)
             {
-                controller.SoundControl.Stop();
-                stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+                if (controller.Behaviour.isMoving)
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
+                }
+                else
+                {
+                    stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+                }
             }
         }
     }

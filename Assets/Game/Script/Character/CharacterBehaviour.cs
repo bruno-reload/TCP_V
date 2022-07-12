@@ -30,10 +30,6 @@ namespace Character
             characterRigidbody = GetComponent<Rigidbody>();
             characterControl = GetComponent<CharacterControl>();
         }
-        public void Idle()
-        {
-            characterRigidbody.velocity = Vector3.zero;
-        }
         private void WalkBehaviour(Vector3 direction, float speed)
         {
             Vector3 xzDirectionClamp = Vector3.ClampMagnitude(direction, 1);
