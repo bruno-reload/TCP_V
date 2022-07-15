@@ -23,9 +23,5 @@ public class PriorityControl : MonoBehaviour
     {
         targetCharacter.transform.position = centerPointTransform.position;
     }
-
     public void EnableCharacter(bool value) => targetCharacter.SetActive(value);
-
-    
-
 }

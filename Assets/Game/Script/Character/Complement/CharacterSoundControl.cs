@@ -50,7 +50,7 @@ public class CharacterSoundControl : MonoBehaviour
         switch (status)
         {
             case SOUND_KEY.head:
-                indigenousSource.PlayRandomClip(SOUND_KEY.head, 1);
+                indigenousSource.PlayRandomClip(SOUND_KEY.head, 0);
                 break;
             //case SOUND_KEY.body:
             //    indigenousSource.PlayRandomClip(SOUND_KEY.body, 0);
@@ -70,7 +70,7 @@ public class CharacterSoundControl : MonoBehaviour
     }
     public void Dive()
     {
-        //indigenousSource.PlayRandomClip(SOUND_KEY.body, 1);
+        indigenousSource.PlayRandomClip(SOUND_KEY.floor, 2);
     }
     private void Update()
     {

@@ -34,16 +34,6 @@ namespace Game
 
             }
         }
-
-        private void Update()
-        {
-            if (Input.anyKeyDown)
-            {
-                gameStateController.nextStep();
-            }
-        }
-
-
     }
 
 }

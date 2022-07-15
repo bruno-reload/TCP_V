@@ -33,6 +33,7 @@ namespace Team
             foreach (GameObject go in team)
             {
                 go.GetComponent<CharacterControl>().SetControl(GetComponent<AIControl>());
+                go.GetComponent<CharacterAnimation>().Idle();
                 go.GetComponent<TeamSelection>().feedback.enabled = false;
             }
             GetComponent<CharacterControl>().SetControl(GetComponent<PlayerInput>());

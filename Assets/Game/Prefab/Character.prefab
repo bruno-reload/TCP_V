@@ -88,7 +88,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7486315873685689834, guid: 18d3e7271326f3f40980ebae39ff3bb8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 0.5
   Loop: 1
   Mute: 0
@@ -10293,7 +10293,7 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 222441c0f6efd50449ea0643b2734f63, type: 3}
   overrides:
-  - key: 03000000
+  - key: 04000000
     banks:
     - name: blow
       clips:
@@ -10303,7 +10303,9 @@ MonoBehaviour:
       - {fileID: 8300000, guid: fa3ded8fc6d85ee46aba81a75c0b88e5, type: 3}
     - name: dive_land
       clips:
-      - {fileID: 8300000, guid: eb15dd6fe41ec7d41bc73f2743090709, type: 3}
+      - {fileID: 8300000, guid: b007de401fb805f4b94ec68df3524fa0, type: 3}
+      - {fileID: 8300000, guid: 64de9788a259f96499b7065c95f84754, type: 3}
+      - {fileID: 8300000, guid: 368da3521a80b8e42bf40942aa98abb4, type: 3}
   - key: 02000000
     banks:
     - name: idle

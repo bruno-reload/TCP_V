@@ -18,7 +18,6 @@ namespace Team
 
         public void IncreaseScore()
         {
-            Debug.Log("Ponto");
             teamScore++;
             updateTeamScore?.Invoke(teamScore);
         }

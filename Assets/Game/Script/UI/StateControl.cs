@@ -20,6 +20,8 @@ namespace FSMUI
         private float[] ExitDelay;
         private bool[] checkIn;
         private bool[] checkOut;
+        private float exitTime = 0;
+        public static StateControl instance;
 
         public float TimeOfFirtBurn
         {
@@ -52,6 +54,7 @@ namespace FSMUI
 
         private void Awake()
         {
+            instance = this;
             EnterDelay = new float[screens.animables.Length];
             ExitDelay = new float[screens.animables.Length];
             checkIn = new bool[screens.animables.Length];
@@ -88,6 +91,10 @@ namespace FSMUI
                 checkIn[i] = false;
                 checkOut[i] = true;
             }
+            if (!(EnterDelay.Length > 0))
+            {
+                OnDisable();
+            }
         }
 
         private void Update()
@@ -101,7 +108,7 @@ namespace FSMUI
             {
                 if (checkIn[i])
                 {
-                    EnterDelay[i] -= Time.deltaTime;
+                    EnterDelay[i] -= (Time.deltaTime == 0) ? Time.fixedDeltaTime : Time.deltaTime;
                     if (EnterDelay[i] < 0f)
                     {
                         checkIn[i] = false;
@@ -110,15 +117,25 @@ namespace FSMUI
                 }
                 if (checkOut[i])
                 {
-                    ExitDelay[i] -= Time.deltaTime;
+                    ExitDelay[i] -= (Time.deltaTime == 0) ? Time.fixedDeltaTime : Time.deltaTime;
                     if (ExitDelay[i] < 0f)
                     {
                         checkOut[i] = false;
-                        float exitTime = TimeOfFirtBurn;
+                        exitTime = TimeOfFirtBurn;
                         CheckScreenPosition(i);
-                        Invoke("OnDisable", exitTime);
+                        if (Time.timeScale > 0)
+                            Invoke("OnDisable", exitTime);
                     }
                 }
+                else if (Time.timeScale == 0)
+                {
+                    if (exitTime < 0)
+                    {
+                        OnDisable();
+                    }
+                    exitTime -= (Time.deltaTime == 0) ? Time.fixedDeltaTime : Time.deltaTime;
+                }
+
             }
         }
 
@@ -143,10 +160,10 @@ namespace FSMUI
             switch (e.UIData.axle)
             {
                 case AXLE.horizontal:
-                    e.animationTarget.LeanMoveLocalX(e.UIData.endPosition, e.UIData.endTime).setEase(e.UIData.type);
+                    e.animationTarget.LeanMoveLocalX(e.UIData.endPosition, e.UIData.endTime).setEase(e.UIData.type).setIgnoreTimeScale(true);
                     break;
                 case AXLE.vertical:
-                    e.animationTarget.LeanMoveLocalY(e.UIData.endPosition, e.UIData.startTime).setEase(e.UIData.type);
+                    e.animationTarget.LeanMoveLocalY(e.UIData.endPosition, e.UIData.startTime).setEase(e.UIData.type).setIgnoreTimeScale(true);
 
                     break;
             }
@@ -156,11 +173,11 @@ namespace FSMUI
             switch (e.UIData.axle)
             {
                 case AXLE.horizontal:
-                    e.animationTarget.LeanMoveLocalX(e.UIData.startPosition, e.UIData.startTime).setEase(e.UIData.type);
+                    e.animationTarget.LeanMoveLocalX(e.UIData.startPosition, e.UIData.startTime).setEase(e.UIData.type).setIgnoreTimeScale(true);
                     break;
 
                 case AXLE.vertical:
-                    e.animationTarget.LeanMoveLocalY(e.UIData.startPosition, e.UIData.endTime).setEase(e.UIData.type);
+                    e.animationTarget.LeanMoveLocalY(e.UIData.startPosition, e.UIData.endTime).setEase(e.UIData.type).setIgnoreTimeScale(true);
                     break;
             }
         }

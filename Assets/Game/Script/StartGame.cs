@@ -32,18 +32,16 @@ namespace Game
             last = new Stack<SCREEN>();
             last.Push(SCREEN.banner);
             dict[LastState.Peek()].gameObject.SetActive(true);
-            Invoke("StartAnimarion", 3);
-        }
-        private void StartAnimarion()
-        {
-            MakeTransiction(SCREEN.menu);
         }
 
         public static void MakeTransiction(SCREEN item)
         {
-            dict[LastState.Peek()].ChangeTo(item);
-            if (!LastState.Peek().Equals(item))
-                LastState.Push(item);
+            if (LastState.Count > 0)
+            {
+                dict[LastState.Peek()].ChangeTo(item);
+                if (!LastState.Peek().Equals(item))
+                    LastState.Push(item);
+            }
         }
     }
 }

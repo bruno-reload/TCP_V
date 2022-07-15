@@ -6,7 +6,7 @@ public enum SOUND_KEY {
     mute,  
     foot, 
     head,  
-    //body,
+    audience,
     floor,
 }
 [RequireComponent(typeof(AudioSource))]
@@ -61,7 +61,7 @@ public class RandomAudioPlay : MonoBehaviour
 
     public void PlayRandomClip()
     {
-        clip = InternalPlayRandomClip(SOUND_KEY.mute, bankId: 0);
+        clip = InternalPlayRandomClip(SOUND_KEY.audience, bankId: 0);
     }
 
     AudioClip InternalPlayRandomClip(SOUND_KEY key, int bankId)

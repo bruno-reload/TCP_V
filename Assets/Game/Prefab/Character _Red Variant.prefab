@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3716415901839300200, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5244257570837461501, guid: 2555458d3546b124d8f435fde01ae00b, type: 3}
       propertyPath: m_TranslationOffset.y
       value: 0.040102005

@@ -13,6 +13,7 @@ public class CharacterAnimation : MonoBehaviour
     private Vector3 speed;
     private Animator anim;
     public bool dive = false;
+    private float count;
     public bool Floor { get => this.anim.GetBool("onFloor"); private set { } }
 
     public float SpeedZ { get { return this.speed.z; } private set { } }
@@ -35,16 +36,19 @@ public class CharacterAnimation : MonoBehaviour
     public void Dive()
     {
         this.anim.SetTrigger("dive");
+        count = anim.GetCurrentAnimatorStateInfo(0).length / anim.GetCurrentAnimatorStateInfo(0).speed;
         this.dive = true;
     }
     public bool IsDive()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("dive") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+        //if (anim.GetCurrentAnimatorStateInfo(0).IsName("dive") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) {
+        //    this.dive = false;
+        //}
+        //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("dive")) {
+        //    this.dive = false;
+        //}
+        if (count < 0)
             this.dive = false;
-        }
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("dive")) {
-            this.dive = false;
-        }
         return this.dive;
     }
     public void Head()
@@ -69,6 +73,7 @@ public class CharacterAnimation : MonoBehaviour
     {
         this.speed.y = float.Parse(this.rigidbody.velocity.normalized.y.ToString("0.00"));
         this.anim.SetFloat("vertical", this.speed.y);
+        count -= Time.deltaTime;
     }
 
     private void OnCollisionStay(Collision collision)
