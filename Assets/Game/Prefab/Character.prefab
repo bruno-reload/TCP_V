@@ -387,6 +387,13 @@ GameObject:
   - component: {fileID: 406800953787600874}
   - component: {fileID: 5727031810218349626}
   - component: {fileID: 2452864701561306114}
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 1157912686658333260}
+  - component: {fileID: 3329334659164381539}
+  - component: {fileID: 1996877714895363977}
+  - component: {fileID: 435616045910070641}
+>>>>>>> Stashed changes
   m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
@@ -518,6 +525,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44da4eac154860f4f83803d674956008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
+  footSource: {fileID: 6699517156738523862}
+  indigenousSource: {fileID: 2950124575290346860}
+  ballSource: {fileID: 0}
+  detectHead: {fileID: 5349967765155170057}
+--- !u!114 &435616045910070641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360781085406952751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc70cd6fa9442d641a144e8177460a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardOffset: 5
+  fieldRangeCollider: {fileID: 0}
+  onLimit: 0
+>>>>>>> Stashed changes
 --- !u!1 &8358374144258685477
 GameObject:
   m_ObjectHideFlags: 0

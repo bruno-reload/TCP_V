@@ -14,7 +14,7 @@ namespace Character
         private CharacterControl characterControl;
         private Rigidbody characterRigidbody;
         public Transform ballTransform;
-
+        private DisplacementLimiter displacementLimiter;
         public CharacterProperties CharacterProperties { get => characterProperties; }
         public CharacterControl CharacterController { get => characterControl; set => characterControl = value; }
         public bool isMoving => characterControl.Control.direction() != Vector3.zero;
@@ -29,6 +29,7 @@ namespace Character
         {
             characterRigidbody = GetComponent<Rigidbody>();
             characterControl = GetComponent<CharacterControl>();
+            displacementLimiter = GetComponent<DisplacementLimiter>();
         }
 
         private void WalkBehaviour(Vector3 direction, float speed)
@@ -59,9 +60,16 @@ namespace Character
 
         public void Moving()
         {
-            WalkBehaviour(characterControl.Control.direction(), characterProperties.Speed);
-            //if (characterControl.Control.direction() != Vector3.zero) 
             Rotate();
+
+            if (displacementLimiter.OnLimit )
+            {
+                characterRigidbody.velocity = Vector3.zero;
+                return;
+            }
+            WalkBehaviour(characterControl.Control.direction(), characterProperties.Speed);
+
+
         }
 
         public void Jumping()
