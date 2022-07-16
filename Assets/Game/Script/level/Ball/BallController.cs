@@ -14,18 +14,20 @@ namespace Ball
         [SerializeField] private GameObject blueMiddleCharacter;
         [SerializeField] private float yOffset;
         [SerializeField] private int headsCount = 0;
+        private TrailRenderer ballTrail;
         private Rigidbody ballRigidbody;
         public event Action HeadOn;
         public event Action<TEAM> Serves;
         public event Action ballOutField;
        [SerializeField] private TeamTurnHandler turnHandler;
         public float zPosition => transform.position.z;
-        public float xzBallVelocityMagnitude => new Vector2(ballRigidbody.velocity.x, ballRigidbody.velocity.z).magnitude;
+        public float ballVelocityMagnitude => ballRigidbody.velocity.magnitude;
 
 
         private void Awake()
         {
             ballRigidbody = GetComponent<Rigidbody>();
+            ballTrail = GetComponentInChildren<TrailRenderer>();
         }
 
 
@@ -68,8 +70,6 @@ namespace Ball
         {
             if (other.CompareTag("FieldRange"))
             {
-                Debug.Log("Fora!");
-
                 ballOutField?.Invoke();
             }
         }
@@ -88,9 +88,11 @@ namespace Ball
 
         public void ServeAntecipation()
         {
+            
             ballRigidbody.isKinematic = true;
             gameObject.transform.position = GetSaquePosition(turnHandler.TeamTurn);
             Serve();
+            ballTrail.Clear();
         }
 
         public void Serve()

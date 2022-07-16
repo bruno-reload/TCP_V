@@ -5,7 +5,6 @@ using UnityEngine;
 namespace head
 {
     public enum HEAD_ROTATION { action, Idle };
-
     public class HeaderControl : MonoBehaviour
     {
         public HEAD_ROTATION header = HEAD_ROTATION.Idle;
@@ -18,10 +17,8 @@ namespace head
             this.dive = false;
 
             this.transform.localRotation = Quaternion.Euler(transform.right * -25);
-            this.forehead.transform.rotation = Quaternion.Euler(transform.right * 45);
-        }
-        private void OnValidate()
-        {
+            this.forehead.transform.rotation = Quaternion.Euler(transform.right * 45); 
+       
             if (this.forehead.GetComponent<Rigidbody>())
             {
                 this.forehead.GetComponent<Rigidbody>().isKinematic = true;
@@ -34,6 +31,7 @@ namespace head
             this.forehead.transform.SetParent(gameObject.transform);
             this.forehead.transform.localPosition = new Vector3(0, .7f, 1);
             this.forehead.transform.localScale = new Vector3(.2f, 1f, .2f);
+
         }
         private void Reset()
         {
@@ -66,7 +64,7 @@ namespace head
         {
             if (dive)
             {
-                this.transform.localRotation = Quaternion.Euler(-80, 0, 0);
+                this.transform.localRotation = Quaternion.Euler(-10, 0, 0);
                 this.forehead.transform.localRotation = Quaternion.Euler(30, 0, 0);
             }
             else
@@ -79,8 +77,8 @@ namespace head
         {
             if (dive)
             {
-                this.transform.localRotation = Quaternion.Euler(-80, 0, 0);
-                this.forehead.transform.localRotation = Quaternion.Euler(60, 0, 0);
+                this.transform.localRotation = Quaternion.Euler(20, 0, 0);
+                this.forehead.transform.localRotation = Quaternion.Euler(40, 0, 0);
             }
             else
             {

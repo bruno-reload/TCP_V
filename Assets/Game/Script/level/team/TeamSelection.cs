@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 namespace Team
 {
-    [Serializable] public enum TEAM { Red, Blue };
+    [Serializable] public enum TEAM { Red, Blue, NONE };
     public class TeamSelection : MonoBehaviour
     {
         public TEAM team = TEAM.Red;
@@ -33,7 +33,8 @@ namespace Team
             foreach (GameObject go in team)
             {
                 go.GetComponent<CharacterControl>().SetControl(GetComponent<AIControl>());
-                feedback.enabled = false;
+                go.GetComponent<CharacterAnimation>().Idle();
+                go.GetComponent<TeamSelection>().feedback.enabled = false;
             }
             GetComponent<CharacterControl>().SetControl(GetComponent<PlayerInput>());
             feedback.enabled = true;
@@ -46,7 +47,7 @@ namespace Team
         {
             switch (team) {
                 case TEAM.Red:
-                    return -1f; ;
+                    return -1f; 
                 case TEAM.Blue:
                     return 1f;
             }

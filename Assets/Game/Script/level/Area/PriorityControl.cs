@@ -5,18 +5,14 @@ using UnityEngine;
 
 public class PriorityControl : MonoBehaviour
 {
+    [SerializeField] private Transform centerPointTransform;
+
     public TeamSelection recipient;
     private GameObject targetCharacter => recipient?.gameObject;
-
     public Vector2 initialPosition => new Vector3(transform.position.x, transform.position.z);
-    void Start()
-    {
-        //Debug.Log("nessa linha eu diminuo a escala do tempo pra poder testar");
-        //Time.timeScale = 0.5f;
-    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.gameObject.CompareTag("Prediction"))
         {
             recipient.Swap();
@@ -25,14 +21,7 @@ public class PriorityControl : MonoBehaviour
 
     public void SetInitialPosition()
     {
-        targetCharacter.transform.position = new Vector3(
-            initialPosition.x,
-            targetCharacter.transform.position.y,
-            initialPosition.y);
+        targetCharacter.transform.position = centerPointTransform.position;
     }
-
     public void EnableCharacter(bool value) => targetCharacter.SetActive(value);
-
-    
-
 }

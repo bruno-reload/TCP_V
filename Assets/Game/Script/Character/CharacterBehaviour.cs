@@ -31,7 +31,6 @@ namespace Character
             characterControl = GetComponent<CharacterControl>();
             displacementLimiter = GetComponent<DisplacementLimiter>();
         }
-
         private void WalkBehaviour(Vector3 direction, float speed)
         {
             Vector3 xzDirectionClamp = Vector3.ClampMagnitude(direction, 1);

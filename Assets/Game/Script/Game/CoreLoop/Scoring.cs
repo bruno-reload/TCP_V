@@ -28,8 +28,8 @@ namespace CoreLoop
 
         private void ApplyScore(TEAM team)
         {
-            if (team == TEAM.Red) redScore.IncreaseScore();
-            else  blueScore.IncreaseScore(); 
+            if (team == TEAM.Red) blueScore.IncreaseScore();
+            else  redScore.IncreaseScore(); 
         }
 
         private void Update()
@@ -39,6 +39,9 @@ namespace CoreLoop
                 coreLoopController.NextStep();
             }
         }
+
+
+
     }
 
 }

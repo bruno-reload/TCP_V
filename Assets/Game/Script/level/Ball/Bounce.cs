@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Ball
 {
-
     [RequireComponent(typeof(SphereCollider)),
     RequireComponent(typeof(Rigidbody))]
     public class Bounce : MonoBehaviour
@@ -20,6 +19,7 @@ namespace Ball
             this.BallPositionPrediction.tag = "Prediction";
             this.BallPositionPrediction.name = "BallPositionPrediction";
             this.BallPositionPrediction.GetComponent<BoxCollider>().isTrigger = true;
+            this.BallPositionPrediction.GetComponent<BoxCollider>().size = new Vector3(1, 2, 1);
             this.BallPositionPrediction.GetComponent<MeshRenderer>().enabled = false;
 
             this.BallPositionPrediction.AddComponent<Rigidbody>();
@@ -49,6 +49,7 @@ namespace Ball
                     }
                 }
             }
+            gameObject.AddComponent<SoundControl>();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -56,6 +57,10 @@ namespace Ball
             if (collision.gameObject.CompareTag("Head"))
             {
                 Headed(collision.contacts[0]);
+                GetComponent<Prediction>().Calculate();
+            }
+            if (collision.gameObject.CompareTag("FieldRange"))
+            {
                 GetComponent<Prediction>().Calculate();
             }
         }
@@ -114,6 +119,30 @@ namespace Ball
             this.feedback.transform.localPosition = new Vector3(0, 0.8f, 0);
             Material mat = target.GetComponent<MeshRenderer>().material;
             this.feedback.GetComponent<MeshRenderer>().material = mat;
+        }
+    }
+    public class SoundControl : MonoBehaviour
+    {
+        private RandomAudioPlay randomAudioPlay;
+
+        private void Awake()
+        {
+            randomAudioPlay = GetComponent<RandomAudioPlay>();
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Head"))
+            {
+                randomAudioPlay.PlayRandomClip(SOUND_KEY.head, 0);
+            }
+            if (collision.gameObject.CompareTag("FieldRange"))
+            {
+                randomAudioPlay.PlayRandomClip(SOUND_KEY.floor, 0);
+            }
+            if (collision.gameObject.CompareTag("grass"))
+            {
+                randomAudioPlay.PlayRandomClip(SOUND_KEY.floor, 1);
+            }
         }
     }
 }

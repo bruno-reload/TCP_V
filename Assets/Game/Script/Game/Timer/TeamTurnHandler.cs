@@ -48,7 +48,7 @@ namespace CoreLoop
         {
             while(true)
             {
-                if (ballController.xzBallVelocityMagnitude < minBallSpeedLimit) 
+                if (ballController.ballVelocityMagnitude < minBallSpeedLimit) 
                 {
                     ballStopped?.Invoke();
                     //yield return null;
@@ -77,13 +77,12 @@ namespace CoreLoop
 
         private void TurnOver()
         {
-            Debug.Log("Turn Over!");
             turnOver?.Invoke(teamTurn);
         }
 
         private void OnGUI()
         {
-            GUI.Label(new Rect(10, Screen.height/3, 150, 100),  ballController.xzBallVelocityMagnitude.ToString());
+            GUI.Label(new Rect(10, Screen.height/3, 150, 100),  ballController.ballVelocityMagnitude.ToString());
         }
 
 

@@ -6,6 +6,16 @@ namespace Character.Control
 {
     public class AIControl : Control
     {
+        public override bool ButtonReturn()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override bool ButtonStart()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override Vector3 direction()
         {
             return Vector3.zero;

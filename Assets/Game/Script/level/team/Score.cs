@@ -9,6 +9,8 @@ namespace Team
         [SerializeField] private int teamScore = 0;
         public event Action<int> updateTeamScore;
 
+        public int TeamScore => teamScore;
+
         private void OnEnable()
         {
             ResetScore();
@@ -16,7 +18,6 @@ namespace Team
 
         public void IncreaseScore()
         {
-            Debug.Log("Ponto");
             teamScore++;
             updateTeamScore?.Invoke(teamScore);
         }

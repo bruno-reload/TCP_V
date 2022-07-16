@@ -17,7 +17,7 @@ namespace Game
 
         }
 
-        public void AddCharacterPosition()
+        public void configCharacterForGameplay()
         {
             foreach(PriorityControl priorityControl in priorityControls)
             {
@@ -34,16 +34,6 @@ namespace Game
 
             }
         }
-
-        private void Update()
-        {
-            if (Input.anyKeyDown)
-            {
-                gameStateController.nextStep();
-            }
-        }
-
-
     }
 
 }

@@ -48,6 +48,16 @@ namespace Character.Control
         {
             Debug.LogWarning("deve-se implementar a mudança de controle entre os personagens");
         }
+
+        public override bool ButtonStart()
+        {
+            return Input.GetButtonDown("Start" + playerIndex.ToString());
+        }
+
+        public override bool ButtonReturn()
+        {
+            return Input.GetButtonDown("Return" + playerIndex.ToString());
+        }
     }
 }
 

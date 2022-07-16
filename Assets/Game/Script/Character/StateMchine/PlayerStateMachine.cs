@@ -11,7 +11,7 @@ namespace Character.StateMachine
         private CharacterControl characterController;
         private StateInstances stateInstances;
 
-        public StateInstances StateInstances { get => stateInstances;}
+        public StateInstances StateInstances { get => stateInstances; }
         private void Awake()
         {
             characterController = GetComponent<CharacterControl>();
@@ -43,6 +43,10 @@ namespace Character.StateMachine
         private void OnCollisionEnter(Collision collision)
         {
             currentState.OnCollisionEnterState(characterController, collision, this);
+        }
+        private void OnCollisionStay(Collision collision)
+        {
+            currentState.OnCollisionStayState(characterController, collision, this);
         }
     }
 }

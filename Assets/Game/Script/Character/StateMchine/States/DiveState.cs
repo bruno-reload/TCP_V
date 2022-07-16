@@ -9,13 +9,15 @@ namespace Character.StateMachine
         public override void EnterState(CharacterControl controller)
         {
             controller.Behaviour.Dive();
-            controller.Animator.Floor(false);
             controller.Animator.Dive();
+            controller.Particle.Move();
+            controller.HeadControl.HeadIdleInDive();
+            controller.SoundControl.Dive();
         }
 
         public override void ExitState(CharacterControl controller)
         {
-            controller.Animator.Idle();
+            controller.SoundControl.Fall();
         }
 
         public override void FixedUpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
@@ -24,24 +26,38 @@ namespace Character.StateMachine
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
-            if (collision.collider.CompareTag("Field"))
-            {
-                //TODO: GettingUp()
-                stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
-            }
+            //if (collision.gameObject.CompareTag("Ball"))
+            //{
+            //    controller.SoundControl.Blow(SOUND_KEY.body);
+            //}
+        }
+
+        public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
+        {
         }
 
         public override void UpdateState(CharacterControl controller, PlayerStateMachine stateMachine)
         {
-            Debug.Log("dive");
-            // controller.Animator.Floor(false);
-            //controller.Animator.Dive();
+            if (controller.Control.head())
+            {
+                controller.HeadControl.HeadInDive();
+                controller.Animator.Head();
+                controller.SoundControl.Head();
+            }
+            if (controller.Animator.Floor && !controller.Animator.IsDive())
+            {
+                if (controller.Behaviour.isMoving)
+                {
+                    controller.SoundControl.Stop();
+                    stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
+                }
+                else
+                {
+                    controller.SoundControl.Stop();
+                    stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
+                }
+            }
         }
-
-
-        //private IEnumerator GettingUp()
-        //{
-        //}
     }
 }
 

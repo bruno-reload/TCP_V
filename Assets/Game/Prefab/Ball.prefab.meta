@@ -1,6 +1,12 @@
 fileFormatVersion: 2
-guid: 8a48542433353424e9703d9d7fc442a8
+<<<<<<<< HEAD:Assets/Game/Prefab/Ball.prefab.meta
+guid: d5138adb32df79c4da3e0c32265d7414
 PrefabImporter:
+========
+guid: a41186a63b768684897a28404fac55e6
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> origin/main:Assets/Game/Bruno/fiel.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
