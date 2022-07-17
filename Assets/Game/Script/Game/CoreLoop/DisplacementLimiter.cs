@@ -11,20 +11,30 @@ namespace Character
         public float forwardOffset = 5.0f;
 
         [SerializeField] private SphereCollider fieldRangeCollider;
-        [SerializeField] private bool onLimit;
+        [SerializeField] private bool outBounds;
         private TeamSelection teamSelection;
-        public bool OnLimit => onLimit;
+        public bool OutBounds => outBounds;
         public Vector3 forwardPointLimit => transform.position + transform.forward * forwardOffset;
-    
+        private Vector2 lastXZPositionInBounds;
         private void Awake()
         {
             teamSelection = GetComponent<TeamSelection>();
         }
-
-        private void OnDrawGizmosSelected()
+        private void FixedUpdate()
         {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, forwardPointLimit);
+            if(!outBounds)
+            {
+                lastXZPositionInBounds = new Vector2(transform.position.x, transform.position.z);
+            }
+
+            if(outBounds)
+            {
+                transform.position = new Vector3(
+                    lastXZPositionInBounds.x, 
+                    transform.position.y, 
+                    lastXZPositionInBounds.y
+                );
+            }
         }
 
         public void OnEnable()
@@ -42,8 +52,8 @@ namespace Character
         {
             while (true)
             {
-                onLimit = (OutFieldRange() || OutTeamZone());
-                yield return new WaitForSeconds(0.05f);
+                outBounds = (OutFieldRange() || OutTeamZone());
+                yield return new WaitForSeconds(Time.fixedDeltaTime);
             }
 
         }
@@ -57,8 +67,7 @@ namespace Character
             
         }
 
-        //team blue is On negative zone < (0,0,0)
-        //team red is on positive zone > (0,0,0)
+        //out if team blue is On negative zone: < (0,0,0)  //out if team red is on positive zone: > (0,0,0)
         private bool OutTeamZone()
         {
             if(teamSelection.team == TEAM.Blue )

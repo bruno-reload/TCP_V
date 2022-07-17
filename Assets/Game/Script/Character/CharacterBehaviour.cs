@@ -60,12 +60,6 @@ namespace Character
         public void Moving()
         {
             Rotate();
-
-            if (displacementLimiter.OnLimit )
-            {
-                characterRigidbody.velocity = Vector3.zero;
-                return;
-            }
             WalkBehaviour(characterControl.Control.direction(), characterProperties.Speed);
 
 
