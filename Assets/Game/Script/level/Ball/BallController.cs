@@ -10,16 +10,12 @@ namespace Ball
 {
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private GameObject redMiddleCharacter;
-        [SerializeField] private GameObject blueMiddleCharacter;
-        [SerializeField] private float yOffset;
+
         [SerializeField] private int headsCount = 0;
-        private TrailRenderer ballTrail;
         private Rigidbody ballRigidbody;
         public event Action HeadOn;
-        public event Action<TEAM> Serves;
         public event Action ballOutField;
-       [SerializeField] private TeamTurnHandler turnHandler;
+        [SerializeField] private TeamTurnHandler turnHandler;
         public float zPosition => transform.position.z;
         public float ballVelocityMagnitude => ballRigidbody.velocity.magnitude;
 
@@ -27,7 +23,6 @@ namespace Ball
         private void Awake()
         {
             ballRigidbody = GetComponent<Rigidbody>();
-            ballTrail = GetComponentInChildren<TrailRenderer>();
         }
 
 
@@ -44,14 +39,7 @@ namespace Ball
         }
 
 
-        public Vector3 GetSaquePosition(TEAM characterTeam)
-        {
-            if(characterTeam == TEAM.Blue)
-            {
-                return blueMiddleCharacter.transform.position + Vector3.up *yOffset;
-            }
-            return redMiddleCharacter.transform.position + Vector3.up * yOffset;
-        }
+
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -84,23 +72,6 @@ namespace Ball
 
         //}
 
-
-
-        public void ServeAntecipation()
-        {
-            
-            ballRigidbody.isKinematic = true;
-            gameObject.transform.position = GetSaquePosition(turnHandler.TeamTurn);
-            Serve();
-            ballTrail.Clear();
-        }
-
-        public void Serve()
-        {
-            Serves?.Invoke(turnHandler.TeamTurn);
-            ballRigidbody.isKinematic = false;
-
-        }
 
         private void ResetHeadsCount(TEAM t)
         {
