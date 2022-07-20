@@ -12,6 +12,7 @@ namespace FSMUI
     }
     public class StateControl : MonoBehaviour
     {
+        public GameObject initialButtonSelect;
         private Dictionary<SCREEN, Transform> dict = new Dictionary<SCREEN, Transform>();
         public StateScreen screens;
         public STATE[] nextState;
@@ -73,6 +74,8 @@ namespace FSMUI
                 checkIn[i] = true;
                 checkOut[i] = false;
             }
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(initialButtonSelect);
         }
         private void OnDisable()
         {
@@ -153,6 +156,8 @@ namespace FSMUI
                     screens.animables[i].UIData.initialPositionOnScreen = DIRECTION.outside;
                     break;
             }
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(initialButtonSelect);
         }
 
         private void AnimeStateIn(UIState e)
