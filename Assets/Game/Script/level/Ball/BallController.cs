@@ -16,6 +16,7 @@ namespace Ball
         public event Action ballOutField;
         public event Action<TEAM> BallChangeFieldSide;
         public event Action<TEAM> ballTouchFieldSide;
+        public int ballTouchFieldSideCount = 0;
         public event Action<TEAM> ballContactBodyTeam;
         [SerializeField] private TeamTurnHandler teamTurnHandler;
         public float zPosition => transform.position.z;
@@ -48,18 +49,19 @@ namespace Ball
         {
             if (collision.gameObject.CompareTag("Head"))
             {
+
                 lastTeamHead = teamTurnHandler.TeamTurn;
                 
                 IncreaseHeadCount();
             }
 
-            //if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
-            //{
-            //    TeamSelection contactBodyTeam = collision.gameObject.GetComponent<TeamSelection>();
-            //    ballContactBodyTeam?.Invoke(contactBodyTeam.team);
-                
-            //    //collision.gameObject.GetComponent<BodyEffect>()?.DoBallContactEffect();
-            //}
+            if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
+            {
+                TeamSelection contactBodyTeam = collision.gameObject.GetComponent<TeamSelection>();
+                ballContactBodyTeam?.Invoke(contactBodyTeam.team);
+
+                //collision.gameObject.GetComponent<BodyEffect>()?.DoBallContactEffect();
+            }
 
         }
 

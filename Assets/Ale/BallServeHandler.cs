@@ -25,7 +25,7 @@ namespace Ball
 
         public Vector3 GetSaquePosition(TEAM characterTeam)
         {
-            Vector3 centerTarget = (characterTeam == TEAM.Red) ? 
+            Vector3 centerTarget = (characterTeam == TEAM.Blue) ? 
                 MiddleBlueArea.sharedMesh.bounds.center :
                 MiddleRedArea.sharedMesh.bounds.center;
             return centerTarget / 2 + Vector3.up * yServeOffset;
