@@ -154,7 +154,6 @@ GameObject:
   - component: {fileID: 6590817208368685856}
   - component: {fileID: 6590817208368685870}
   - component: {fileID: 6590817208368685865}
-  - component: {fileID: 6590817208368685866}
   - component: {fileID: 6590817208368685864}
   - component: {fileID: 6590817208368685871}
   m_Layer: 8
@@ -285,8 +284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballTouchFieldSideCount: 0
   teamTurnHandler: {fileID: 0}
-  lastTeamHead: 0
-  lastSideBallFell: 0
 --- !u!114 &6590817208368685865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,20 +299,7 @@ MonoBehaviour:
   MiddleRedArea: {fileID: 0}
   MiddleBlueArea: {fileID: 0}
   yServeOffset: 2
-  scoreRules: {fileID: 6590817208368685866}
---- !u!114 &6590817208368685866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6590817208368685863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 975a48bea29f950408552a953698634d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballController: {fileID: 6590817208368685870}
+  scoreRules: {fileID: 0}
 --- !u!82 &6590817208368685864
 AudioSource:
   m_ObjectHideFlags: 0

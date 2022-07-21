@@ -1,3 +1,4 @@
+using Ball;
 using CoreLoop;
 using System;
 using System.Collections;
@@ -5,7 +6,7 @@ using System.Collections.Generic;
 using Team;
 using UnityEngine;
 
-namespace Ball
+namespace CoreLoop
 {
     public class ScoreRules : MonoBehaviour
     {

@@ -8,7 +8,7 @@ namespace Character
     public class DisplacementLimiter : MonoBehaviour
     {
         //[SerializeField] private Transform forwardPoint;
-        public float forwardOffset = 5.0f;
+        public float forwardOffset = 1.0f;
 
         [SerializeField] private SphereCollider fieldRangeCollider;
         [SerializeField] private bool outBounds;
