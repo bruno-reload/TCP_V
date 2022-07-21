@@ -183,7 +183,6 @@ GameObject:
   - component: {fileID: 635113089}
   - component: {fileID: 635113092}
   - component: {fileID: 635113091}
-  - component: {fileID: 635113090}
   m_Layer: 8
   m_Name: Plane_Line
   m_TagString: Untagged
@@ -254,20 +253,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &635113090
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635113088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &969406355
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +439,7 @@ GameObject:
   - component: {fileID: 1274772518}
   - component: {fileID: 219551099455949203}
   m_Layer: 0
-  m_Name: RedArea_1
+  m_Name: RedArea_1 M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +551,7 @@ GameObject:
   - component: {fileID: 1328182237}
   - component: {fileID: 7971882022580655883}
   m_Layer: 0
-  m_Name: BlueArea_1
+  m_Name: BlueArea_1 M
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -708,7 +693,7 @@ GameObject:
   - component: {fileID: 1628301739}
   m_Layer: 8
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -755,7 +740,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: db043609ce60d704a84209081a3eb0aa, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1070,7 +1054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200229279417627147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.8, z: 0}
+  m_LocalPosition: {x: 0.3, y: 14.7, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
@@ -1208,7 +1192,7 @@ GameObject:
   - component: {fileID: 5942274596612788979}
   m_Layer: 7
   m_Name: TeamRed_Side
-  m_TagString: Untagged
+  m_TagString: TeamRedSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1221,7 +1205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3123325208603138061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: -0.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}
@@ -1253,7 +1237,7 @@ GameObject:
   - component: {fileID: 3516974195053663647}
   m_Layer: 0
   m_Name: TeamBlue_Side
-  m_TagString: Untagged
+  m_TagString: TeamBlueSide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1266,7 +1250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9019705229706692726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2165799055845224652}

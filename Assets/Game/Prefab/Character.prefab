@@ -9914,7 +9914,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &818004349723547424
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10079,7 +10079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardOffset: 1
   fieldRangeCollider: {fileID: 0}
-  onLimit: 0
+  outBounds: 0
 --- !u!1 &8358374144258685477
 GameObject:
   m_ObjectHideFlags: 0
@@ -15633,6 +15633,14 @@ PrefabInstance:
     - target: {fileID: -1804129872905863213, guid: 7bb9321843f789040aa7f9029668d9c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.427244
+      objectReference: {fileID: 0}
+    - target: {fileID: -1798255643521272252, guid: 7bb9321843f789040aa7f9029668d9c2, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1798255643521272252, guid: 7bb9321843f789040aa7f9029668d9c2, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -1662616379218952914, guid: 7bb9321843f789040aa7f9029668d9c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

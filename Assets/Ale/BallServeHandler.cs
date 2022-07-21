@@ -12,10 +12,9 @@ namespace Ball
         [SerializeField] private MeshCollider MiddleRedArea;
         [SerializeField] private MeshCollider MiddleBlueArea;
         [SerializeField] private float yServeOffset;
-        [SerializeField] private TeamTurnHandler turnHandler;
+        [SerializeField] private ScoreRules scoreRules;
         private Rigidbody ballRigidbody;
         private TrailRenderer ballTrail;
-        public event Action<TEAM> Serves;
 
         private void Awake()
         {
@@ -26,7 +25,7 @@ namespace Ball
 
         public Vector3 GetSaquePosition(TEAM characterTeam)
         {
-            Vector3 centerTarget = (characterTeam == TEAM.Blue) ? 
+            Vector3 centerTarget = (characterTeam == TEAM.Red) ? 
                 MiddleBlueArea.sharedMesh.bounds.center :
                 MiddleRedArea.sharedMesh.bounds.center;
             return centerTarget / 2 + Vector3.up * yServeOffset;
@@ -34,20 +33,12 @@ namespace Ball
 
         public void ServeAntecipation()
         {
-
             ballRigidbody.isKinematic = true;
-            gameObject.transform.position = GetSaquePosition(turnHandler.TeamTurn);
-            Serve();
+            gameObject.transform.position = GetSaquePosition(scoreRules.LastTeamMarkedPoint);
+            ballRigidbody.isKinematic = false;
             ballTrail.Clear();
         }
 
-        public void Serve()
-        {
-            Serves?.Invoke(turnHandler.TeamTurn);
-            ballRigidbody.isKinematic = false;
-
-
-        }
     }
 }
 

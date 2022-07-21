@@ -22,14 +22,14 @@ namespace CoreLoop
 
         private void OnEnable()
         {
-            teamTurnHandler.turnOver += OnTunrOver;
+            teamTurnHandler.turnOver += OnTurnOver;
         }
         private void OnDisable()
         {
-            teamTurnHandler.turnOver -= OnTunrOver;
+            teamTurnHandler.turnOver -= OnTurnOver;
         }
 
-        private void OnTunrOver(TEAM teamturn)
+        private void OnTurnOver(TEAM teamturn)
         {
             coreLoopController.NextStep();
         }

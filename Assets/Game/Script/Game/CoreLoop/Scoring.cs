@@ -1,3 +1,4 @@
+using Character.Control;
 using Team;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace CoreLoop
         [SerializeField] private Score blueScore;
         private CoreLoopController coreLoopController;
 
+        private Players player;
+        private int playerIndex => (int)player + 1;
+
         private void Awake()
         {
             coreLoopController = GetComponentInParent<CoreLoopController>();
@@ -18,11 +22,14 @@ namespace CoreLoop
         private void Start()
         {
             teamTurnHandler.turnOver += ApplyScore;
+            teamTurnHandler.turnOver += UpdateTeamServe;
+
         }
 
         private void OnDestroy()
         {
             teamTurnHandler.turnOver -= ApplyScore;
+            teamTurnHandler.turnOver -= UpdateTeamServe;
 
         }
 
@@ -32,13 +39,20 @@ namespace CoreLoop
             else  redScore.IncreaseScore(); 
         }
 
+        private void UpdateTeamServe(TEAM team)
+        {
+            player = (team == TEAM.Blue) ? Players.Player1 : Players.Player2;
+        }
+
         private void Update()
         {
-            if(Input.anyKeyDown)
+
+            if (Input.GetButtonDown("Dive" + playerIndex.ToString()))
             {
                 coreLoopController.NextStep();
             }
         }
+
 
 
 

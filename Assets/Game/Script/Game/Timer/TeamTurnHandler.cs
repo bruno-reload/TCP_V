@@ -10,82 +10,28 @@ namespace CoreLoop
     public class TeamTurnHandler : MonoBehaviour
     {
         [SerializeField] private TEAM teamTurn;
-        public event Action<TEAM> nextTeamTurn;
         public event Action<TEAM> turnOver;
         public event Action ballStopped;
         [SerializeField] private BallController ballController;
         [SerializeField] private float minBallSpeedLimit;
-
+        [SerializeField] private ScoreRules scoreRules;
         public TEAM TeamTurn => teamTurn;
 
         private void Start()
         {
-            nextTeamTurn += ChangeTeamTurn;
-            ballController.ballOutField += TurnOver;
+            scoreRules.point += turnOver;
+            ballController.BallChangeFieldSide += UpdateTeamTurn;
         }
         private void OnDestroy()
         {
-            nextTeamTurn -= ChangeTeamTurn;
-            ballController.ballOutField -= TurnOver;
-
+            scoreRules.point -= turnOver;
+            ballController.BallChangeFieldSide -= UpdateTeamTurn;
         }
 
-        private void OnEnable()
+        private void UpdateTeamTurn(TEAM teamTurn)
         {
-            StartCoroutine(UpdateTeamTurn());
-           ballStopped += TurnOver;
+            this.teamTurn = teamTurn;
         }
-
-        private void OnDisable()
-        {
-            StopCoroutine(UpdateTeamTurn());
-            ballStopped -= TurnOver;
-
-        }
-
-
-        public IEnumerator UpdateTeamTurn()
-        {
-            while(true)
-            {
-                if (ballController.ballVelocityMagnitude < minBallSpeedLimit) 
-                {
-                    ballStopped?.Invoke();
-                    //yield return null;
-                    break;
-                }
-               
-                if(ballController.zPosition < 0.00f && teamTurn != TEAM.Blue)
-                {
-                   nextTeamTurn?.Invoke(TEAM.Blue);
-                }
-                if(ballController.zPosition > 0.00f && teamTurn != TEAM.Red)
-                {
-                    nextTeamTurn?.Invoke(TEAM.Red);
-                }
-
-                yield return new WaitForSeconds(0.1f);
-            }
-
-        }
-
-        private void ChangeTeamTurn(TEAM team)
-        {
-            teamTurn = team;
-        }
-
-
-        private void TurnOver()
-        {
-            turnOver?.Invoke(teamTurn);
-        }
-
-        private void OnGUI()
-        {
-            GUI.Label(new Rect(10, Screen.height/3, 150, 100),  ballController.ballVelocityMagnitude.ToString());
-        }
-
-
 
     }
 
