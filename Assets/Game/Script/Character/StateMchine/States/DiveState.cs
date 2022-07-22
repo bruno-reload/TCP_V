@@ -13,6 +13,8 @@ namespace Character.StateMachine
             controller.Particle.Move();
             controller.HeadControl.HeadIdleInDive();
             controller.SoundControl.Dive();
+
+            controller.Behaviour.SlowndownMoving();
         }
 
         public override void ExitState(CharacterControl controller)
@@ -26,10 +28,7 @@ namespace Character.StateMachine
 
         public override void OnCollisionEnterState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
         {
-            //if (collision.gameObject.CompareTag("Ball"))
-            //{
-            //    controller.SoundControl.Blow(SOUND_KEY.body);
-            //}
+
         }
 
         public override void OnCollisionStayState(CharacterControl controller, Collision collision, PlayerStateMachine stateMachine)
@@ -44,16 +43,14 @@ namespace Character.StateMachine
                 controller.Animator.Head();
                 controller.SoundControl.Head();
             }
-            if (controller.Animator.Floor && !controller.Animator.IsDive())
+            if (!controller.Animator.IsDive())
             {
                 if (controller.Behaviour.isMoving)
                 {
-                    controller.SoundControl.Stop();
                     stateMachine.TransitionToState(stateMachine.StateInstances.movingState);
                 }
                 else
                 {
-                    controller.SoundControl.Stop();
                     stateMachine.TransitionToState(stateMachine.StateInstances.idleState);
                 }
             }

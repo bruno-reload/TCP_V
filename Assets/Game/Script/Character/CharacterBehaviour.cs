@@ -14,11 +14,13 @@ namespace Character
         private CharacterControl characterControl;
         private Rigidbody characterRigidbody;
         public Transform ballTransform;
-        private DisplacementLimiter displacementLimiter;
         public CharacterProperties CharacterProperties { get => characterProperties; }
         public CharacterControl CharacterController { get => characterControl; set => characterControl = value; }
         public bool isMoving => characterControl.Control.direction() != Vector3.zero;
-        private Quaternion targetRotation(float x, float z)
+
+        public Rigidbody CharacterRigidbody  => characterRigidbody; 
+
+        private Quaternion TargetRotation(float x, float z)
         {
             float angle = Mathf.Atan2(x, z) * Mathf.Rad2Deg;
             Quaternion targetAngle = Quaternion.AngleAxis(angle, Vector3.up);
@@ -29,7 +31,6 @@ namespace Character
         {
             characterRigidbody = GetComponent<Rigidbody>();
             characterControl = GetComponent<CharacterControl>();
-            displacementLimiter = GetComponent<DisplacementLimiter>();
         }
         private void WalkBehaviour(Vector3 direction, float speed)
         {
@@ -42,17 +43,22 @@ namespace Character
             characterRigidbody.AddForce(Vector3.up * impulse, ForceMode.Impulse);
         }
 
+        public void Idle()
+        {
+            CharacterRigidbody.velocity = Vector3.zero;
+            transform.rotation = Quaternion.Slerp(transform.rotation, forwardRotation, CharacterProperties.RotationSpeed*Time.fixedDeltaTime/2);
+        }
+
         private void Rotate()
         {
             if (characterControl.Control.direction().magnitude > 0.1f)
             {
-                transform.rotation = targetRotation(
+                transform.rotation = TargetRotation(
                     characterControl.Control.direction().x, characterControl.Control.direction().z);
             }
             else
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, forwardRotation,
-                    characterProperties.RotationSpeed * Time.fixedDeltaTime);
+
 
             }
         }
@@ -65,10 +71,18 @@ namespace Character
 
         }
 
+        public void SlowndownMoving()
+        {
+
+            characterRigidbody.velocity = Vector3.Slerp(CharacterRigidbody.velocity, Vector3.zero, 30*Time.fixedDeltaTime);
+        }
+
+
         public void Jumping()
         {
             JumpBehaviour(characterProperties.JumpImpulse);
         }
+
 
         //Movimento de mergulho
         public void Dive()
@@ -76,6 +90,8 @@ namespace Character
             Vector3 direction = (transform.forward + Vector3.up * ((characterProperties.DiveImpoulse/2)/ characterProperties.DiveImpoulse));
             characterRigidbody.AddForce(direction * characterProperties.DiveImpoulse, ForceMode.Impulse);
         }
+
+
     }
 }
 
