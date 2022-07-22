@@ -1,6 +1,8 @@
 ﻿using FSMUI;
 using Game;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class ButtonControl : MonoBehaviour
 {
@@ -44,20 +46,21 @@ public class ButtonControl : MonoBehaviour
             StartGame.MakeTransiction(next);
         }
     }
+
     private void Update()
     {
         if (Input.anyKeyDown && StartGame.LastState.Peek() == SCREEN.banner)
         {
-
-            StartGame.MakeTransiction(SCREEN.menu);
+            menu();
         }
         if (StartGame.LastState.Peek() == SCREEN.inGame)
         {
-                if (Input.GetButton("Start1") || Input.GetButton("Start2"))
+            if (Input.GetButton("Start1") || Input.GetButton("Start2"))
             {
                 Time.timeScale = 0;
                 Pause();
             }
         }
+
     }
 }
