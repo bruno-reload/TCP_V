@@ -7,7 +7,13 @@ namespace Game
     {
         [SerializeField] private StateHandler[] stateHandlers;
         [SerializeField] private StateHandler currentState;
+        public static GameStateController instance;
 
+
+        private void Awake()
+        {
+            instance = this;
+        }
         private void Start()
         {
             Restart();

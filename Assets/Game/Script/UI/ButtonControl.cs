@@ -67,8 +67,8 @@ public class ButtonControl : MonoBehaviour
                 case SCREEN.tutorial:
                     if (count < 0)
                     {
+                        GameStateController.instance.TransitionToState(GameState.STARTUP);
                         InGame();
-                        gsc.nextStep();
                     }
                     break;
             }
