@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class ButtonControl : MonoBehaviour
 {
+    public GameStateController gsc;
+    private float count = 0;
     public void menu()
     {
         StartGame.MakeTransiction(SCREEN.menu);
@@ -35,6 +37,11 @@ public class ButtonControl : MonoBehaviour
     {
         StartGame.MakeTransiction(SCREEN.endGame);
     }
+    public void Tutorial()
+    {
+        StartGame.MakeTransiction(SCREEN.tutorial);
+        count = StateControl.instance.TimeOfFirtBurn;
+    }
     public void Resume()
     {
         Time.timeScale = 1;
@@ -49,10 +56,23 @@ public class ButtonControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown && StartGame.LastState.Peek() == SCREEN.banner)
-        {
-            menu();
-        }
+        count -= Time.deltaTime;
+        if (Input.anyKeyDown)
+
+            switch (StartGame.LastState.Peek())
+            {
+                case SCREEN.banner:
+                    menu();
+                    break;
+                case SCREEN.tutorial:
+                    if (count < 0)
+                    {
+                        InGame();
+                        gsc.nextStep();
+                    }
+                    break;
+            }
+
         if (StartGame.LastState.Peek() == SCREEN.inGame)
         {
             if (Input.GetButton("Start1") || Input.GetButton("Start2"))

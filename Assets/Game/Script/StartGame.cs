@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public enum SCREEN { banner, menu, inGame, endGame, resume, credits, configure, pause }
+    public enum SCREEN { banner, menu, inGame, endGame, resume, credits, configure, pause, tutorial }
     [System.Serializable]
     public struct PairValueKey
     {
