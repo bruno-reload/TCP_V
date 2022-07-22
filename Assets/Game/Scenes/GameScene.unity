@@ -1382,52 +1382,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_Actions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 453b1366e101d984fbe2697a4a852a4e, type: 3}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1541695193}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
-      value: 6d5d0df3-373b-4c66-a104-f819e7273344
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
-      value: e6f87690-960b-4311-9323-55893a592473
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
-      value: UI/Navigate[/Microntek              USB Joystick          /stick/up,/Microntek             
-        USB Joystick          /stick/down,/Microntek              USB Joystick         
-        /stick/left,/Microntek              USB Joystick          /stick/right]
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
-      value: UI/Submit[/Keyboard/enter,/Microntek              USB Joystick         
-        /button3]
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4340212416451539715, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
       propertyPath: gsc
       value: 
@@ -1937,6 +1894,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa2dd71344da4d448215bcfadc46469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &496441755 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8718149223178379665, guid: 06d59ddc4a23dc54aa9fc94016a9fbc8, type: 3}
+  m_PrefabInstance: {fileID: 8718149224326828064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &551678455 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8718149223494471256, guid: 06d59ddc4a23dc54aa9fc94016a9fbc8, type: 3}
@@ -3152,6 +3114,81 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbd976e5c3e669042bfb67c600bbdb9d, type: 3}
+--- !u!1 &780300184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780300185}
+  - component: {fileID: 780300187}
+  - component: {fileID: 780300186}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &780300185
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780300184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 496441755}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -15.134888, y: 0}
+  m_SizeDelta: {x: -1909.8846, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &780300186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780300184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4811321, g: 0.38910955, b: 0.20153078, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &780300187
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780300184}
+  m_CullTransparentMesh: 1
 --- !u!1001 &806364423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3159,6 +3196,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3985747236883519634, guid: 21010e9990987454e8bb4a4a164c49d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.59431773
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985747236883519634, guid: 21010e9990987454e8bb4a4a164c49d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6422064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985747236883519634, guid: 21010e9990987454e8bb4a4a164c49d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0027836862
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985747236883519634, guid: 21010e9990987454e8bb4a4a164c49d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.4840968
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985747236883519634, guid: 21010e9990987454e8bb4a4a164c49d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -74.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5754751758118182160, guid: 21010e9990987454e8bb4a4a164c49d3, type: 3}
+      propertyPath: m_Intensity
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 5837511789521487994, guid: 21010e9990987454e8bb4a4a164c49d3, type: 3}
       propertyPath: m_RootOrder
       value: 18
