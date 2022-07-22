@@ -1403,6 +1403,11 @@ PrefabInstance:
       objectReference: {fileID: 1438037708}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
+--- !u!82 &180202031 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4340212416451539712, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
+  m_PrefabInstance: {fileID: 180202030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &188749296 stripped
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 7971882022580655883, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
@@ -5651,7 +5656,7 @@ PrefabInstance:
     - target: {fileID: 6798724096206341250, guid: 06d59ddc4a23dc54aa9fc94016a9fbc8, type: 3}
       propertyPath: onStateEnd.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 180202031}
     - target: {fileID: 6798724096206341250, guid: 06d59ddc4a23dc54aa9fc94016a9fbc8, type: 3}
       propertyPath: onStateEnd.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -5703,7 +5708,7 @@ PrefabInstance:
     - target: {fileID: 6798724096206341250, guid: 06d59ddc4a23dc54aa9fc94016a9fbc8, type: 3}
       propertyPath: onStateStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 180202031}
     - target: {fileID: 6798724096206341250, guid: 06d59ddc4a23dc54aa9fc94016a9fbc8, type: 3}
       propertyPath: onStateStart.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
