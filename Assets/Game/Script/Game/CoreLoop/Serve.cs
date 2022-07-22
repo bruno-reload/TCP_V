@@ -1,4 +1,6 @@
 using Ball;
+using Character.Control;
+using Character.StateMachine;
 using System.Collections;
 using System.Collections.Generic;
 using Team;
@@ -9,11 +11,14 @@ namespace CoreLoop
     public class Serve : MonoBehaviour
     {
         [SerializeField] private BallController ballController;
+        private PriorityControl[] priorityControls;
+
         private CoreLoopController coreLoopController;
         
         private void Awake()
         {
             coreLoopController = GetComponentInParent<CoreLoopController>();
+            priorityControls = FindObjectsOfType<PriorityControl>();
         }
 
 
@@ -28,14 +33,13 @@ namespace CoreLoop
 
         }
 
-        private void Update()
+        public void SetCharactersServePosition()
         {
-            //if(Input.anyKeyDown)
-            //{
-            //    //ballController.Serve();
-            //}
+            foreach (PriorityControl priorityControl in priorityControls)
+            {
+                priorityControl.SetInitialPosition();
+            }
         }
-
 
 
         private void OnBallServed()

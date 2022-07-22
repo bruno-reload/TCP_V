@@ -1,3 +1,4 @@
+using Character;
 using CoreLoop;
 using System;
 using System.Collections;
@@ -5,66 +6,67 @@ using System.Collections.Generic;
 using Team;
 using UnityEngine;
 
-
 namespace Ball
 {
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private GameObject redMiddleCharacter;
-        [SerializeField] private GameObject blueMiddleCharacter;
-        [SerializeField] private float yOffset;
-        [SerializeField] private int headsCount = 0;
-        private TrailRenderer ballTrail;
         private Rigidbody ballRigidbody;
+        private int headCount = 0;
         public event Action HeadOn;
-        public event Action<TEAM> Serves;
         public event Action ballOutField;
-       [SerializeField] private TeamTurnHandler turnHandler;
+        public event Action<TEAM> BallChangeFieldSide;
+        public event Action<TEAM> ballTouchFieldSide;
+        public int ballTouchFieldSideCount = 0;
+        public event Action<TEAM> ballContactBodyTeam;
+        [SerializeField] private TeamTurnHandler teamTurnHandler;
         public float zPosition => transform.position.z;
-        public float ballVelocityMagnitude => ballRigidbody.velocity.magnitude;
-
+        private TEAM lastTeamHead;
+        public TEAM LastTeamHead => lastTeamHead;
+        private TEAM lastSideBallFell;
+        public TEAM LastSideBallFell => lastSideBallFell;
 
         private void Awake()
         {
             ballRigidbody = GetComponent<Rigidbody>();
-            ballTrail = GetComponentInChildren<TrailRenderer>();
         }
-
 
 
         private void OnEnable()
         {
-            turnHandler.nextTeamTurn += ResetHeadsCount;
+            BallChangeFieldSide += ResetHeadsCount;
+            ballTouchFieldSide += UpdateSideBallFell;
+            StartCoroutine(UpdateBallFieldSide());
         }
 
         private void OnDisable()
         {
-            turnHandler.nextTeamTurn -= ResetHeadsCount;
-
-        }
-
-
-        public Vector3 GetSaquePosition(TEAM characterTeam)
-        {
-            if(characterTeam == TEAM.Blue)
-            {
-                return blueMiddleCharacter.transform.position + Vector3.up *yOffset;
-            }
-            return redMiddleCharacter.transform.position + Vector3.up * yOffset;
+            BallChangeFieldSide -= ResetHeadsCount;
+            ballTouchFieldSide -= UpdateSideBallFell;
+            StopCoroutine(UpdateBallFieldSide());
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Head"))
             {
-                headsCount++;
-                HeadOn?.Invoke();
 
-                //TEAM team = collision.gameObject.GetComponentInParent<TeamSelection>().team;
-                //GetComponent<TeamTurnHandler>().VerifyTeamMatchTarget(team);
-
+                lastTeamHead = teamTurnHandler.TeamTurn;
+                
+                IncreaseHeadCount();
             }
+
+            if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
+            {
+                TeamSelection contactBodyTeam = collision.gameObject.GetComponent<TeamSelection>();
+                ballContactBodyTeam?.Invoke(contactBodyTeam.team);
+
+                //collision.gameObject.GetComponent<BodyEffect>()?.DoBallContactEffect();
+            }
+
         }
+
+
+
 
         private void OnTriggerExit(Collider other)
         {
@@ -74,39 +76,53 @@ namespace Ball
             }
         }
 
-
-        //private void VerifyTeamMatchTarget(TEAM teamCollision)
-        //{
-        //    if (teamCollision == turnHandler.teamTurn)
-        //    {
-        //        turnHandler.teamTurn = (turnHandler.teamTurn == TEAM.Blue) ? TEAM.Red : TEAM.Blue;
-        //    }
-
-        //}
-
-
-
-        public void ServeAntecipation()
+        private void OnTriggerEnter(Collider other)
         {
-            
-            ballRigidbody.isKinematic = true;
-            gameObject.transform.position = GetSaquePosition(turnHandler.TeamTurn);
-            Serve();
-            ballTrail.Clear();
+            if (other.CompareTag("TeamRedSide"))
+            {
+                ballTouchFieldSide?.Invoke(TEAM.Red);
+            }
+
+            if (other.CompareTag("TeamBlueSide"))
+            {
+                ballTouchFieldSide?.Invoke(TEAM.Blue);
+            }
         }
 
-        public void Serve()
+        public IEnumerator UpdateBallFieldSide()
         {
-            Serves?.Invoke(turnHandler.TeamTurn);
-            ballRigidbody.isKinematic = false;
+            while (true)
+            {
+                if (zPosition < 0.00f && teamTurnHandler.TeamTurn != TEAM.Blue)
+                {
+                    BallChangeFieldSide?.Invoke(TEAM.Blue);
+                }
+                if (zPosition > 0.00f && teamTurnHandler.TeamTurn != TEAM.Red)
+                {
+                    BallChangeFieldSide?.Invoke(TEAM.Red);
+                }
 
+                yield return new WaitForSeconds(0.1f);
+            }
+
+        }
+
+        public void UpdateSideBallFell(TEAM teamSide)
+        {
+            lastSideBallFell = teamSide;
+        }
+
+        private void IncreaseHeadCount()
+        {
+
+            headCount++;
+            HeadOn?.Invoke();
         }
 
         private void ResetHeadsCount(TEAM t)
         {
-            headsCount = 0;
+            headCount = 0;
         }
 
     }
 }
-
