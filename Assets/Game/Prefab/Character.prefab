@@ -15173,11 +15173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2665465256958423303, guid: 865d98b4712731b47850ef6d40beb6f8, type: 3}
       propertyPath: m_TranslationOffset.y
-      value: 0.036916256
+      value: 0.040102005
       objectReference: {fileID: 0}
     - target: {fileID: 2665465256958423303, guid: 865d98b4712731b47850ef6d40beb6f8, type: 3}
       propertyPath: m_TranslationOffset.z
-      value: 0.119374506
+      value: 0.054242365
       objectReference: {fileID: 0}
     - target: {fileID: 2665465256958423303, guid: 865d98b4712731b47850ef6d40beb6f8, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform
@@ -15635,8 +15635,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1798255643521272252, guid: 7bb9321843f789040aa7f9029668d9c2, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1798255643521272252, guid: 7bb9321843f789040aa7f9029668d9c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68dc0e91ade174340848918b84c11b6a, type: 2}
     - target: {fileID: -1798255643521272252, guid: 7bb9321843f789040aa7f9029668d9c2, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
