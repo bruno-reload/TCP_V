@@ -1366,52 +1366,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_Actions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 453b1366e101d984fbe2697a4a852a4e, type: 3}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1541695193}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
-      value: 6d5d0df3-373b-4c66-a104-f819e7273344
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
-      value: e6f87690-960b-4311-9323-55893a592473
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
-      value: UI/Navigate[/Microntek              USB Joystick          /stick/up,/Microntek             
-        USB Joystick          /stick/down,/Microntek              USB Joystick         
-        /stick/left,/Microntek              USB Joystick          /stick/right]
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
-      value: UI/Submit[/Keyboard/enter,/Microntek              USB Joystick         
-        /button3]
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340212416451539714, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
-      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4340212416451539715, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
       propertyPath: gsc
       value: 
@@ -1420,6 +1377,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIMeneger (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4340212417104514211, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 327818333da858948a9ba067f9578db8, type: 3}
+    - target: {fileID: 4340212417441682012, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1438037708}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
 --- !u!64 &188749296 stripped
