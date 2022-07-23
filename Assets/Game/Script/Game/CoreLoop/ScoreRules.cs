@@ -43,17 +43,19 @@ namespace CoreLoop
         {
             point?.Invoke(GetTeamPointed());
             lastTeamMarkedPoint = GetTeamPointed();
+            
         }
 
         public void OnTeamContactBall(TEAM team)
         {
-            TEAM teamPointed = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
-            point?.Invoke(teamPointed);
+            TEAM teamScored = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
+            point?.Invoke(teamScored);
+            lastTeamMarkedPoint = teamScored;
 
         }
 
-        
- 
+
+
 
     }
 
