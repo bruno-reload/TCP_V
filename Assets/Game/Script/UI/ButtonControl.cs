@@ -1,6 +1,7 @@
 ﻿using FSMUI;
 using Game;
 using UnityEngine;
+using SoundButtonManager;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -58,16 +59,16 @@ public class ButtonControl : MonoBehaviour
     {
         count -= Time.deltaTime;
         if (Input.anyKeyDown)
-
             switch (StartGame.LastState.Peek())
             {
                 case SCREEN.banner:
+                    GetComponentInChildren<InterfaceSoundButtonControl>().SoundSubmit();
                     menu();
                     break;
                 case SCREEN.tutorial:
                     if (count < 0)
                     {
-                        //GameStateController.instance.TransitionToState(GameState.STARTUP);
+                        GetComponentInChildren<InterfaceSoundButtonControl>().SoundSubmit();
                         gsc.nextStep();
                         InGame();
                     }
