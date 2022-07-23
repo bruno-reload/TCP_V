@@ -52,6 +52,33 @@ namespace FSMUI
 
             }
         }
+        public float TimeOfFirtBurnStart
+        {
+            get
+            {
+                float aux0 = 0;
+                float aux1 = 0;
+                foreach (var e in screens.animables)
+                {
+                    if (aux0 < e.UIData.startTime)
+                    {
+                        aux0 = e.UIData.startTime;
+                    }
+                }
+                foreach (var e in screens.animables)
+                {
+                    if (aux1 < e.UIData.startDelay)
+                    {
+                        aux1 = e.UIData.startDelay;
+                    }
+                }
+                return aux0 + aux1;
+            }
+            private set
+            {
+
+            }
+        }
 
         private void Awake()
         {
@@ -74,6 +101,10 @@ namespace FSMUI
                 checkIn[i] = true;
                 checkOut[i] = false;
             }
+            Invoke("ActiveHover", TimeOfFirtBurnStart);
+        }
+        private void ActiveHover()
+        {
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(initialButtonSelect);
         }
@@ -156,8 +187,6 @@ namespace FSMUI
                     screens.animables[i].UIData.initialPositionOnScreen = DIRECTION.outside;
                     break;
             }
-            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
-            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(initialButtonSelect);
         }
 
         private void AnimeStateIn(UIState e)
