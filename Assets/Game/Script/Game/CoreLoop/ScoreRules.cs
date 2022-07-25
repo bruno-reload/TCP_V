@@ -11,6 +11,9 @@ namespace CoreLoop
     public class ScoreRules : MonoBehaviour
     {
         [SerializeField] private BallController ballController;
+        [SerializeField] private TeamTurnHandler teamTurnHandler;
+        [SerializeField] private Score redScore;
+        [SerializeField] private Score blueScore;
         public event Action<TEAM> point;
         private TEAM lastTeamMarkedPoint = TEAM.Red;
         public TEAM LastTeamMarkedPoint => lastTeamMarkedPoint;
@@ -43,17 +46,34 @@ namespace CoreLoop
         {
             point?.Invoke(GetTeamPointed());
             lastTeamMarkedPoint = GetTeamPointed();
+            
         }
 
         public void OnTeamContactBall(TEAM team)
         {
-            TEAM teamPointed = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
-            point?.Invoke(teamPointed);
+            TEAM teamScored = (team == TEAM.Red) ? TEAM.Blue : TEAM.Red;
+            point?.Invoke(teamScored);
+            lastTeamMarkedPoint = teamScored;
 
         }
 
-        
- 
+
+
+        private void Start()
+        {
+            teamTurnHandler.turnOver += ApplyScore;
+        }
+
+        private void OnDestroy()
+        {
+            teamTurnHandler.turnOver -= ApplyScore;
+        }
+
+        private void ApplyScore(TEAM team)
+        {
+            if (team == TEAM.Red) redScore.IncreaseScore();
+            else blueScore.IncreaseScore();
+        }
 
     }
 

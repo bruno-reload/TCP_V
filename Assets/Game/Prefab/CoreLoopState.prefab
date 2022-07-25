@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 5518589024012096928}
   - component: {fileID: 1578605664806634562}
   - component: {fileID: 2051085692176469438}
+  - component: {fileID: 3305459252772732617}
   m_Layer: 5
   m_Name: Desenrolar
   m_TagString: Untagged
@@ -177,8 +178,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamTurn: 0
   ballController: {fileID: 0}
-  fieldRangeDectection: {fileID: 0}
   minBallSpeedLimit: 3
+  scoreRules: {fileID: 0}
+--- !u!114 &3305459252772732617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644281874928985011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975a48bea29f950408552a953698634d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballController: {fileID: 0}
+  teamTurnHandler: {fileID: 2051085692176469438}
+  redScore: {fileID: 11400000, guid: 0f3cc74d359acef4bb771eb841ca5ff5, type: 2}
+  blueScore: {fileID: 11400000, guid: e11f6ff054575994f90b19d353417009, type: 2}
 --- !u!1 &1916349990274847239
 GameObject:
   m_ObjectHideFlags: 0

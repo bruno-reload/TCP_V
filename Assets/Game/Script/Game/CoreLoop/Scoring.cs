@@ -9,14 +9,9 @@ namespace CoreLoop
     {
         [SerializeField] private int intervalInSeconds = 3;
         [SerializeField] private TeamTurnHandler teamTurnHandler;
-        [SerializeField] private Score redScore;
-        [SerializeField] private Score blueScore;
         private CoreLoopController coreLoopController;
 
         private Players player;
-        private int playerIndex => (int)player + 1;
-
-        private bool canSkipState = false;
         
         private void Awake()
         {
@@ -25,14 +20,12 @@ namespace CoreLoop
 
         private void Start()
         {
-            teamTurnHandler.turnOver += ApplyScore;
             teamTurnHandler.turnOver += UpdateTeamServe;
 
         }
 
         private void OnDestroy()
         {
-            teamTurnHandler.turnOver -= ApplyScore;
             teamTurnHandler.turnOver -= UpdateTeamServe;
 
         }
@@ -47,11 +40,7 @@ namespace CoreLoop
             StopCoroutine(WaitForSkipState());
         }       
 
-        private void ApplyScore(TEAM team)
-        {
-            if (team == TEAM.Red) redScore.IncreaseScore();
-            else  blueScore.IncreaseScore(); 
-        }
+
 
         private void UpdateTeamServe(TEAM team)
         {
@@ -64,23 +53,7 @@ namespace CoreLoop
             coreLoopController.NextStep();
         }
 
-        //private void Update()
-        //{
-        //    if(Input.anyKeyDown)
-        //    {
-        //        coreLoopController.NextStep();
-        //    }
-        //}
 
-
-        //private void Update()
-        //{
-
-        //    //if (Input.GetButtonDown("Dive" + playerIndex.ToString()))
-        //    //{
-        //    //    coreLoopController.NextStep();
-        //    //}
-        //}
 
 
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 namespace head
 {
@@ -10,7 +11,10 @@ namespace head
         public HEAD_ROTATION header = HEAD_ROTATION.Idle;
         public bool dive;
         public GameObject forehead;
-        public Mesh mesh;
+        public Vector3 idlePosition;
+        public Vector3 divePosition;
+        public Vector3 diveHeadPosition;
+        public float diveHeadRotationQuaternionX;
 
         private void Start()
         {
@@ -24,13 +28,10 @@ namespace head
                 this.forehead.GetComponent<Rigidbody>().isKinematic = true;
                 this.forehead.GetComponent<Rigidbody>().useGravity = false;
             }
-            if (this.forehead.GetComponent<MeshCollider>())
-                this.forehead.GetComponent<MeshCollider>().sharedMesh = mesh;
 
             this.forehead.tag = "Head";
             this.forehead.transform.SetParent(gameObject.transform);
             this.forehead.transform.localPosition = new Vector3(0, .7f, 1);
-            this.forehead.transform.localScale = new Vector3(.2f, 1f, .2f);
 
         }
         private void Reset()
@@ -38,15 +39,10 @@ namespace head
             this.forehead = new GameObject("forehead");
             this.forehead.AddComponent<Rigidbody>();
             this.forehead.layer = LayerMask.NameToLayer("Head");
-            this.forehead.AddComponent<MeshCollider>();
             this.forehead.GetComponent<Rigidbody>().isKinematic = true;
             this.forehead.GetComponent<Rigidbody>().useGravity = false;
-            this.forehead.GetComponent<MeshCollider>().sharedMesh = mesh;
-
             this.forehead.transform.SetParent(gameObject.transform);
-
             this.forehead.transform.localPosition = new Vector3(0, .7f, 1);
-            this.forehead.transform.localScale = new Vector3(.2f, 1f, .2f);
         }
         void Update()
         {
@@ -64,27 +60,35 @@ namespace head
         {
             if (dive)
             {
-                this.transform.localRotation = Quaternion.Euler(-10, 0, 0);
+                forehead.transform.localPosition = diveHeadPosition;
+                this.transform.localRotation = Quaternion.Euler(diveHeadRotationQuaternionX, 0, 0);
                 this.forehead.transform.localRotation = Quaternion.Euler(30, 0, 0);
             }
             else
             {
+                forehead.transform.localPosition = idlePosition;
+
                 this.transform.localRotation = Quaternion.Euler(-25, 0, 0);
                 this.forehead.transform.localRotation = Quaternion.Euler(80, 0, 0);
+
             }
         }
         private void GoToIdle()
         {
             if (dive)
             {
+                forehead.transform.localPosition = divePosition;
                 this.transform.localRotation = Quaternion.Euler(20, 0, 0);
                 this.forehead.transform.localRotation = Quaternion.Euler(40, 0, 0);
             }
             else
             {
+                forehead.transform.localPosition = idlePosition;
                 this.transform.localRotation = Quaternion.Euler(-25, 0, 0);
                 this.forehead.transform.localRotation = Quaternion.Euler(45, 0, 0);
             }
         }
+
     }
+
 }
