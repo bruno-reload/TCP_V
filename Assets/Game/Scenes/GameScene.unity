@@ -1286,6 +1286,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8617169800880325404, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
+      propertyPath: m_text
+      value: "Alexandre Gaud\xEAncio\nBruno Correia da Silva\nMatheus Queiroz da
+        Silva\nPaola da silva de Jesus\nSulivan S\xE9rgio da Matta"
+      objectReference: {fileID: 0}
     - target: {fileID: 8617169801472926089, guid: 6abba82bf16f7154580b52076b3671d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
