@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Team;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -9,6 +11,11 @@ namespace Game
     {
         [SerializeField] private Score redScore;
         [SerializeField] private Score blueScore;
+        [SerializeField] private Image redUIImage;
+        [SerializeField] private Image blueUIImage;
+
+        [SerializeField] private Sprite winnerSprite;
+        [SerializeField] private Sprite LoserSprite;
 
 
         private TEAM GetWinnerTeam()
@@ -23,7 +30,19 @@ namespace Game
 
         public void ShowWinner()
         {
-            Debug.Log("Time vencedor: "+GetWinnerTeam());
+            if(GetWinnerTeam() == TEAM.Red)
+            {
+                redUIImage.sprite = winnerSprite;
+                blueUIImage.sprite = LoserSprite;
+            } else if(GetWinnerTeam() == TEAM.Blue)
+            {
+                redUIImage.sprite = LoserSprite;
+                blueUIImage.sprite = winnerSprite;
+            } else
+            {
+                redUIImage.sprite = winnerSprite;
+                blueUIImage.sprite = winnerSprite;
+            }
         }
 
 
