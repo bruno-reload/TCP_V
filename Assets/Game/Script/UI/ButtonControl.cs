@@ -38,6 +38,10 @@ public class ButtonControl : MonoBehaviour
     {
         StartGame.MakeTransiction(SCREEN.endGame);
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
     public void Tutorial()
     {
         StartGame.MakeTransiction(SCREEN.tutorial);
