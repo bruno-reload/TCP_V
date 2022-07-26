@@ -53,6 +53,11 @@ namespace Character.StateMachine
         {
             currentState.OnCollisionStayState(characterController, collision, this);
         }
+
+        public void GoServeState()
+        {
+            TransitionToState(stateInstances.serveState);
+        }
     }
 }
 

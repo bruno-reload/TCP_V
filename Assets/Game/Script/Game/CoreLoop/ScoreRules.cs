@@ -15,7 +15,7 @@ namespace CoreLoop
         [SerializeField] private Score redScore;
         [SerializeField] private Score blueScore;
         public event Action<TEAM> point;
-        private TEAM lastTeamMarkedPoint = TEAM.Red;
+        private TEAM lastTeamMarkedPoint = TEAM.Blue;
         public TEAM LastTeamMarkedPoint => lastTeamMarkedPoint;
         private void OnEnable()
         {

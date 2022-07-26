@@ -10,12 +10,14 @@ namespace Character.StateMachine
         public readonly MovingState movingState;
         public readonly JumpState jumpState;
         public readonly DiveState diveState;
+        public readonly ServeState serveState;
         public StateInstances()
         {
             idleState = new IdleState();
             movingState = new MovingState();
             jumpState = new JumpState();
             diveState = new DiveState();
+            serveState = new ServeState();
         }
     }
 }

@@ -584,6 +584,7 @@ GameObject:
   - component: {fileID: 3756549766198741396}
   - component: {fileID: 4518041837718642986}
   - component: {fileID: 7659642740459279501}
+  - component: {fileID: 5294008187991417444}
   m_Layer: 5
   m_Name: Saque
   m_TagString: Untagged
@@ -643,6 +644,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballController: {fileID: 0}
+--- !u!114 &5294008187991417444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855398420697016118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e324922228546fc4682b29d523a1a49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redCharacterFSM:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  blueCharacterFSM:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5961802983535109616
 GameObject:
   m_ObjectHideFlags: 0

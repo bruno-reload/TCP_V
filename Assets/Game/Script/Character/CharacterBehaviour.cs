@@ -18,7 +18,9 @@ namespace Character
         public CharacterControl CharacterController { get => characterControl; set => characterControl = value; }
         public bool isMoving => characterControl.Control.direction() != Vector3.zero;
 
-        public Rigidbody CharacterRigidbody  => characterRigidbody; 
+        public Rigidbody CharacterRigidbody  => characterRigidbody;
+
+        public Quaternion ForwardRotation { get => forwardRotation; set => forwardRotation = value; }
 
         private Quaternion TargetRotation(float x, float z)
         {
