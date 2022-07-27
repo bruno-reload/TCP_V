@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character properties
   m_EditorClassIdentifier: 
   speed: 9
-  jumpImpulse: 400
+  jumpImpulse: 800
   headForce: 60
   rotationSpeed: 10
   diveImpoulse: 5
