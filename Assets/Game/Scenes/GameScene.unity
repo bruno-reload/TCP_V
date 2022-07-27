@@ -15,17 +15,17 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.85506403, g: 0.9526541, b: 0.990566, a: 1}
-  m_FogMode: 2
-  m_FogDensity: 0.02
-  m_LinearFogStart: 0
+  m_FogColor: {r: 0.7137255, g: 0.90588236, b: 0.88363713, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.01
+  m_LinearFogStart: 30
   m_LinearFogEnd: 60
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 2.5
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.5310609, g: 0.70108956, b: 0.735849, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.212
   m_FlareStrength: 1
@@ -34,10 +34,10 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 1
+  m_ReflectionBounces: 2
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 204253955}
   m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -1764,6 +1764,11 @@ MonoBehaviour:
 MeshCollider:
   m_CorrespondingSourceObject: {fileID: 7971882022580655883, guid: 8dc5be182d5a42d4dbe329f8b44564d2, type: 3}
   m_PrefabInstance: {fileID: 290795895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &204253955 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5231202967461081869, guid: 7c8ffd055187a8248b865fde1d93f8a4, type: 3}
+  m_PrefabInstance: {fileID: 1753807132}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &249172087
 PrefabInstance:
