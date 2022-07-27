@@ -311,12 +311,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Start1
-    descriptiveName: 
+    descriptiveName: "talvez no xbox \xE9 button 7"
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: space
     altNegativeButton: 
-    altPositiveButton: joystick 1 button 8
+    altPositiveButton: joystick 1 button 9
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -327,12 +327,12 @@ InputManager:
     joyNum: 0
   - serializedVersion: 3
     m_Name: Start2
-    descriptiveName: 
+    descriptiveName: "talvez no xbox \xE9 button 7"
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: '[0]'
     altNegativeButton: 
-    altPositiveButton: joystick 2 button 8
+    altPositiveButton: joystick 2 button 9
     gravity: 1000
     dead: 0.001
     sensitivity: 1000

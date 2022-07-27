@@ -2,10 +2,119 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Character.Control
 {
+
+    public enum AiBehaviour
+    {
+        IDLE,
+        MOVING
+    }
+
     public class AIControl : Control
     {
+        [SerializeField] private Transform ballTransform;
+        private CharacterAnimation characterAnimation;
+        [SerializeField] private PriorityControl priorityControl;
+        [SerializeField] private float distanceLimit = 0.2f;
+        public float DistanceToTarget => Vector3.Distance(targetPosition, transform.position);
+        public float radiusCenter;
+        public Vector3 centerPosition => priorityControl.CenterPointTransform.position;
+        [SerializeField] private Vector3 targetPosition;
+        private Vector3 randomPosition => new Vector3(
+            Random.Range(-radiusCenter, radiusCenter),
+            -1,
+            Random.Range(-radiusCenter, radiusCenter));
+
+        [SerializeField] [Range(3,7)] private float maxIntervalToChangeBehaviour;
+
+        public AiBehaviour AiBehaviour = AiBehaviour.IDLE;
+        [SerializeField] [Range(1, 100)] float speedPercentage;
+        private List<Vector3> positionsTarget => new List<Vector3>() {
+            centerPosition,
+            centerPosition+randomPosition 
+        };
+
+        private void Start()
+        {
+            targetPosition = centerPosition;
+        }
+
+        private void OnEnable()
+        {
+            StartCoroutine(ChangeBehaviour());
+            StartCoroutine(ChangeTargetPosition());
+            StartCoroutine(PlayRandomIdleAnim());
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
+        }
+        
+        public void StartCoroutines()
+        {
+            StartCoroutine(ChangeBehaviour());
+            StartCoroutine(ChangeTargetPosition());
+            StartCoroutine(PlayRandomIdleAnim());
+        }
+
+        public void StopCoroutines()
+        {
+            StopAllCoroutines();
+        }
+        //private void OnDrawGizmos()
+        //{
+        //    Gizmos.color = Color.white;
+        //    Gizmos.DrawWireSphere(targetPosition, radiusCenter);
+
+        //}
+        private IEnumerator ChangeBehaviour()
+        {
+            while(true)
+            {
+                //Mathf.
+                int targetIndex = Mathf.Abs(Random.Range(0, 2));
+                AiBehaviour = (AiBehaviour)targetIndex;
+                yield return new WaitForSeconds(Random.Range(0, 3));
+
+            }
+        }
+
+        private IEnumerator PlayRandomIdleAnim()
+        {
+            while(true)
+            {
+                //1/3 chance for play secondary idle animation
+                int random = Mathf.Abs(Random.Range(0, 3));
+                if(random == 0)
+                {
+                    //characterAnimation.Anim.Play("");
+                    yield return new WaitForSeconds(1.5f);
+                }
+            }
+        }
+
+
+        private IEnumerator ChangeTargetPosition()
+        {
+            while (true)
+            {
+                //Mathf.
+                int targetIndex = Mathf.Abs(Random.Range(0, 2));
+                targetPosition = positionsTarget[targetIndex];
+                yield return new WaitForSeconds(Random.Range(3, maxIntervalToChangeBehaviour));
+
+            }
+        }
+
+
+        private void Awake()
+        {
+            characterAnimation = GetComponent<CharacterAnimation>();
+        }
+
         public override bool ButtonReturn()
         {
             throw new System.NotImplementedException();
@@ -18,7 +127,16 @@ namespace Character.Control
 
         public override Vector3 direction()
         {
+            if (AiBehaviour == AiBehaviour.MOVING)
+            {
+                if (DistanceToTarget > distanceLimit)
+                {
+                    Vector3 distanceVector = targetPosition - transform.position;
+                    return new Vector3(distanceVector.x, 0, distanceVector.z).normalized*(speedPercentage/100);
+                }
+            }
             return Vector3.zero;
+
         }
 
         public override bool dive()
@@ -43,6 +161,7 @@ namespace Character.Control
 
         public override void playerSelect()
         {
+
         }
 
         public override bool R()
@@ -59,6 +178,31 @@ namespace Character.Control
         {
             return 0f;
         }
+
+        private void FixedUpdate()
+        {
+            
+        }
+
+
+
     }
 
 }
+
+//[Serializable] public class AIBehaviour 
+//{
+//    [SerializeField] private Transform ballTransform;
+//    [SerializeField] private CharacterAnimation characterAnimation;
+//    [SerializeField] private PriorityControl priorityControl;
+    
+//    public AIBehaviour(Transform ballTransform, CharacterAnimation characterAnimation, PriorityControl priorityControl)
+//    {
+//        this.ballTransform = ballTransform;
+//        this.characterAnimation = characterAnimation;
+//        this.priorityControl = priorityControl;
+//    }
+
+
+
+//}

@@ -17,6 +17,8 @@ public class CharacterAnimation : MonoBehaviour
     public float count;
     public bool Floor { get => this.anim.GetBool("onFloor"); private set { } }
 
+    public Animator Anim { get => anim; set => anim = value; }
+
     private void Awake()
     {
         this.anim = GetComponentInChildren<Animator>();

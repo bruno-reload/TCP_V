@@ -11,6 +11,8 @@ public class PriorityControl : MonoBehaviour
     private GameObject targetCharacter => recipient?.gameObject;
     public Vector2 initialPosition => new Vector3(transform.position.x, transform.position.z);
 
+    public Transform CenterPointTransform { get => centerPointTransform; set => centerPointTransform = value; }
+
     //private void OnTriggerEnter(Collider other)
     //{
     //    if (other.gameObject.CompareTag("Prediction"))
