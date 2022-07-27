@@ -14,6 +14,9 @@ namespace Character.Control
         public abstract void playerSelect();
         public abstract bool ButtonStart();
         public abstract bool ButtonReturn();
+
+        public abstract bool R();
+        public abstract bool L();
     }
 }
 

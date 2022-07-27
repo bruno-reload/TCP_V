@@ -5,7 +5,9 @@ namespace Character.Control
     [RequireComponent(typeof(PlayerInput))]
     public class CharacterControl : MonoBehaviour
     {
+        [SerializeField] private MeshRenderer feedback;
         private PlayerInput playerInput;
+        private AIControl aiControl;
         private Control control;
         private CharacterBehaviour behaviour;
         private CharacterAnimation anim;
@@ -26,12 +28,26 @@ namespace Character.Control
             particle = GetComponent<CharacterParticle>();
             headControl = GetComponent<CharacterHeadControl>();
             soundControl = GetComponent<CharacterSoundControl>();
+            playerInput = GetComponent<PlayerInput>();
+            aiControl = GetComponent<AIControl>();
 
         }
          public void SetControl(Control control)
         {
             this.control = control;
         }
+
+        public void SetAiControl()
+        {
+            SetControl(aiControl);
+            feedback.enabled = false;
+        }
+        public void SetPlayerControl()
+        {
+            SetControl(playerInput);
+            feedback.enabled = true;
+        }
+
     }
 }
 

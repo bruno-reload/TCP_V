@@ -36,9 +36,18 @@ namespace Character.Control
             return false;
         }
 
+        public override bool L()
+        {
+            return false;
+        }
+
         public override void playerSelect()
         {
-            Debug.LogWarning("A ia trata de setar sempre o personagem pertencente a área de previsão da queda da bola");
+        }
+
+        public override bool R()
+        {
+            return false;
         }
 
         protected override float xAxis()

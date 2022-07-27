@@ -19,6 +19,7 @@ namespace CoreLoop
                 {
                     stateMachine.GoServeState();
                 }
+
             } else
             {
                 foreach (PlayerStateMachine stateMachine in blueCharacterFSM)
@@ -27,6 +28,14 @@ namespace CoreLoop
                 }
 
             }
+        }
+
+        public void ReturnTeamServingToIdleState()
+        {
+            blueCharacterFSM[0].GoIdleState();
+            blueCharacterFSM[2].GoIdleState();
+            redCharacterFSM[0].GoIdleState();
+            redCharacterFSM[2].GoIdleState();
         }
 
 

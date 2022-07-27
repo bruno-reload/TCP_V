@@ -70,6 +70,11 @@ namespace Ball
             }
         }
 
+        //public void FixedUpdate()
+        //{
+        //    force += Time.fixedDeltaTime / 10;
+        //}
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Head"))

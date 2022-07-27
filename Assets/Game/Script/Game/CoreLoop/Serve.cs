@@ -14,11 +14,12 @@ namespace CoreLoop
         private PriorityControl[] priorityControls;
 
         private CoreLoopController coreLoopController;
-        
+        private CharacterRestrictionOnServe restrictionOnServe;
         private void Awake()
         {
             coreLoopController = GetComponentInParent<CoreLoopController>();
             priorityControls = FindObjectsOfType<PriorityControl>();
+            restrictionOnServe = GetComponent<CharacterRestrictionOnServe>();
         }
 
 
@@ -45,6 +46,7 @@ namespace CoreLoop
         private void OnBallServed()
         {
             coreLoopController.TransitionToState(CoreLoopState.ROLLING_BALL);
+
           
         }
 

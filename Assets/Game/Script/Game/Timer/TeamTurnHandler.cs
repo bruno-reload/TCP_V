@@ -11,7 +11,7 @@ namespace CoreLoop
     {
         [SerializeField] private TEAM teamTurn;
         public event Action<TEAM> turnOver;
-        public event Action ballStopped;
+        //public event Action ballStopped;
         [SerializeField] private BallController ballController;
         [SerializeField] private float minBallSpeedLimit;
         [SerializeField] private ScoreRules scoreRules;

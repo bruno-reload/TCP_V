@@ -58,6 +58,16 @@ namespace Character.Control
         {
             return Input.GetButtonDown("Return" + playerIndex.ToString());
         }
+
+        public override bool R()
+        {
+            return Input.GetButtonDown("R" + playerIndex.ToString());
+        }
+
+        public override bool L()
+        {
+            return Input.GetButtonDown("L" + playerIndex.ToString());
+        }
     }
 }
 

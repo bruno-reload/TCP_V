@@ -9941,7 +9941,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   feedback: {fileID: 7443014398916851697}
-  Captain: 0
 --- !u!114 &7360781085406952755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10006,6 +10005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de7956f6edc602419d35743d7401264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feedback: {fileID: 7443014398916851697}
 --- !u!114 &2452864701561306114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10049,7 +10049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headDuration: 0.7
-  headInDiveDuration: 0.7
+  headInDiveDuration: 1
 --- !u!114 &1996877714895363977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15203,7 +15203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3732950530330852460, guid: 865d98b4712731b47850ef6d40beb6f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.54
+      value: 3.5400002
       objectReference: {fileID: 0}
     - target: {fileID: 3732950530330852460, guid: 865d98b4712731b47850ef6d40beb6f8, type: 3}
       propertyPath: m_LocalPosition.z

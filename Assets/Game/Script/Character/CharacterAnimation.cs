@@ -15,7 +15,6 @@ public class CharacterAnimation : MonoBehaviour
     private Animator anim;
     public bool dive = false;
     public float count;
-    private CharacterBehaviour characterBehaviour;
     public bool Floor { get => this.anim.GetBool("onFloor"); private set { } }
 
     private void Awake()
@@ -73,7 +72,11 @@ public class CharacterAnimation : MonoBehaviour
     {
         this.speed.y = float.Parse(this.rigidbody.velocity.normalized.y.ToString("0.00"));
         this.anim.SetFloat("vertical", this.speed.y);
-        count -= Time.deltaTime;
+        if(count > -1)
+        {
+            count -= Time.deltaTime;
+        }
+
     }
 
 
