@@ -15,5 +15,6 @@ MonoBehaviour:
   speed: 9
   jumpImpulse: 800
   headForce: 60
-  rotationSpeed: 10
+  rotationSpeed: 8
   diveImpoulse: 5
+  gravityForce: -36

@@ -7,6 +7,9 @@ public class CharacterHeadControl : MonoBehaviour
 {
     private HeaderControl hc;
     private float count = 0;
+    [SerializeField] private float headDuration;
+    [SerializeField] private float headInDiveDuration;
+
 
     private void Awake()
     {
@@ -23,7 +26,7 @@ public class CharacterHeadControl : MonoBehaviour
   
     public void Head()
     {
-        count = 1;
+        count = headDuration;
         hc.dive = false;
         hc.header = HEAD_ROTATION.action;
     }
@@ -34,13 +37,13 @@ public class CharacterHeadControl : MonoBehaviour
     }
     public void HeadInDive()
     {
-        count = 1;
+        count = headInDiveDuration;
         hc.dive = true;
         hc.header = HEAD_ROTATION.action;
     }
     public void HeadIdleInDive()
     {
-        count = 1;
+        count = headDuration;
         hc.dive = true;
         hc.header = HEAD_ROTATION.Idle;
     }
