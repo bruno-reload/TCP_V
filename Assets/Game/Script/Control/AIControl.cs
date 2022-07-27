@@ -45,7 +45,7 @@ namespace Character.Control
         {
             StartCoroutine(ChangeBehaviour());
             StartCoroutine(ChangeTargetPosition());
-            StartCoroutine(PlayRandomIdleAnim());
+            //StartCoroutine(PlayRandomIdleAnim());
         }
 
         private void OnDisable()
@@ -57,7 +57,7 @@ namespace Character.Control
         {
             StartCoroutine(ChangeBehaviour());
             StartCoroutine(ChangeTargetPosition());
-            StartCoroutine(PlayRandomIdleAnim());
+            //StartCoroutine(PlayRandomIdleAnim());
         }
 
         public void StopCoroutines()
@@ -82,19 +82,22 @@ namespace Character.Control
             }
         }
 
-        private IEnumerator PlayRandomIdleAnim()
-        {
-            while(true)
-            {
-                //1/3 chance for play secondary idle animation
-                int random = Mathf.Abs(Random.Range(0, 3));
-                if(random == 0)
-                {
-                    //characterAnimation.Anim.Play("");
-                    yield return new WaitForSeconds(1.5f);
-                }
-            }
-        }
+        //private IEnumerator PlayRandomIdleAnim()
+        //{
+        //    while(true)
+        //    {
+        //        //1/3 chance for play secondary idle animation
+        //        float random = Random.Range(0, 110);
+        //        if(random < 2)
+        //        {
+        //            Debug.Log("ANIM PLAY");
+        //            characterAnimation.Anim.Play("idle2");
+        //            yield return new WaitForSeconds(Random.Range(1f, 2f));
+        //        }
+        //        Debug.Log(random);
+
+        //    }
+        //}
 
 
         private IEnumerator ChangeTargetPosition()
