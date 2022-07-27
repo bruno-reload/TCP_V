@@ -10,7 +10,12 @@ namespace Ball
         public float force = 13;
         public GameObject BallPositionPrediction;
         public const float gravity = 9.81f;
+        Rigidbody ballRigidBody;
 
+        private void Awake()
+        {
+            ballRigidBody = GetComponent<Rigidbody>();
+        }
         private void Reset()
         {
             gameObject.tag = "Ball";
@@ -54,21 +59,38 @@ namespace Ball
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Head"))
-            {
-                Headed(collision.contacts[0]);
-                GetComponent<Prediction>().Calculate();
-            }
+            //if (collision.gameObject.CompareTag("Head"))
+            //{
+            //    Headed(collision.contacts[0]);
+            //    GetComponent<Prediction>().Calculate();
+            //}
             if (collision.gameObject.CompareTag("FieldRange"))
             {
                 GetComponent<Prediction>().Calculate();
             }
         }
-        private void Headed(ContactPoint head)
+
+        private void OnTriggerEnter(Collider other)
         {
-            GetComponent<Transform>().rotation = Quaternion.LookRotation(head.normal, Vector3.up);
-            GetComponent<Rigidbody>().velocity = transform.forward * force;
+            if (other.CompareTag("Head"))
+            { 
+                Headed(other.transform.forward);
+                //Headed(other.contacts[0]);
+                GetComponent<Prediction>().Calculate();
+            }
         }
+        //private void Headed(ContactPoint head)
+        //{
+        //    GetComponent<Transform>().rotation = Quaternion.LookRotation(head.normal, Vector3.up);
+        //    GetComponent<Rigidbody>().velocity = transform.forward * force;
+        //}
+        private void Headed(Vector3 forward)
+        {
+            Vector3 forwardYInvert = new Vector3(forward.x, (-1)*forward.y, forward.z);
+                transform.rotation = Quaternion.LookRotation(forwardYInvert);
+                ballRigidBody.velocity = transform.forward * force;
+        }
+
 
         public void SetForecast(Vector3 value)
         {

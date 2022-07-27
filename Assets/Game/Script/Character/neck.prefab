@@ -4861,7 +4861,10 @@ MonoBehaviour:
   header: 1
   dive: 0
   forehead: {fileID: 5504404979802386702}
-  mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  idlePosition: {x: 0, y: 0, z: 0}
+  divePosition: {x: 0, y: 0, z: 0}
+  diveHeadPosition: {x: 0, y: 0, z: 0}
+  diveHeadRotationQuaternionX: 0
 --- !u!1818360608 &2665465256958423303
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -4871,8 +4874,8 @@ PositionConstraint:
   m_GameObject: {fileID: 1324258625698090749}
   m_Enabled: 1
   m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: 0.97, z: 0}
-  m_TranslationOffset: {x: 0, y: 1.73, z: -6.6}
+  m_TranslationAtRest: {x: 0, y: 3.499898, z: -0.06424236}
+  m_TranslationOffset: {x: 0.4, y: 3.5, z: -6.6}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -4939,10 +4942,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504404979802386702}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &2739347083282665459

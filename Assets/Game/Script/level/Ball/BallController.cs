@@ -47,13 +47,7 @@ namespace Ball
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Head"))
-            {
 
-                lastTeamHead = teamTurnHandler.TeamTurn;
-                
-                IncreaseHeadCount();
-            }
 
             if (LayerMask.LayerToName(collision.gameObject.layer) == "Player")
             {
@@ -64,6 +58,7 @@ namespace Ball
             }
 
         }
+
 
 
 
@@ -86,6 +81,12 @@ namespace Ball
             if (other.CompareTag("TeamBlueSide"))
             {
                 ballTouchFieldSide?.Invoke(TEAM.Blue);
+            }
+
+            if (other.CompareTag("Head"))
+            {
+                lastTeamHead = teamTurnHandler.TeamTurn;
+                IncreaseHeadCount();
             }
         }
 
