@@ -9993,6 +9993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98c7442f99b8a63439ef55e0cb20f178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballTransform: {fileID: 0}
+  characterAnimation: {fileID: 2452864701561306114}
+  priorityControl: {fileID: 0}
 --- !u!114 &406800953787600874
 MonoBehaviour:
   m_ObjectHideFlags: 0
